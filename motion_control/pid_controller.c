@@ -1,12 +1,5 @@
-/*
-    GLOBALS: VELOCITY
-*/
-
-#include <stdio.h>
-
-#define kP 10
-#define kI 0
-#define kD 0
+#include <pid_controller.h>
+#include <./constants.h>
 
 int main(void) {
     double time_cycle = 0.05;
