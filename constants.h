@@ -1,5 +1,16 @@
 # ifndef CONSTANTS
 
+// TIME
 #define VEL_MAX_DAY 50
+#define VEL_MAX_NIGHT 40
+
+// CONDITIONS
+#define VEL_MAX_DRY 50
+#define VEL_MAX_WET 45
+
+// POPULATION DENSITY
+#define VEL_MAX_LOW 50
+#define VEL_MAX_MEDIUM 35
+#define VEL_MAX_HIGH 20
 
 # endif
