@@ -25,7 +25,7 @@ int main(void) {
 
 double get_vel(void) {
     double vel = 10;
-    
+
     return vel;
 }
 
