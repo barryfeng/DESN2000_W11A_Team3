@@ -1,0 +1,20 @@
+INFO: Time:Wed Jun 17 03:46:23 2020, File:logging.c(13) "File open success."
+INFO: Time:Wed Jun 17 03:46:43 2020, File:logging.c(13) "File open success."
+INFO: Time:Wed Jun 17 03:48:28 2020, File:logging.c(line 13) "File open success."
+INFO: Time: Wed Jun 17 03:56:55 2020, File: logging.c(line 17) "File open success."
+Tram speed: 
+Output voltage: 
+
+INFO: Time: Wed Jun 17 03:57:11 2020, File: logging.c(line 17) "\nFile open success."
+Tram speed: 
+Output voltage: 
+
+OPEN: Time: Wed Jun 17 03:59:55 2020, File: logging.c(line 17) "File open success."
+
+Tram speed: 
+Output voltage: 
+
+OPEN: Time: Wed Jun 17 04:00:24 2020, File: logging.c(line 17) "File open success."
+Tram speed: 
+Output voltage: 
+
