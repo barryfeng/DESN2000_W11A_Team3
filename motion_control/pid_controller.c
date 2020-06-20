@@ -1,8 +1,8 @@
 #include <pid_controller.h>
 #include <./constants.h>
 
-int main(void) {
-    double time_cycle = 0.05;
+int get_correction(void) {
+    const double time_cycle = 0.05;
 
     double error = 0;
     double p_error = 0;

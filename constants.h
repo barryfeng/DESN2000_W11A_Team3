@@ -13,4 +13,7 @@
 #define VEL_MAX_MEDIUM 35
 #define VEL_MAX_HIGH 20
 
+// PINOUT
+#define MTR_PWMPIN P1_0
+
 # endif
