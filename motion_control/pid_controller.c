@@ -29,7 +29,7 @@ void init_adc(void) {
     PINSEL1 |= (0b01 << 14);        // Select P0.23 to AD0[0]
 }
 
-double get_vel(void) {
+double get_vel(void) {              // TODO: Barry
     double vel = 10;
 
     return vel;
