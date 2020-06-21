@@ -1,8 +1,14 @@
 #include <pid_controller.h>
 #include <./constants.h>
 
+#include <LPC24XX.h>
+
+#include "stdint.h"
+
+#define CCLK_DELAY 6000
+
 int get_correction(void) {
-    const double time_cycle = 0.05;
+    const double time_cycle = 5;    // 5 ms
 
     double error = 0;
     double p_error = 0;
@@ -14,6 +20,13 @@ int get_correction(void) {
     get_error(&error, &p_error, &p_integral, v_setpoint, time_cycle);
 
     return 0;
+}
+
+void init_adc(void) {
+    PCONP |= (1 << 12);             // Power on ADC Module
+    AD0CR |= (1 << 21);             // Enable ADC
+    PCLKSEL0 |= (0x01 << 24);
+    PINSEL1 |= (0b01 << 14);        // Select P0.23 to AD0[0]
 }
 
 double get_vel(void) {
@@ -32,6 +45,11 @@ double get_error(double *error, double *p_error, double *p_integral, double v_se
     *p_error = *error;
     *p_integral = integral;
 
-    sleep(time_cycle);
+    delay_ms(time_cycle);
 }
 
+void delay_ms(uint16_t j) {
+    for (uint16_t i = 0; i < j; i++) {
+        for (uint16_t x = 0; x < CCLK_DELAY; x++);    // 1 ms delay at 60MHz CCLK
+    }
+}
