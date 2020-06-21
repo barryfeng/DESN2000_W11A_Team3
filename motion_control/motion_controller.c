@@ -1,17 +1,17 @@
 /*
-* FILENAME :        motion_controller.c
-*
-* DESCRIPTION :     PWM Generation for DESN2000 ELEC W11A Group 3 
-*
-* NOTES :
-*
-* AUTHOR :    Barry Feng            
-*
-* START DATE :    20 Jun 20
-*
-* CHANGES :
-*   -- 20/06/2020 --     File created.
-*/
+ * FILENAME :       motion_controller.c
+ *
+ * DESCRIPTION :    PWM Generation for DESN2000 ELEC W11A Group 3 
+ *
+ * NOTES :
+ *
+ * AUTHOR :         Barry Feng            
+ *
+ * START DATE :     20 Jun 20
+ *
+ * CHANGES :
+ *   -- 20/06/2020 --     File created.
+ */
 
 #include <LPC24XX.h>
 
@@ -52,7 +52,7 @@ void init_pwm(void) {
 }
 
 void start_pwm(void) {
-                                        // NOTE FOR BARRY: we use timer3 to prevent external memory startup conflicts
+                                        // ? NOTE FOR BARRY: we use timer3 to prevent external memory startup conflicts
     T3TCR = 0x02;                       // Reset timer3
     T3IR |= 0x01;                       // Clear interrupt register
     T3MR0 = 10;                         // PWM period matching
@@ -65,7 +65,7 @@ void start_pwm(void) {
 
     while (1) {
         if (T1IR & 0x1) {
-            // LOAD PID COMPENSATION HERE
+                                        // LOAD PID COMPENSATION HERE
             PWM0MR1 = 6;                // Set new speed
             PWM0LER = (1 << 1);         // Latch to new speed
         }
