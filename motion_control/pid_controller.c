@@ -16,16 +16,14 @@ int get_correction(void) {
     return 0;
 }
 
-// Use ADC to convert 0-2.5V encoder signal to rpm (and m/s)
-double get_vel(int unit) {
+double get_vel(void) {
     double vel = 10;
 
-    // unit == 1 is rpm, unit == 0 is m/s
-    return unit ? vel : vel/100;
+    return vel;
 }
 
 double get_error(double *error, double *p_error, double *p_integral, double v_setpoint, double time_cycle) {
-    *error = v_setpoint - get_vel(1);
+    *error = v_setpoint - get_vel();
     double integral = *p_integral * time_cycle;
     double derivative = (*error - *p_error) / time_cycle;
 
