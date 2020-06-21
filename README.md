@@ -8,4 +8,4 @@ DESN2000_W11A_Team3 Light Rail Controller
 * Custom coded logging program.
 * LPC24XX pin references added.
 ### Bugs
-* get_vel() not implemented proeprly
+* get_vel() not implemented properly.
