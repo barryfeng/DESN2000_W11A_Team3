@@ -32,15 +32,14 @@ void init_pll(void)                     // Initialise PLL for clock generation
     PLLCON = 0x03;
     PLLFEED = 0xAA;                     // Pass PLLFEED feed sequence for PLLCON and PLLCFG registers to take effect
     PLLFEED = 0x55;
-    PCLKSEL0 |= (0b01 << 10);           // Supply CCLK to PCLK
-    
+    PCLKSEL0 = 0x01;                    // Supply CCLK to PCLK
 }
 
 void init_pwm(void) {
     PCONP |= (1 << 5);                  // Power on PWM0 power/clock control
     PWM0PCR |= (1 << 9);                // Set PWM to PWM0[1]
 
-    PINSEL2 |= (0b11 << 4);             // Set P1.2 for PWM Output.
+    PINSEL2 |= (3 << 6);                // Set P1.3 for PWM Output.
 
     PWM0TCR = (1 << 1);                 // Reset PWM TC and PWM PR.
     PWM0PR = 59999;                     // Set prescale register to (60000 - 1) (ms resolution).

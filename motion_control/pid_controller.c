@@ -1,14 +1,13 @@
-#include <pid_controller.h>
 #include <./constants.h>
-
 #include <LPC24XX.h>
+#include <pid_controller.h>
 
 #include "stdint.h"
 
 #define CCLK_DELAY 6000
 
 int get_correction(void) {
-    const double time_cycle = 5;    // 5 ms
+    const int time_cycle = 5;
 
     double error = 0;
     double p_error = 0;
@@ -50,6 +49,6 @@ double get_error(double *error, double *p_error, double *p_integral, double v_se
 
 void delay_ms(uint16_t j) {
     for (uint16_t i = 0; i < j; i++) {
-        for (uint16_t x = 0; x < CCLK_DELAY; x++);    // 1 ms delay at 60MHz CCLK
+        for (uint16_t x = 0; x < CCLK_DELAY; x++);  // 1 ms delay at 60MHz CCLK
     }
 }
