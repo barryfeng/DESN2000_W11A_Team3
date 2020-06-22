@@ -1,54 +1,32 @@
-/*
-* FILENAME :        motion_controller.c
-*
-* DESCRIPTION :     PWM Generation for DESN2000 ELEC W11A Group 3 
-*
-* NOTES :
-*
-* AUTHOR :    Barry Feng            
-*
-* START DATE :    20 Jun 20
-*
-* CHANGES :
-*   -- 20/06/2020 --     File created.
-*/
+/**
+ * FILENAME :        motion_controller.c
+ * DESCRIPTION :     PWM Generation for DESN2000 ELEC W11A Group 3 
+ * 
+ * NOTES :
+ * 
+ * AUTHOR :    Barry Feng   
+ * 
+ * START DATE :    20 Jun 20
+ * 
+ * CHANGES :
+ * -- 20/06/2020 --     File created.
+ */
 
 #include <LPC24XX.h>
+#include <stdint.h>
 
-#define PLOCK 0x00000400
-#define DC_DEF 5
+double get_voltage(void) {
+    static uint32_t result;
+    static double voltage;
 
-void init_pll(void)                     // Initialise PLL for clock generation
-{
-    CLKSRCSEL = 0x00;                   // Set clock to internal RC oscillator.
-    PLLCON = 0x01;                      // Enable PLLE, Disable PLLC
-    PLLCFG = 0x0003B;                   // Set M = 59, N = 1 for PLL multiplier
-
-    PLLFEED = 0xAA;                     // Pass PLLFEED feed sequence for PLLCON and PLLCFG registers to take effect
-    PLLFEED = 0x55;
-
-    while (!(PLLSTAT & PLOCK));         // Wait for the PLL to achieve lock by monitoring the PLOCK bit in the PLLSTAT register.
-
-    PLLCON = 0x03;
-    PLLFEED = 0xAA;                     // Pass PLLFEED feed sequence for PLLCON and PLLCFG registers to take effect
-    PLLFEED = 0x55;
-    PCLKSEL0 = 0x01;                    // Supply CCLK to PCLK
-}
-
-void init_pwm(void) {
-    PCONP |= (1 << 5);                  // Power on PWM0 power/clock control
-    PWM0PCR |= (1 << 9);                // Set PWM to PWM0[1]
-
-    PINSEL2 |= (3 << 6);                // Set P1.3 for PWM Output.
-
-    PWM0TCR = (1 << 1);                 // Reset PWM TC and PWM PR.
-    PWM0PR = 59999;                     // Set prescale register to (60000 - 1) (ms resolution).
-    PWM0MCR = (1 << 0) | (1 << 1);      // Set PWM Match Control Register to reset PWMTC on match with PWMMR0.
-
-    PWM0MR0 |= 10;                      // Set PWM period to 10 ms.
-    PWM0MR1 |= DC_DEF;                  // Set PWM pulse width to default (5ms).
-    
-    PWM0LER = (1 << 0);                 // Enable PWM latch.
+    while (1) {
+        AD0CR = AD0CR | (1 << 24);  // start adc start
+        while (!(AD0DR1 & 0x80000000));  // wait for adc to finish
+        result = AD0DR1;
+        result = (result >> 6);
+        result = (result & 0x000003FF);
+        voltage = ((result / 1023.0) * 3.3);  // Convert ADC value to equivalent voltage
+    }
 }
 
 void start_pwm(void) {
@@ -59,12 +37,11 @@ void start_pwm(void) {
     T3MCR = (1 << 0) | (1 << 1);        // Reset counter and set interrupt on match
     T3TCR = (1 << 0);                   // Start timer
 
-    init_pll();
-    init_pwm();
     PWM0TCR |= 0x00000009;
 
     while (1) {
         if (T1IR & 0x1) {
+            get_voltage();
                                         // ? LOAD PID COMPENSATION HERE
             PWM0MR1 = 6;                // Set new speed
             PWM0LER = (1 << 1);         // Latch to new speed

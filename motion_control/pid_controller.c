@@ -3,10 +3,12 @@
 #include <pid_controller.h>
 
 #include "stdint.h"
+#include "math.h"
 
 #define CCLK_DELAY 6000
+#define WHEEL_OD 0.3    // in meters
 
-int get_correction(void) {
+int start_pid(void) {
     const int time_cycle = 5;
 
     double error = 0;
@@ -21,17 +23,12 @@ int get_correction(void) {
     return 0;
 }
 
-void init_adc(void) {
-    PCONP |= (1 << 12);             // Power on ADC Module
-    AD0CR |= (1 << 21);             // Enable ADC
-    PCLKSEL0 |= (0x01 << 24);
-    PINSEL1 |= (0b01 << 14);        // Select P0.23 to AD0[0]
-}
+double get_vel(void) {  // TODO: Barry
+    double vel_kmh = 10;                                            // in kmh
+    // double vel_ms = vel_kmh / 3.6;                                  // in m/s
+    // double rpm = vel_ms / (WHEEL_OD / 2) * (60 / (2 * acos(-1)));   // w (rpm) = v/r
 
-double get_vel(void) {              // TODO: Barry
-    double vel = 10;
-
-    return vel;
+    return vel_kmh;
 }
 
 double get_error(double *error, double *p_error, double *p_integral, double v_setpoint, double time_cycle) {
@@ -47,8 +44,8 @@ double get_error(double *error, double *p_error, double *p_integral, double v_se
     delay_ms(time_cycle);
 }
 
-void delay_ms(uint16_t j) {
-    for (uint16_t i = 0; i < j; i++) {
-        for (uint16_t x = 0; x < CCLK_DELAY; x++);  // 1 ms delay at 60MHz CCLK
+void delay_ms(uint32_t j) {
+    for (uint32_t i = 0; i < j; i++) {
+        for (uint32_t x = 0; x < CCLK_DELAY; x++);  // 1 ms delay at 60MHz CCLK
     }
 }
