@@ -23,7 +23,7 @@ int start_pid(void) {
     return 0;
 }
 
-double get_vel(void) {  // TODO: Barry
+double get_vel(int ret_type) {  // TODO: Barry
     double vel_kmh = 10;                                            // in kmh
     // double vel_ms = vel_kmh / 3.6;                                  // in m/s
     // double rpm = vel_ms / (WHEEL_OD / 2) * (60 / (2 * acos(-1)));   // w (rpm) = v/r
@@ -32,7 +32,7 @@ double get_vel(void) {  // TODO: Barry
 }
 
 double get_error(double *error, double *p_error, double *p_integral, double v_setpoint, double time_cycle) {
-    *error = v_setpoint - get_vel();
+    *error = v_setpoint - get_vel(1);
     double integral = *p_integral * time_cycle;
     double derivative = (*error - *p_error) / time_cycle;
 
