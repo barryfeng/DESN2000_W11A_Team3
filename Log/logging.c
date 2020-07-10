@@ -1,4 +1,7 @@
 #include <stdio.h>
+#include "LPC24XX.h"
+
+#include <motion_controller.h>
 
 #define LOG(X, Y) fprintf(fp,#X ": Time: %s, File: %s(line %d) " #Y "\n", __TIMESTAMP__, __FILE__, __LINE__)
 
@@ -18,6 +21,9 @@ int main(void) {
     if (fclose(fp) == 0) {
         LOG(ERROR, "File close succesful.");
     }
+
+    // WORD1 [VELOCITY], WORD2 [BRAKE_DATA], WORD3 [WEATHER]
+    
 
     return 0;
 }

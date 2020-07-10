@@ -83,12 +83,12 @@ void start_controller(void) {
     }
 }
 
-// Use arg 1 to return m/s, arg 0 to return kmh
+// Use arg 1 to return m/s, arg 0 to return km/h
 double get_vel(int ret_type) {
     double voltage = get_voltage();
     double vel_kmh = voltage * (100 / 2.5);  // in kmh
     double vel_ms = vel_kmh / 3.6;           // in m/s
-    // double rpm = vel_ms / (WHEEL_OD / 2) * (60 / (2 * acos(-1)));   // w (rpm) = v/r
+    double rpm = vel_ms / (WHEEL_OD / 2) * (60 / (2 * acos(-1)));   // w (rpm) = v/r
 
     return ret_type ? vel_ms : vel_kmh;
 }
