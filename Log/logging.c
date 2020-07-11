@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "LPC24XX.h"
+//#include "LPC24XX.h"      //NOT WORKING
 
 #include <motion_controller.h>
 
