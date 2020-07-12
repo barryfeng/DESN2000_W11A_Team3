@@ -41,13 +41,16 @@ void init_pwm(int dc) {
     PWM0LER = (1 << 0);  // Enable PWM latch.
 }
 
+// When the use_UART0.c file is called, UART0 will be configured.
+/*
 void init_uart(void) {
     // Use UART0
 
-    PCONP |= (1 << 3);      // Enable power for UART
-    PCLKSEL0 |= (0b11 << 6);   // Set the clock signal that will be suplied to UART0
-    U0LCR |= (1 << 7);      // Enable access to Divisor Latches (DLAB = 1)
-    U0FCR |= 1;             // Enable FIFO for UART0 Rx and Tx
+    PCONP |= (1 << 3);          // Enable power for UART
+    PCLKSEL0 |= (0b11 << 6);    // Set the clock signal that will be suplied to UART0
+    U0LCR |= (1 << 7);          // Enable access to Divisor Latches (DLAB = 1)
+    U0FCR |= 1;                 // Enable FIFO for UART0 Rx and Tx
 
-    //U0LCR |= (1 << 7);    // This enables UART interrupts (DLAB = 0)
+    //U0LCR |= (1 << 7);        // This enables UART interrupts (DLAB = 0)
 }
+*/
