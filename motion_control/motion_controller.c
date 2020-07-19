@@ -34,7 +34,7 @@ static double get_voltage(void) {
 static void start_pwm(void) {
                                         // ? NOTE FOR BARRY: we use timer3 to prevent external memory startup conflicts
     T3TCR = 0x02;                       // Reset timer3
-    T3IR |= 0x01;                       // Clear interrupt register
+    T3IR  = 0x01;                       // Clear interrupt register
     T3MR0 = 10;                         // PWM period matching
     T3MCR = (1 << 0) | (1 << 1);        // Reset counter and set interrupt on match
     T3TCR = (1 << 0);                   // Start timer
@@ -59,7 +59,7 @@ static void get_error(double *compensate, double *error, double *p_error, double
     *compensate = kP * (*error) + kI * (*error) + kD * (*error);
 
     *p_error = *error;
-    *p_integral = integral;
+    *p_integral += integral;
 
     delay_ms(time_cycle);
 }
