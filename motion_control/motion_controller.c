@@ -14,11 +14,11 @@
 
 #include <motion_controller.h>
 
-static int get_setpoint(void) {
+static uint32_t get_setpoint(void) {
     return 10;
 }
 
-static double get_voltage(void) {
+static uint32_t get_voltage(void) {
     static uint32_t result;
 
     // maybe put some sort of filter on this data lmao :(
