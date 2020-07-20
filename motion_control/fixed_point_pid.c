@@ -80,14 +80,14 @@ int16_t step_controller(int16_t sp, int16_t fb, Controller pi_controller) {
     }
 
     // Denormalise compensation value
-    int16_t rval = out >> PARAM_SHIFT;
+    int16_t compensate = out >> PARAM_SHIFT;
 
     // Round denormalised value.
     if (out & (0x1 << (PARAM_SHIFT - 1))) {
-        rval++;
+        compensate++;
     }
 
-    return rval;
+    return compensate;
 }
 
 static uint32_t normalise(float in) {

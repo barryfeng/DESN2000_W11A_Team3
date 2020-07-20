@@ -1,12 +1,12 @@
 /**
- * FILENAME :        motion_controller.c
- * DESCRIPTION :     PWM Generation for DESN2000 ELEC W11A Group 3 
+ * FILENAME :           motion_controller.c
+ * DESCRIPTION :        PWM Generation for DESN2000 ELEC W11A Group 3 
  * 
  * NOTES :
  * 
- * AUTHOR :    Barry Feng   
+ * AUTHOR :             Barry Feng   
  * 
- * START DATE :    20 Jun 20
+ * START DATE :         20 Jun 20
  * 
  * CHANGES :
  * -- 20/06/2020 --     File created.
@@ -52,9 +52,13 @@ void start_controller(void) {
         set_pwm(abs(compensation));
 
         // ! Implement voltage out using DAC
-        
+
         delay_timer3(CYCLE_TIME);
     }
+}
+
+void set_brake(void) {
+    
 }
 
 // Use arg 1 to return m/s, arg 0 to return km/h
