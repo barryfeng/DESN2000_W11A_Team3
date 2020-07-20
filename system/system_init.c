@@ -41,6 +41,9 @@ void init_pwm(int dc) {
     PWM0LER = (1 << 0);  // Enable PWM latch.
 }
 
+void init_timers(void) {
+}
+
 // When the use_UART0.c file is called, UART0 will be configured.
 /*
 void init_uart(void) {

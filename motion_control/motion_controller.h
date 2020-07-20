@@ -3,11 +3,14 @@
 #include <LPC24XX.h>
 #include <stdint.h>
 
-#define CCLK_DELAY 6000
+#include "../system/system_timer.h"
+#include "fixed_point_pid.h"
+
 #define WHEEL_OD 0.3  // in meters
-#define kP 10
-#define kI 0
-#define kD 0
+#define kP 10.0
+#define kI 0.0
+
+#define CYCLE_TIME 5
 
 static int get_setpoint(void);
 static double get_voltage(void);
