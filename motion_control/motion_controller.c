@@ -1,12 +1,12 @@
 /**
- * FILENAME :        motion_controller.c
- * DESCRIPTION :     PWM Generation for DESN2000 ELEC W11A Group 3 
+ * FILENAME :           motion_controller.c
+ * DESCRIPTION :        PWM Generation for DESN2000 ELEC W11A Group 3 
  * 
  * NOTES :
  * 
- * AUTHOR :    Barry Feng   
+ * AUTHOR :             Barry Feng   
  * 
- * START DATE :    20 Jun 20
+ * START DATE :         20 Jun 20
  * 
  * CHANGES :
  * -- 20/06/2020 --     File created.
@@ -14,11 +14,11 @@
 
 #include <motion_controller.h>
 
-static int get_setpoint(void) {
+static uint32_t get_setpoint(void) {
     return 10;
 }
 
-static double get_voltage(void) {
+static uint32_t get_voltage(void) {
     static uint32_t result;
 
     // maybe put some sort of filter on this data lmao :(
@@ -32,55 +32,33 @@ static double get_voltage(void) {
 }
 
 static void start_pwm(void) {
-                                        // ? NOTE FOR BARRY: we use timer3 to prevent external memory startup conflicts
-    T3TCR = 0x02;                       // Reset timer3
-    T3IR  = 0x01;                       // Clear interrupt register
-    T3MR0 = 10;                         // PWM period matching
-    T3MCR = (1 << 0) | (1 << 1);        // Reset counter and set interrupt on match
-    T3TCR = (1 << 0);                   // Start timer
-
-    PWM0TCR |= 0x00000009;
-
-    set_pwm(0);
+    PWM0LER = (1 << 0) | (1 << 1);      // Update PWM0 Latch for MR0, MR1
+    PWM0TCR = (1 << 0) | (1 << 3);      // Enable PWM0 and Reset PWM0 TC
 }
 
 static void set_pwm(int duty_cycle) {
-    if (T1IR & 0x1) {
-        PWM0MR1 = duty_cycle;   // Set new speed
-        PWM0LER = (1 << 1);     // Latch to new speed
-    }
-}
-
-static void get_error(double *compensate, double *error, double *p_error, double *p_integral, double v_setpoint, double time_cycle) {
-    *error = v_setpoint - get_vel(1);
-    double integral = *p_integral * time_cycle;
-    double derivative = (*error - *p_error) / time_cycle;
-
-    *compensate = kP * (*error) + kI * (*error) + kD * (*error);
-
-    *p_error = *error;
-    *p_integral += integral;
-
-    delay_ms(time_cycle);
-}
-
-static void delay_ms(uint32_t j) {
-    for (uint32_t i = 0; i < j; i++) {
-        for (uint32_t x = 0; x < CCLK_DELAY; x++);  // 1 ms delay at 60MHz CCLK
-    }
+    PWM0MR1 = duty_cycle;               // Set new PWM0 MR1 match value
+    PWM0LER = (1 << 1);                 // Update PWM0 Latch for MR0, MR1
 }
 
 void start_controller(void) {
-    const int time_cycle = 5;
-    double error = 0, p_error = 0, p_integral = 0;
+    init_timer3('m');
     start_pwm();
 
-    double compensate = 0;
+    Controller pi_controller = init_controller(kP, kI);
 
     while (1) {
-        get_error(&compensate, &error, &p_error, &p_integral, get_setpoint(), time_cycle);
-        set_pwm(compensate);
+        int16_t compensation = step_controller(get_setpoint(), get_vel(1), pi_controller);
+        set_pwm(abs(compensation));
+
+        // ! Implement voltage out using DAC
+
+        delay_timer3(CYCLE_TIME);
     }
+}
+
+void set_brake(void) {
+    
 }
 
 // Use arg 1 to return m/s, arg 0 to return km/h
