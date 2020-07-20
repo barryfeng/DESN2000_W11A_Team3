@@ -32,17 +32,13 @@ static double get_voltage(void) {
 }
 
 static void start_pwm(void) {
-    // ! TODO: BARRY SETUP PWM0
-    PWM0TCR |= 0x00000009;
-
-    set_pwm(0);
+    PWM0LER = (1 << 0) | (1 << 1);      // Update PWM0 Latch for MR0, MR1
+    PWM0TCR = (1 << 0) | (1 << 3);      // Enable PWM0 and Reset PWM0 TC
 }
 
 static void set_pwm(int duty_cycle) {
-    if (T1IR & 0x1) {
-        PWM0MR1 = duty_cycle;   // Set new speed
-        PWM0LER = (1 << 1);     // Latch to new speed
-    }
+    PWM0MR1 = duty_cycle * 100;         // Set new PWM0 MR1 match value
+    PWM0LER = (1 << 1);                 // Update PWM0 Latch for MR0, MR1
 }
 
 void start_controller(void) {
@@ -52,6 +48,7 @@ void start_controller(void) {
     Controller pi_controller = init_controller(kP, kI);
 
     while (1) {
+        // ! Check compensation scaling
         set_pwm(step_controller(get_setpoint(), get_vel(1), pi_controller));
         delay_timer3(CYCLE_TIME);
     }
