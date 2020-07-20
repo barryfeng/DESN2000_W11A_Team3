@@ -15,6 +15,7 @@
 #include <motion_controller.h>
 
 static uint32_t get_setpoint(void) {
+    // target velocity
     return 10;
 }
 
@@ -58,6 +59,7 @@ void start_controller(void) {
 }
 
 void set_brake(void) {
+    // single bit button function
     
 }
 
