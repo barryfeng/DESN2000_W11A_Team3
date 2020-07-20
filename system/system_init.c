@@ -37,8 +37,8 @@ void init_pwm(void) {
     PWM0MCR = (1 << 1);  // Set PWM Match Control Register to reset PWMTC on match with PWMMR0.
     PWM0LER |= (1 << 0) | (1 << 1); 
 
-    PWM0MR0 |= 10000;               // Set PWM period to 10 ms.
-    PWM0MR1 |= 5000;                // Set PWM pulse width to default duty cycle (50).
+    PWM0MR0 = 32768;                // Set PWM period to 32.768 ms.
+    PWM0MR1 = 0;                    // Set PWM pulse width to default duty cycle (0).
     PWM0TCR = (1 << 1);             // Reset PWM TC.
 }
 

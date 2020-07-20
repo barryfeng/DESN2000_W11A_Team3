@@ -1,3 +1,17 @@
+/**
+ * FILENAME :           fixed_point_pid.c
+ * DESCRIPTION :        Fixed point PI controller for DESN2000 ELEC W11A Group 3 
+ * 
+ * NOTES :
+ * 
+ * AUTHOR :             Barry Feng   
+ * 
+ * START DATE :         20 Jul 20
+ * 
+ * CHANGES :
+ * -- 20/07/2020 --     File created.
+ */
+
 #include "fixed_point_pid.h"
 
 Controller init_controller(float kP, float kI) {

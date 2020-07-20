@@ -37,7 +37,7 @@ static void start_pwm(void) {
 }
 
 static void set_pwm(int duty_cycle) {
-    PWM0MR1 = duty_cycle * 100;         // Set new PWM0 MR1 match value
+    PWM0MR1 = duty_cycle;               // Set new PWM0 MR1 match value
     PWM0LER = (1 << 1);                 // Update PWM0 Latch for MR0, MR1
 }
 
@@ -48,8 +48,11 @@ void start_controller(void) {
     Controller pi_controller = init_controller(kP, kI);
 
     while (1) {
-        // ! Check compensation scaling
-        set_pwm(step_controller(get_setpoint(), get_vel(1), pi_controller));
+        int16_t compensation = step_controller(get_setpoint(), get_vel(1), pi_controller);
+        set_pwm(abs(compensation));
+
+        // ! Implement voltage out using DAC
+        
         delay_timer3(CYCLE_TIME);
     }
 }
