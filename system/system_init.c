@@ -21,7 +21,14 @@ void init_adc(void) {
     PCONP |= (1 << 12);  // Power on ADC Module
     AD0CR |= (1 << 21);  // Enable ADC
     PCLKSEL0 |= (0x01 << 24);   // Set ADC peripheral clock to CCLK (60MHz)
-    PINSEL1 |= (0b01 << 14);  // Select P0.23 to AD0[0]
+
+    PINSEL1 |= ~(0x03 << 14);
+    PINSEL1 |= (0x01 << 14);  // Select P0.23 to AD0[0]
+}
+
+void init_dac(void) {
+    PINSEL1 |= ~(0x03 << 20);
+    PINSEL1 |= (0x02 << 20);
 }
 
 void init_pwm(void) {
@@ -37,7 +44,7 @@ void init_pwm(void) {
     PWM0MCR = (1 << 1);  // Set PWM Match Control Register to reset PWMTC on match with PWMMR0.
     PWM0LER |= (1 << 0) | (1 << 1); 
 
-    PWM0MR0 = 32768;                // Set PWM period to 32.768 ms.
+    PWM0MR0 = 32768;                // Set PWM period to 32.768 ms (2^15).
     PWM0MR1 = 0;                    // Set PWM pulse width to default duty cycle (0).
     PWM0TCR = (1 << 1);             // Reset PWM TC.
 }

@@ -10,6 +10,9 @@
 #define kP 10.0
 #define kI 0.0
 
+#define VEL_SHIFT 16
+#define ADC_SHIFT 22
+
 #define CYCLE_TIME 5
 
 static uint32_t get_setpoint(void);
@@ -18,6 +21,6 @@ static void start_pwm(void);
 static void set_pwm(int duty_cycle);
 
 void start_controller(void);
-double get_vel(int ret_type);
+uint32_t get_vel(void);
 
 #endif

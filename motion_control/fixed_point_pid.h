@@ -19,10 +19,11 @@ typedef struct {
     int32_t out_max;
     int32_t out_min;
     int32_t sum;
+    
 } *Controller;
 
 Controller init_controller(float kP, float kI);
 int16_t step_controller(int16_t sp, int16_t fb, Controller pi_controller);
-static uint32_t normalise(float in);
+static uint32_t f_to_q(float in);
 
 #endif
