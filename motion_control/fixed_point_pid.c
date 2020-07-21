@@ -18,8 +18,8 @@ Controller init_controller(float kP, float kI) {
     Controller pi_controller = malloc(sizeof(Controller));
 
     // Set PI parameters
-    pi_controller->kP = normalise(kP);
-    pi_controller->kI = normalise(kI);
+    pi_controller->kP = f_to_q(kP);
+    pi_controller->kI = f_to_q(kI);
 
     // Limit normalised PI gains to int14
     int16_t int14_max = ((1 << 14) - 1);
@@ -90,7 +90,7 @@ int16_t step_controller(int16_t sp, int16_t fb, Controller pi_controller) {
     return compensate;
 }
 
-static uint32_t normalise(float in) {
+static uint32_t f_to_q(float in) {
     if (in > PARAM_MAX || in < 0) {
         return 0;
     }

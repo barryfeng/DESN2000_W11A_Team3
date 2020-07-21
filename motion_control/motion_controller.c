@@ -13,23 +13,24 @@
  */
 
 #include <motion_controller.h>
+#include <master_controller.h>
 
 static uint32_t get_setpoint(void) {
-    // target velocity
-    return 10;
+    return (light_rail->vel_setpoint << VEL_SHIFT);
 }
 
 static uint32_t get_voltage(void) {
-    static uint32_t result;
 
-    // maybe put some sort of filter on this data lmao :(
+    static uint16_t result;
+
     AD0CR = AD0CR | (1 << 24);  // start adc start
     while (!(AD0DR1 & 0x80000000));  // wait for adc to finish
     result = AD0DR1;
     result = (result >> 6);
     result = (result & 0x000003FF);
-    
-    return ((result / 1023.0) * 3.3);  // Convert ADC value to equivalent voltage
+
+    // Convert ADC value to equivalent voltage (result*3.3/1023 << 16)
+    return ((0x34DA * result) >> (ADC_SHIFT - VEL_SHIFT));
 }
 
 static void start_pwm(void) {
@@ -42,33 +43,70 @@ static void set_pwm(int duty_cycle) {
     PWM0LER = (1 << 1);                 // Update PWM0 Latch for MR0, MR1
 }
 
+// Max 10 bit value
+void set_dac(int16_t out) {
+    if (out > 0x3FF) {
+        return;
+    }
+
+    DACR &= ~(0x3FF << 6);
+    DACR |= (out << 6);
+}
+
 void start_controller(void) {
     init_timer3('m');
     start_pwm();
 
     Controller pi_controller = init_controller(kP, kI);
 
+    uint32_t curr_vel = get_vel();
+    uint32_t compensation = 0;
+
     while (1) {
-        int16_t compensation = step_controller(get_setpoint(), get_vel(1), pi_controller);
-        set_pwm(abs(compensation));
+        curr_vel = get_vel();
+        light_rail->velocity = curr_vel;
 
-        // ! Implement voltage out using DAC
+        compensation = step_controller(get_setpoint(), curr_vel, pi_controller);
 
+        if (!(light_rail->brake_state)) {
+            set_pwm(abs(compensation));
+        }
+        // check dms state here
         delay_timer3(CYCLE_TIME);
     }
 }
 
 void set_brake(void) {
     // single bit button function
-    
+    light_rail->vel_setpoint = 0;
+    light_rail->brake_state = 0x1;
+
+    //! TODO: BARRY
+    //! Set GPIO to brake
 }
 
-// Use arg 1 to return m/s, arg 0 to return km/h
-double get_vel(int ret_type) {
-    double voltage = get_voltage();
-    double vel_kmh = voltage * (100 / 2.5);  // in kmh
-    double vel_ms = vel_kmh / 3.6;           // in m/s
-    double rpm = vel_ms / (WHEEL_OD / 2) * (60 / (2 * acos(-1)));   // w (rpm) = v/r
+void reset_brake(void) {
+    light_rail->brake_state = 0x0;
+}
 
-    return ret_type ? vel_ms : vel_kmh;
+void set_dms(void) {
+    light_rail->dms_state = 0x1;
+}
+
+void reset_dms(void) {
+    light_rail->dms_state = 0x0;
+}
+
+/**
+ * This function returns a binary fixed-point velocity which is Q16.0.
+ * The returned result is also right shifted by 16 bits from the true velocity
+ * to maintain resolution. The velocity in meters per second is obtained by 
+ * adjusting the voltage by a scaling factor of (100/(2.5 * 3.6) = 11.11). This
+ * is approximated to 11 to return an integral result.
+ */ 
+uint32_t get_vel(void) {
+    uint32_t voltage = get_voltage();
+    uint32_t vel_ms = voltage * 11;           
+
+    return vel_ms;
 }

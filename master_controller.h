@@ -6,9 +6,12 @@
 #include "stdlib.h"
 
 typedef struct {
-    bool brake_state;
-    bool dms_state;
-    float velocity;
+    uint32_t velocity;
+    uint32_t vel_setpoint;
+    uint8_t brake_state;
+    uint8_t dms_state;
 } *LightRail;
+
+LightRail light_rail;
 
 #endif
