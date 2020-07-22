@@ -90,7 +90,7 @@ static void update_dms_state(uint8_t dms_state, uint8_t mem_dms_state) {
  * This function actiates the light rail's brakes by driving the P1.0 GPIO
  * pin HIGH. The light rail's velocity setpoint is also set to 0. 
  */
-static void set_brake(void) {
+void set_brake(void) {
     light_rail->vel_setpoint = 0;
     light_rail->brake_state = 0x1;
 
@@ -101,7 +101,7 @@ static void set_brake(void) {
  * This function releases the light rail's brakes by driving the P1.0 GPIO
  * pin LOW.
  */
-static void release_brake(void) {
+void release_brake(void) {
     light_rail->brake_state = 0x0;
     FIO1PIN &= ~(1 << 0);
 }
