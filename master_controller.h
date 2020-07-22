@@ -6,10 +6,10 @@
 #include "stdlib.h"
 
 typedef struct lr {
-    uint32_t velocity;
-    uint32_t vel_setpoint;
-    uint8_t brake_state;
-    uint8_t dms_state;
+    uint32_t velocity;          // Read from this.
+    uint32_t vel_setpoint;      // Write to this.
+    uint8_t brake_state;        // Write to this.
+    uint8_t dms_state;          // Read from this.
 } *LightRail;
 
 struct lr lr_init = {0, 0, 0, 0};

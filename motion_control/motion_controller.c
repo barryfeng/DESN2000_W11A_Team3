@@ -50,6 +50,7 @@ void start_controller(void) {
 
     while (1) {
         update_dms_state(dms_state, mem_dms_state);
+        update_brake_state();
 
         compensation = step_controller(
             light_rail->vel_setpoint,
@@ -87,10 +88,21 @@ static void update_dms_state(uint8_t dms_state, uint8_t mem_dms_state) {
 }
 
 /**
+ * This function updates the light rail's brakes based on the light_rail
+ * struct's brake_state value.
+ */
+static void update_brake_state() {
+    if (light_rail->brake_state) {
+        return set_brake();
+    }
+    release_brake;
+}
+
+/**
  * This function actiates the light rail's brakes by driving the P1.0 GPIO
  * pin HIGH. The light rail's velocity setpoint is also set to 0. 
  */
-void set_brake(void) {
+static void set_brake(void) {
     light_rail->vel_setpoint = 0;
     light_rail->brake_state = 0x1;
 
@@ -101,7 +113,7 @@ void set_brake(void) {
  * This function releases the light rail's brakes by driving the P1.0 GPIO
  * pin LOW.
  */
-void release_brake(void) {
+static void release_brake(void) {
     light_rail->brake_state = 0x0;
     FIO1PIN &= ~(1 << 0);
 }
