@@ -1,0 +1,23 @@
+*** Creating Trace Output File 'light_rail_master.tra' Ok.
+### Preparing for ADS-LD.
+### Creating ADS-LD Command Line
+### List of Objects: adding '"lpc2400.o"'
+### List of Objects: adding '"master_controller.o"'
+### List of Objects: adding '"fixed_point_pid.o"'
+### List of Objects: adding '"motion_controller.o"'
+### List of Objects: adding '"system_init.o"'
+### List of Objects: adding '"system_timer.o"'
+### ADS-LD Command completed:
+--cpu ARM7TDMI "lpc2400.o" "master_controller.o" "fixed_point_pid.o" "motion_controller.o" "system_init.o" "system_timer.o" --ro-base 0x00000000 --entry 0x00000000 --rw-base 0x40000000 --strict --summary_stderr --info summarysizes --map --xref --callgraph --symbols 
+--info sizes --info totals --info unused --info veneers 
+ --list ".\light_rail_master.map" -o "light_rail_master.axf"### Preparing Environment (PrepEnvAds)
+### ADS-LD Output File: 'light_rail_master.axf'
+### ADS-LD Command File: 'light_rail_master.lnp'
+### Checking for dirty Components...
+### Creating CmdFile 'light_rail_master.lnp', Handle=0x0000063C
+### Writing '.lnp' file
+### ADS-LD Command file 'light_rail_master.lnp' is ready.
+### ADS-LD: About to start ADS-LD Thread.
+### ADS-LD: executed with 1 errors
+### Updating obj list
+### LDADS_file() completed.

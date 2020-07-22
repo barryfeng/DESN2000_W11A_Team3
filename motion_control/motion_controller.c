@@ -13,7 +13,6 @@
  */
 
 #include <motion_controller.h>
-#include <master_controller.h>
 
 static uint32_t get_voltage(void) {
 
@@ -40,13 +39,12 @@ static void set_pwm(int duty_cycle) {
 }
 
 void start_controller(void) {
-    init_timer3('m');
-    start_pwm();
-
     Controller pi_controller = init_controller(kP, kI);
-
     uint32_t compensation = 0;
     uint8_t dms_state = 0, mem_dms_state = 0;
+
+    init_timer3('m');
+    start_pwm();
 
     while (1) {
         update_dms_state(dms_state, mem_dms_state);
@@ -91,11 +89,12 @@ static void update_dms_state(uint8_t dms_state, uint8_t mem_dms_state) {
  * This function updates the light rail's brakes based on the light_rail
  * struct's brake_state value.
  */
-static void update_brake_state() {
+static void update_brake_state(void) {
     if (light_rail->brake_state) {
-        return set_brake();
+        set_brake();
+				return;
     }
-    release_brake;
+    release_brake();
 }
 
 /**

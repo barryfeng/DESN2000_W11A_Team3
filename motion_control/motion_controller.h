@@ -1,12 +1,15 @@
 #ifndef MOTION_CONTROLLER_H
 
+#define MOTION_CONTROLLER_H
+
 #include <LPC24XX.h>
 #include <stdint.h>
+#include <stdlib.h>
 
+#include "master_controller.h"
 #include "../system/system_timer.h"
 #include "fixed_point_pid.h"
 
-#define WHEEL_OD 0.3  // in meters
 #define kP 10.0
 #define kI 0.0
 
@@ -15,12 +18,21 @@
 
 #define CYCLE_TIME 5
 
-static uint32_t get_setpoint(void);
 static uint32_t get_voltage(void);
+
 static void start_pwm(void);
-static void set_pwm(int duty_cycle);
+static void set_pwm(int);
 
 void start_controller(void);
+
+static void update_dms_state(uint8_t, uint8_t);
+static void update_brake_state(void);
+
+static void set_brake(void);
+static void release_brake(void);
+static void set_dms(void);
+static void reset_dms(void);
+
 uint32_t get_vel(void);
 
 #endif

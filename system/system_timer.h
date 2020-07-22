@@ -1,5 +1,7 @@
 #ifndef SYSTIME
 
+#define SYSTIME
+
 #include "system_init.h"
 
 typedef char modifier_t;

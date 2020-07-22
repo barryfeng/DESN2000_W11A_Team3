@@ -1,9 +1,13 @@
-#ifndef MASTCNTRL
+#ifndef MASTCNTRL_H
+
+#define MASTCNTRL_H
+
+#include "stdint.h"
 
 #include "motion_controller.h"
-#include "system_init.h"
-#include "stdbool.h"
-#include "stdlib.h"
+#include "./system/system_init.h"
+
+void hw_init(void);
 
 typedef struct lr {
     uint32_t velocity;          // Read from this.
@@ -12,7 +16,6 @@ typedef struct lr {
     uint8_t dms_state;          // Read from this.
 } *LightRail;
 
-struct lr lr_init = {0, 0, 0, 0};
-LightRail light_rail = &lr_init;
+extern LightRail light_rail;
 
 #endif

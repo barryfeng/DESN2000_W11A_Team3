@@ -1,4 +1,6 @@
-# ifndef CONSTANTS
+#ifndef CONSTANTS
+
+#define CONSTANTS
 
 // TIME
 #define VEL_MAX_DAY 50
@@ -16,4 +18,4 @@
 // PINOUT
 #define MTR_PWMPIN P1_0
 
-# endif
+#endif

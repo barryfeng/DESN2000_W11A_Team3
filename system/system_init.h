@@ -1,5 +1,7 @@
 #ifndef SYSINIT
 
+#define SYSINIT
+
 #include <lpc24XX.h>
 #include "constants.h"
 
@@ -11,6 +13,7 @@ void init_pll(void);
 void init_adc(void);
 void init_dac(void);
 void init_pwm(void);
+void init_brakes(void);
 void init_uart(void);
 
 #endif

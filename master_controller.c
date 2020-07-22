@@ -1,9 +1,14 @@
 // Main file for integration
+
 #include <master_controller.h>
 
 int main(void) {
+    light_rail->brake_state = 0x1;
+    light_rail->dms_state = 0x0;
+    light_rail->vel_setpoint = 0;
+    light_rail->velocity = 0;
+
     hw_init();
-    light_rail = lr_init();
 
     start_controller();
 
@@ -15,13 +20,4 @@ void hw_init(void) {
     init_adc();
     init_dac();                 
     init_pwm();
-    init_uart();
-}
-
-LightRail lr_init(void) {
-    light_rail->brake_state = true;
-    light_rail->dms_state = false;
-    light_rail->velocity = 0.0f;
-
-    return light_rail;
 }
