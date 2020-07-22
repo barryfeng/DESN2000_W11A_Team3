@@ -15,10 +15,6 @@
 #include <motion_controller.h>
 #include <master_controller.h>
 
-static uint32_t get_setpoint(void) {
-    return (light_rail->vel_setpoint << VEL_SHIFT);
-}
-
 static uint32_t get_voltage(void) {
 
     static uint16_t result;
@@ -43,57 +39,88 @@ static void set_pwm(int duty_cycle) {
     PWM0LER = (1 << 1);                 // Update PWM0 Latch for MR0, MR1
 }
 
-// Max 10 bit value
-void set_dac(int16_t out) {
-    if (out > 0x3FF) {
-        return;
-    }
-
-    DACR &= ~(0x3FF << 6);
-    DACR |= (out << 6);
-}
-
 void start_controller(void) {
     init_timer3('m');
     start_pwm();
 
     Controller pi_controller = init_controller(kP, kI);
 
-    uint32_t curr_vel = get_vel();
     uint32_t compensation = 0;
+    uint8_t dms_state = 0, mem_dms_state = 0;
 
     while (1) {
-        curr_vel = get_vel();
-        light_rail->velocity = curr_vel;
+        update_dms_state(dms_state, mem_dms_state);
 
-        compensation = step_controller(get_setpoint(), curr_vel, pi_controller);
+        compensation = step_controller(
+            light_rail->vel_setpoint,
+            light_rail->velocity = get_vel(),
+            pi_controller);
 
         if (!(light_rail->brake_state)) {
             set_pwm(abs(compensation));
         }
-        // check dms state here
+
         delay_timer3(CYCLE_TIME);
     }
 }
 
-void set_brake(void) {
-    // single bit button function
+/**
+ * This function updates the light rail's DMS state by reading from GPIO
+ * pin P0.10 on the FVGA daughter board. The function uses edge-triggering
+ * to detect changes in the DMS. If a LOW->HIGH change is detected, the
+ * DMS system is reset (control is given to the driver). If a HIGH->LOW
+ * change is detected, the DMS system is set (control is taken from the
+ * driver and brakes are set).
+ */
+static void update_dms_state(uint8_t dms_state, uint8_t mem_dms_state) {
+    // Read from DMS P0.10
+    dms_state = ((FIO0PIN >> 10) & 0x1);
+
+    if (dms_state != mem_dms_state) {
+        if (dms_state == 1) {
+            reset_dms();
+        } else {
+            set_dms();
+        }
+        mem_dms_state = dms_state;
+    }
+}
+
+/**
+ * This function actiates the light rail's brakes by driving the P1.0 GPIO
+ * pin HIGH. The light rail's velocity setpoint is also set to 0. 
+ */
+static void set_brake(void) {
     light_rail->vel_setpoint = 0;
     light_rail->brake_state = 0x1;
 
-    //! TODO: BARRY
-    //! Set GPIO to brake
+    FIO1PIN |= (1 << 0);
 }
 
-void reset_brake(void) {
+/**
+ * This function releases the light rail's brakes by driving the P1.0 GPIO
+ * pin LOW.
+ */
+static void release_brake(void) {
     light_rail->brake_state = 0x0;
+    FIO1PIN &= ~(1 << 0);
 }
 
-void set_dms(void) {
+/**
+ * This function sets the DMS system. If called, the brakes are activated
+ * and the light rail's velocity setpoint is set to 0.
+ */
+static void set_dms(void) {
+    set_brake();
     light_rail->dms_state = 0x1;
 }
 
-void reset_dms(void) {
+/**
+ * This function resets the DMS system. If called, the brakes are released
+ * and normal light rail operation can continue.
+ */
+static void reset_dms(void) {
+    release_brake();
     light_rail->dms_state = 0x0;
 }
 
@@ -104,7 +131,7 @@ void reset_dms(void) {
  * adjusting the voltage by a scaling factor of (100/(2.5 * 3.6) = 11.11). This
  * is approximated to 11 to return an integral result.
  */ 
-uint32_t get_vel(void) {
+static uint32_t get_vel(void) {
     uint32_t voltage = get_voltage();
     uint32_t vel_ms = voltage * 11;           
 

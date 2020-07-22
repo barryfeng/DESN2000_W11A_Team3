@@ -15,7 +15,8 @@
 #include "fixed_point_pid.h"
 
 Controller init_controller(float kP, float kI) {
-    Controller pi_controller = malloc(sizeof(Controller));
+    struct controller controller_init = {0,0,0,0};
+    Controller pi_controller = &controller_init;
 
     // Set PI parameters
     pi_controller->kP = f_to_q(kP);

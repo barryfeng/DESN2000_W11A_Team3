@@ -13,13 +13,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct {
+typedef struct controller {
     int32_t kP;
     int32_t kI;
     int32_t out_max;
     int32_t out_min;
-    int32_t sum;
-    
+    int32_t sum;   
 } *Controller;
 
 Controller init_controller(float kP, float kI);
