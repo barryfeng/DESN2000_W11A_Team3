@@ -2,7 +2,7 @@
 
 #include <master_controller.h>
 
-extern LightRail light_rail;
+LightRail light_rail;
 
 int main(void) {
     memset(&light_rail, '0', sizeof(LightRail));

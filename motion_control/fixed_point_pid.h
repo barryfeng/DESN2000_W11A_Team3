@@ -11,16 +11,15 @@
 #define PARAM_MULT (((0x1UL << PARAM_BITS)) >> (PARAM_BITS - PARAM_SHIFT))
 
 #include <stdint.h>
+#include <string.h>
 
-struct controller {
+typedef struct controller {
     int32_t kP;
     int32_t kI;
     int32_t out_max;
     int32_t out_min;
     int32_t sum;   
-};
-
-typedef struct controller *Controller;
+} Controller;
 
 Controller init_controller(float, float);
 int16_t step_controller(int16_t, int16_t, Controller);
