@@ -16,6 +16,7 @@
 
 Controller init_controller(float kP, float kI) {
     struct controller controller_init = {0,0,0,0};
+    
     Controller pi_controller = &controller_init;
     
     int16_t int14_max = ((1 << 14) - 1);

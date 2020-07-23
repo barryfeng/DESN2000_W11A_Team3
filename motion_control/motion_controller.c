@@ -53,11 +53,11 @@ void start_controller(void) {
         update_brake_state();
 
         compensation = step_controller(
-            light_rail->vel_setpoint,
-            light_rail->velocity = get_vel(),
+            light_rail.vel_setpoint,
+            light_rail.velocity = get_vel(),
             pi_controller);
 
-        if (!(light_rail->brake_state)) {
+        if (!(light_rail.brake_state)) {
             set_pwm(abs(compensation));
         }
 
@@ -92,9 +92,9 @@ static void update_dms_state(uint8_t dms_state, uint8_t mem_dms_state) {
  * struct's brake_state value.
  */
 static void update_brake_state(void) {
-    if (light_rail->brake_state) {
+    if (light_rail.brake_state) {
         set_brake();
-				return;
+		return;
     }
     release_brake();
 }
@@ -104,9 +104,7 @@ static void update_brake_state(void) {
  * pin HIGH. The light rail's velocity setpoint is also set to 0. 
  */
 static void set_brake(void) {
-    light_rail->vel_setpoint = 0;
-    light_rail->brake_state = 0x1;
-
+    light_rail.vel_setpoint = 0;
     FIO1PIN |= (1 << 0);
 }
 
@@ -115,7 +113,6 @@ static void set_brake(void) {
  * pin LOW.
  */
 static void release_brake(void) {
-    light_rail->brake_state = 0x0;
     FIO1PIN &= ~(1 << 0);
 }
 
@@ -125,7 +122,7 @@ static void release_brake(void) {
  */
 static void set_dms(void) {
     set_brake();
-    light_rail->dms_state = 0x1;
+    light_rail.dms_state = 0x1;
 }
 
 /**
@@ -134,7 +131,7 @@ static void set_dms(void) {
  */
 static void reset_dms(void) {
     release_brake();
-    light_rail->dms_state = 0x0;
+    light_rail.dms_state = 0x0;
 }
 
 /**
@@ -146,7 +143,7 @@ static void reset_dms(void) {
  */ 
 static uint32_t get_vel(void) {
     uint32_t voltage = get_voltage();
-    uint32_t vel_ms = voltage * 11;           
+    uint32_t vel_ms = voltage * 11;
 
     return vel_ms;
 }

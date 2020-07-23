@@ -1,6 +1,7 @@
 master_controller.o: ..\master_controller.c
 master_controller.o: ..\..\DESN2000_W11A_Team3\master_controller.h
 master_controller.o: C:\Keil\ARM\RV31\Inc\stdint.h
+master_controller.o: C:\Keil\ARM\RV31\Inc\string.h
 master_controller.o: ..\motion_control\motion_controller.h
 master_controller.o: ..\..\DESN2000_W11A_Team3\LPC24XX.h
 master_controller.o: C:\Keil\ARM\RV31\Inc\stdlib.h

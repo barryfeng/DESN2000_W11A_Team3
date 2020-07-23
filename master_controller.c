@@ -2,11 +2,15 @@
 
 #include <master_controller.h>
 
+extern LightRail light_rail;
+
 int main(void) {
-    light_rail->brake_state = 0x1;
-    light_rail->dms_state = 0x0;
-    light_rail->vel_setpoint = 0;
-    light_rail->velocity = 0;
+    memset(&light_rail, '0', sizeof(LightRail));
+
+    light_rail.velocity = 0x1;
+    light_rail.dms_state = 0x0;
+    light_rail.vel_setpoint = 0;
+    light_rail.velocity = 0;
 
     hw_init();
 
