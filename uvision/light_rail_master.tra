@@ -14,10 +14,10 @@
 ### ADS-LD Output File: 'light_rail_master.axf'
 ### ADS-LD Command File: 'light_rail_master.lnp'
 ### Checking for dirty Components...
-### Creating CmdFile 'light_rail_master.lnp', Handle=0x0000063C
+### Creating CmdFile 'light_rail_master.lnp', Handle=0x000008FC
 ### Writing '.lnp' file
 ### ADS-LD Command file 'light_rail_master.lnp' is ready.
 ### ADS-LD: About to start ADS-LD Thread.
-### ADS-LD: executed with 1 errors
+### ADS-LD: executed with 0 errors
 ### Updating obj list
 ### LDADS_file() completed.

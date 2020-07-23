@@ -14,6 +14,8 @@
 
 #include <motion_controller.h>
 
+LightRail light_rail;
+
 static uint32_t get_voltage(void) {
 
     static uint16_t result;
