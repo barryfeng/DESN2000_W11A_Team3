@@ -21,7 +21,7 @@ int main(void) {
 	
 	//Setup LPC2478 LCD Controller for our specific LCD
 	//lcd_config is defined in lcd/lcd_cfg.h
-	lcdInit(&lcd_config); 
+	lcdInit(&lcd_config);
 	
 	//Turn the LCD on
 	lcdTurnOn();
@@ -36,18 +36,19 @@ int main(void) {
 
 	//Outer Border
 	lcd_drawRect(1, 1, 240, 360, BLACK);
+	lcd_drawRect(2, 2, 239, 319, BLACK);
 	//Current Stop Border
-	lcd_drawRect(1, 1, 120, 48, BLACK);
+	lcd_drawRect(2, 2, 120, 48, BLACK);
 	//Next Stop Border
-	lcd_drawRect(120, 1, 240, 48, BLACK);
+	lcd_drawRect(121, 2, 239, 48, BLACK);
 	//Velocity Border
-	lcd_drawRect(1, 48, 196, 240, BLACK);
+	lcd_drawRect(2, 49, 196, 240, BLACK);
 	//Throttle Border
-	lcd_drawRect(196, 48, 240, 240, BLACK);
+	lcd_drawRect(197, 49, 239, 240, BLACK);
 	//Safety Indicators Border
-	lcd_drawRect(1, 240, 160, 320, BLACK);
+	lcd_drawRect(2, 241, 160, 319, BLACK);
 	//Brake Border
-	lcd_drawRect(160, 240, 240, 360, BLACK);
+	lcd_drawRect(161, 241, 239, 319, BLACK);
 
 	//Velocity
 
@@ -80,7 +81,6 @@ int main(void) {
 	lcd_fillcircle(200, 280, 34, RED);
 	// BRAKE TEXT
 
-
 	//Safety LED's
 
 	//DMS Circle
@@ -105,16 +105,18 @@ int main(void) {
 
 	//Velocity
 
-	//Right Shifted 16 bits.
-	 int vel = light_rail->velocity; 
-	 char svel[2];
+	
+	
+	while (1) {
+		//INT TO STRING (returns integer in base 10)
+		//Right Shifted 16 bits.
+		int vel = light_rail.velocity;
+		char str_vel[100];
+		itoa(vel, str_vel, 10);
+		lcd_putString(unsigned short x, unsigned short y, unsigned char *pStr);
 
-	 //INT TO STRING (returns integer in base 10)
-	 itoa(vel, svel, 10);
-
-	 lcd_putString(unsigned short x, unsigned short y, unsigned char *pStr);
-
-
+		// DELAY
+	}
 
 	//Do nothing more
 	while (1) { }
