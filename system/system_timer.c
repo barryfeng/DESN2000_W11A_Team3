@@ -16,7 +16,7 @@ int get_prescaler(modifier_t target_modifier) {
     return prescale - 1;
 }
 
-// ! TODO: BARRY make this __irq
+// Add __fiq to this
 void timer0_isr(void) {
     long int ir = T0IR;
 

@@ -9,7 +9,7 @@
 #include "./system/system_init.h"
 
 void hw_init(void);
-
+void lr_init(void);
 typedef struct lr {
     uint32_t velocity;          // Read from this.
     uint32_t vel_setpoint;      // Write to this.

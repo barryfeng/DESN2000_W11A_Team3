@@ -5,18 +5,17 @@
 LightRail light_rail;
 
 int main(void) {
-    memset(&light_rail, '0', sizeof(LightRail));
+    Controller lr_controller;
 
-    light_rail.velocity = 0x1;
-    light_rail.dms_state = 0x0;
-    light_rail.vel_setpoint = 0;
-    light_rail.velocity = 0;
-
+    lr_init();
     hw_init();
 
-    start_controller();
-
-    return 0;
+    lr_controller = start_controller();
+    
+    // run this inside fiq interrupt
+    while (1) {
+        run_controller(lr_controller);
+    }
 }
 
 void hw_init(void) {
@@ -24,4 +23,12 @@ void hw_init(void) {
     init_adc();
     init_dac();                 
     init_pwm();
+}
+
+void lr_init(void) {
+    memset(&light_rail, '0', sizeof(LightRail));
+    light_rail.velocity = 0x1;
+    light_rail.dms_state = 0x0;
+    light_rail.vel_setpoint = 0;
+    light_rail.velocity = 0;
 }

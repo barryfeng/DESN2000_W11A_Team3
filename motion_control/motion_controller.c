@@ -40,28 +40,27 @@ static void set_pwm(int duty_cycle) {
     PWM0LER = (1 << 1);                 // Update PWM0 Latch for MR0, MR1
 }
 
-void start_controller(void) {
+Controller start_controller(void) {
     Controller pi_controller = init_controller(kP, kI);
-    uint32_t compensation = 0;
-    uint8_t dms_state = 0, mem_dms_state = 0;
-
-    init_timer3('m');
     start_pwm();
 
-    while (1) {
-        update_dms_state(dms_state, mem_dms_state);
-        update_brake_state();
+    return pi_controller;
+}
 
-        compensation = step_controller(
-            light_rail.vel_setpoint,
-            light_rail.velocity = get_vel(),
-            pi_controller);
+void run_controller(Controller pi_controller) {
+    static uint32_t compensation = 0;
+    static uint8_t dms_state = 0, mem_dms_state = 0;
 
-        if (!(light_rail.brake_state)) {
-            set_pwm(abs(compensation));
-        }
+    update_dms_state(dms_state, mem_dms_state);
+    update_brake_state();
 
-        delay_timer3(CYCLE_TIME);
+    compensation = step_controller(
+        light_rail.vel_setpoint,
+        light_rail.velocity = get_vel(),
+        pi_controller);
+
+    if (!(light_rail.brake_state)) {
+        set_pwm(abs(compensation));
     }
 }
 

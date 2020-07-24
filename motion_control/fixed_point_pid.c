@@ -16,10 +16,10 @@
 
 Controller init_controller(float kP, float kI) {
     Controller pi_controller; 
-    memset(&pi_controller, '0', sizeof(Controller));
-    
     int16_t int14_max = ((1 << 14) - 1);
     int16_t int14_min = -(1 << 14);
+
+    memset(&pi_controller, '0', sizeof(Controller));
 
     // Set PI parameters
     pi_controller.kP = f_to_q(kP);
