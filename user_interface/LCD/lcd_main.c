@@ -17,7 +17,7 @@ void lcd_indicator_state(unsigned short x0, unsigned short y0, unsigned short r,
 
 int main(void) {
 	//Setup external SDRAM. Used for Frame Buffer
-	sdramInit();	
+	sdramInit();
 	
 	//Setup LPC2478 LCD Controller for our specific LCD
 	//lcd_config is defined in lcd/lcd_cfg.h
@@ -28,94 +28,137 @@ int main(void) {
 	
 	//Draw a background with lcd_fillScreen
 	//Otherwise you will write random noise to the screen!
-	lcd_fillScreen(DARK_CYAN);
+	lcd_fillScreen(CUSTOM_1); //
 
-	/* CONSTANTS */
+	/********** STATIC *********/
 
-	//Borders
+	//BORDERS
 
 	//Outer Border
-	lcd_drawRect(1, 1, 240, 360, BLACK);
-	lcd_drawRect(2, 2, 239, 319, BLACK);
+	lcd_drawRect(1, 1, 240, 320, CUSTOM_2); //
 	//Current Stop Border
-	lcd_drawRect(2, 2, 120, 48, BLACK);
+	lcd_drawRect(2, 2, 120, 47, CUSTOM_2); //
 	//Next Stop Border
-	lcd_drawRect(121, 2, 239, 48, BLACK);
+	lcd_drawRect(121, 2, 239, 47, CUSTOM_2); //
 	//Velocity Border
-	lcd_drawRect(2, 49, 196, 240, BLACK);
+	lcd_drawRect(2, 48, 194, 240, CUSTOM_2); //
 	//Throttle Border
-	lcd_drawRect(197, 49, 239, 240, BLACK);
+	lcd_drawRect(195, 48, 239, 240, CUSTOM_2); //
 	//Safety Indicators Border
-	lcd_drawRect(2, 241, 160, 319, BLACK);
+	lcd_drawRect(2, 241, 160, 319, CUSTOM_2); //
 	//Brake Border
-	lcd_drawRect(161, 241, 239, 319, BLACK);
+	lcd_drawRect(161, 241, 239, 319, CUSTOM_2); //
 
-	//Velocity
+	//VELOCITY
 
 	//Velocity Circle
-	lcd_circle(100, 144, 92, BLACK);
-	lcd_circle(100, 144, 91, BLACK);
-	lcd_fillcircle(100, 144, 90, YELLOW);
-	
-	//Throttle
+	lcd_circle(98, 144, 92, CUSTOM_2); //
+	lcd_circle(98, 144, 91, CUSTOM_2); //
+	lcd_circle(98, 144, 90, GREEN); //
+	lcd_circle(98, 144, 89, CUSTOM_2); //
+	lcd_circle(98, 144, 88, CUSTOM_2); //
+
+	lcd_fillcircle(98, 144, 87, LIGHT_GRAY); //
+
+	//THROTTLE
 
 	//Throttle Rectangle
-	lcd_drawRect(204, 72, 232, 232, BLACK);
-	lcd_drawRect(205, 73, 231, 231, BLACK);
-	lcd_fillRect(206, 74, 230, 230, YELLOW);
+	lcd_drawRect(200, 67, 234, 235, CUSTOM_2); //
+	lcd_drawRect(201, 68, 233, 234, CUSTOM_2); //
+	lcd_drawRect(202, 69, 232, 233, GREEN); //
+	lcd_drawRect(203, 70, 231, 232, CUSTOM_2); //
+	lcd_drawRect(204, 71, 230, 231, CUSTOM_2); //
 
-	//Current Stop
-	lcd_drawRect(12, 28, 112, 40, BLACK);
-	lcd_drawRect(13, 29, 111, 39, BLACK);
+	lcd_fillRect(205, 72, 229, 230, LIGHT_GRAY); //
 
-	//Next Stop
-	lcd_drawRect(128, 28, 232, 40, BLACK);
-	lcd_drawRect(129, 29, 231, 39, BLACK);
+	//LIGHTRAIL STOPS
+
+	//Current Stop Rectangle
+	lcd_drawRect(5, 22, 117, 43, CUSTOM_2); //
+	lcd_drawRect(6, 23, 116, 42, CUSTOM_2); //
+	lcd_drawRect(7, 24, 115, 41, CYAN); //
+	lcd_drawRect(8, 25, 114, 40, CUSTOM_2); //
+	lcd_drawRect(9, 26, 113, 39, CUSTOM_2); //
+
+	lcd_fillRect(10, 27, 112, 38, LIGHT_GRAY); //
+
+	//Next Stop Rectangle
+	lcd_drawRect(124, 22, 236, 43, CUSTOM_2); //
+	lcd_drawRect(125, 23, 235, 42, CUSTOM_2); //
+	lcd_drawRect(126, 24, 234, 41, CYAN); //
+	lcd_drawRect(127, 25, 233, 40, CUSTOM_2); //
+	lcd_drawRect(128, 26, 232, 39, CUSTOM_2); //
+
+	lcd_fillRect(129, 27, 231, 38, LIGHT_GRAY); //
+
+	//BRAKE
 
 	//Brake
-	lcd_circle(200, 280, 36, BLACK);
-	lcd_circle(200, 280, 35, BLACK);
-	// OFF POSITION
-	lcd_fillcircle(200, 280, 34, LIGHT_GRAY);
-	// ON POSITION
-	lcd_fillcircle(200, 280, 34, RED);
-	// BRAKE TEXT
+	lcd_circle(200, 280, 35, CUSTOM_2); //
+	lcd_circle(200, 280, 34, CUSTOM_2); //
+	lcd_circle(200, 280, 33, RED); //
+	lcd_circle(200, 280, 32, CUSTOM_2); //
+	lcd_circle(200, 280, 31, CUSTOM_2); //
 
-	//Safety LED's
+	lcd_fillcircle(200, 280, 30, RED); //
+
+	//SAFETY INDICATORS
 
 	//DMS Circle
-	lcd_circle(44, 288, 28, BLACK);
-	lcd_circle(44, 288, 27, BLACK);
-	// OFF POSITION
-	lcd_fillcircle(44, 288, 26, LIGHT_GRAY);
-	// ON POSITION
-	lcd_fillcircle(44, 288, 26, RED);
+	lcd_circle(43, 289, 26, CUSTOM_2);
+	lcd_circle(43, 289, 25, CUSTOM_2);
+	lcd_circle(43, 289, 24, CUSTOM_2);
+	lcd_circle(43, 289, 23, YELLOW);
+	lcd_circle(43, 289, 22, CUSTOM_2);
+	lcd_circle(43, 289, 21, CUSTOM_2);
+	lcd_circle(43, 289, 20, CUSTOM_2);
 
-	//Max Velocity Circle
-	lcd_circle(120, 288, 28, BLACK);
-	lcd_circle(120, 288, 27, BLACK);
 	// OFF POSITION
-	lcd_fillcircle(120, 288, 26, LIGHT_GRAY);
+	lcd_fillcircle(43, 289, 19, LIGHT_GRAY);
 	// ON POSITION
-	lcd_fillcircle(44, 288, 26, RED);
+	lcd_fillcircle(43, 289, 19, YELLOW);
 
-	/* NON-CONSTANTS */
+	//MEX VEL Circle
+	lcd_circle(119, 289, 26, CUSTOM_2);
+	lcd_circle(119, 289, 25, CUSTOM_2);
+	lcd_circle(119, 289, 24, CUSTOM_2);
+	lcd_circle(119, 289, 23, YELLOW);
+	lcd_circle(119, 289, 22, CUSTOM_2);
+	lcd_circle(119, 289, 21, CUSTOM_2);
+	lcd_circle(119, 289, 20, CUSTOM_2);
+
+	// OFF POSITION
+	lcd_fillcircle(119, 289, 19, LIGHT_GRAY);
+	// ON POSITION
+	lcd_fillcircle(119, 289, 19, YELLOW);
+
+	/********** NON-STATIC *********/
 
 	//Throttle 
 
 	//Velocity
 
-	
-	
 	while (1) {
 		//INT TO STRING (returns integer in base 10)
 		//Right Shifted 16 bits.
-		int vel = light_rail.velocity;
+		int ms_vel = light_rail.velocity >> 16;
+		int kh_vel = ceil(ms_vel/3.6);
+
 		char str_vel[100];
-		itoa(vel, str_vel, 10);
+		itoa(kh_vel, str_vel, 10);
 		lcd_putString(unsigned short x, unsigned short y, unsigned char *pStr);
 
 		// DELAY
+		if (/*Touchscreen Pushed*/) {
+			light_rail.brake = 1;
+		} else {
+			light_rail.brake = 0;
+		}
+
+		if (light_rail.dms == 1) {
+
+		}
+
 	}
 
 	//Do nothing more
