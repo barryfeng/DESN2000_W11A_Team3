@@ -18,7 +18,8 @@ typedef struct controller {
     int32_t kI;
     int32_t out_max;
     int32_t out_min;
-    int32_t sum;   
+    int32_t sum;
+    int8_t  initialised;
 } Controller;
 
 Controller init_controller(float, float);

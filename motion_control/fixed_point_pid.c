@@ -44,6 +44,8 @@ Controller init_controller(float kP, float kI) {
     // Set integral sum to zero
     pi_controller.sum = 0;
 
+    pi_controller.initialised = 1;
+
     return pi_controller;
 }
 

@@ -30,26 +30,19 @@ static uint32_t get_voltage(void) {
     return ((0x34DA * result) >> (ADC_SHIFT - VEL_SHIFT));
 }
 
-static void start_pwm(void) {
-    PWM0LER = (1 << 0) | (1 << 1);      // Update PWM0 Latch for MR0, MR1
-    PWM0TCR = (1 << 0) | (1 << 3);      // Enable PWM0 and Reset PWM0 TC
-}
-
 static void set_pwm(int duty_cycle) {
     PWM0MR1 = duty_cycle;               // Set new PWM0 MR1 match value
     PWM0LER = (1 << 1);                 // Update PWM0 Latch for MR0, MR1
 }
 
-Controller start_controller(void) {
-    Controller pi_controller = init_controller(kP, kI);
-    start_pwm();
-
-    return pi_controller;
-}
-
-void run_controller(Controller pi_controller) {
+void run_controller(void) {
+    static Controller pi_controller = {0, 0, 0, 0, 0, 0};
     static uint32_t compensation = 0;
     static uint8_t dms_state = 0, mem_dms_state = 0;
+
+    if (!pi_controller.initialised) {
+        pi_controller = init_controller(kP, kI);
+    }
 
     update_dms_state(dms_state, mem_dms_state);
     update_brake_state();

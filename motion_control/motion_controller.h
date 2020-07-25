@@ -20,11 +20,9 @@
 
 static uint32_t get_voltage(void);
 
-static void start_pwm(void);
 static void set_pwm(int);
 
-Controller start_controller(void);
-void run_controller(Controller pi_controller);
+void run_controller(void);
 
 static void update_dms_state(uint8_t, uint8_t);
 static void update_brake_state(void);

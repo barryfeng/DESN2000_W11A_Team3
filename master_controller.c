@@ -5,17 +5,10 @@
 LightRail light_rail;
 
 int main(void) {
-    Controller lr_controller;
-
     lr_init();
     hw_init();
-
-    lr_controller = start_controller();
     
-    // run this inside fiq interrupt
-    while (1) {
-        run_controller(lr_controller);
-    }
+    start_master_isr(CYCLE_TIME, 'm');
 }
 
 void hw_init(void) {

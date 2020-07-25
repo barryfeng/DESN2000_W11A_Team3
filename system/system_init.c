@@ -49,6 +49,9 @@ void init_pwm(void) {
     PWM0MR0 = 32768;                // Set PWM period to 32.768 ms (2^15).
     PWM0MR1 = 0;                    // Set PWM pulse width to default duty cycle (0).
     PWM0TCR = (1 << 1);             // Reset PWM TC.
+
+    PWM0LER = (1 << 0) | (1 << 1);  // Update PWM0 Latch for MR0, MR1
+    PWM0TCR = (1 << 0) | (1 << 3);  // Enable PWM0 and Reset PWM0 TC
 }
 
 // Set brakes to GPIO P1.0
