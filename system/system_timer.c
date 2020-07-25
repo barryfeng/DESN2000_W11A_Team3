@@ -16,32 +16,36 @@ int get_prescaler(modifier_t target_modifier) {
     return prescale - 1;
 }
 
+// Add __fiq to this
+void timer0_isr(void) {
+    long int ir = T0IR;
+
+    T0IR = ir;       // Write back to IR to clear Interrupt Flag
+    VICVectAddr = 0x0;    // End of interrupt execution
+}
+
 /**
  * ARGS:
  * */
 
-void init_timer0(unsigned int target, modifier_t unit, void (*irq)(Controller), 
-        Controller lr_controller) {
-    T0CTCR = 0x00;                                      // Set timer 0 to timer mode
-    T0PR = get_prescaler(unit);                         // Set prescaler (default seconds)
-    T0TCR = 0x02;                                       // Reset timer0
+void timer0(unsigned int target, modifier_t unit) {
+    T0CTCR = 0x00;                          // Set timer 0 to timer mode
+    T0PR = get_prescaler(unit);             // Set prescaler (default seconds)
+    T0TCR = 0x02;                           // Reset timer0
 
-    T0MR0 = target - 1;                                 // Zero indexed match
-    T0MCR = (1 << 1) | (1 << 0);                        // Interrupt and reset on match
+    T0MR0 = target - 1;                     // Zero indexed match
+    T0MCR = (1 << 1) | (1 << 0);            // Interrupt and reset on match
 
-    VICIntSelect &= ~(0x10);                            // Timer 0 selected as IRQ
-    VICIntEnable |= 0x10;                               // Timer 0 interrupt enabled
-    VICVectPriority0 = 1;                               // Timer 0 interrupt priority set to maximum.
-    VICVectAddr0 = (unsigned)irq(lr_controller);        // Timer 0 interrupt address
-}
+    VICIntSelect &= ~(0x10);                // Timer 0 selected as IRQ
+    VICIntEnable |= 0x10;                   // Timer 0 interrupt enabled
+    VICVectPriority0 = 1;                   // Timer 0 interrupt priority set to maximum.
+    VICVectAddr0 = (unsigned)timer0_isr;    // Timer 0 interrupt address
 
-void start_timer0(void) {
-    T0TCR = 0x01;  // Start timer
+    T0TCR = 0x01;                           // Start timer
 
-    while (T0TC != T0MR0)
-        ;  // Wait for timer to reset
+    while (T0TC != T0MR0);                  // Wait for timer to reset
 
-    T0TCR = 0x00;  // Reset timer counter
+    T0TCR = 0x00;                           // Reset timer counter
 }
 
 /**

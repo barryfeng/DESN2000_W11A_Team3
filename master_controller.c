@@ -11,9 +11,11 @@ int main(void) {
     hw_init();
 
     lr_controller = start_controller();
+    
     // run this inside fiq interrupt
-
-    init_timer0(CYCLE_TIME, 'm', run_controller, lr_controller);
+    while (1) {
+        run_controller(lr_controller);
+    }
 }
 
 void hw_init(void) {

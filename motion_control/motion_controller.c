@@ -47,10 +47,7 @@ Controller start_controller(void) {
     return pi_controller;
 }
 
-//__fiq
 void run_controller(Controller pi_controller) {
-    long int ir = T0IR;
-
     static uint32_t compensation = 0;
     static uint8_t dms_state = 0, mem_dms_state = 0;
 
@@ -65,9 +62,6 @@ void run_controller(Controller pi_controller) {
     if (!(light_rail.brake_state)) {
         set_pwm(abs(compensation));
     }
-
-    T0IR = ir;          // Write back to IR to clear Interrupt Flag
-    VICVectAddr = 0x0;  // End of interrupt execution
 }
 
 /**
