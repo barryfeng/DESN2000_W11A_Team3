@@ -3,6 +3,7 @@
 #define SYSTIME
 
 #include "system_init.h"
+#include "motion_control/motion_controller.h"
 
 typedef char modifier_t;
 #define MODIFIER_SEC 1
@@ -12,7 +13,9 @@ typedef char modifier_t;
 int get_prescaler(modifier_t target_modifier);
 
 void timer0_isr(void);
-void timer0(unsigned int target, modifier_t unit);
+void init_timer0(unsigned int target, modifier_t unit, void (*irq)(Controller),
+    Controller lr_controller);
+void start_timer0(void);
 
 void init_timer2(modifier_t unit);
 void delay_timer2(unsigned int target);

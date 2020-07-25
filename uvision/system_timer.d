@@ -3,3 +3,11 @@ system_timer.o: ..\system\system_timer.h
 system_timer.o: ..\system\system_init.h
 system_timer.o: ..\..\DESN2000_W11A_Team3\lpc24XX.h
 system_timer.o: ..\..\DESN2000_W11A_Team3\constants.h
+system_timer.o: ..\..\DESN2000_W11A_Team3\motion_control/motion_controller.h
+system_timer.o: C:\Keil\ARM\RV31\Inc\stdint.h
+system_timer.o: C:\Keil\ARM\RV31\Inc\stdlib.h
+system_timer.o: ..\..\DESN2000_W11A_Team3\master_controller.h
+system_timer.o: C:\Keil\ARM\RV31\Inc\string.h
+system_timer.o: ..\motion_control\motion_controller.h
+system_timer.o: ..\..\DESN2000_W11A_Team3\motion_control/../system/system_timer.h
+system_timer.o: ..\..\DESN2000_W11A_Team3\motion_control/fixed_point_pid.h
