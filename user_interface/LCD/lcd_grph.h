@@ -37,10 +37,13 @@ typedef unsigned short lcd_color_t;
 #define   YELLOW		0xFFE0      /* 255, 255, 0   */
 #define   WHITE			0xFFFF      /* 255, 255, 255 */
 
+#define   CUSTOM_1      0x23B7      /* 33, 116, 185 - Light Blue */ 
+#define   CUSTOM_2      0x3186      /* 49, 51, 52 - Dark Grey/Blue */
+
 #define		RGBENC(r,g,b)	((r&0x1F)<<11) | ((g&0x3F)<<5) | (b&0x1F)
-#define 	DECODE_R(e) (e>>11)&0x1F
-#define 	DECODE_G(e) (e>>5)&0x3F
-#define 	DECODE_B(e) (e)&0x1F
+#define 	DECODE_R(e) (e>>11)&0x1F // 0b11111 mask
+#define 	DECODE_G(e) (e>>5)&0x3F // 0b111111 mask
+#define 	DECODE_B(e) (e)&0x1F // 0b11111 mask
 
 int HSVto16BIT(int h,int s,int v);
 void HSVtoRGB(int *r, int *g,int *b,int h,int s,int v );
