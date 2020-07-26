@@ -105,36 +105,36 @@ int main(void) {
 	//SAFETY INDICATORS
 
 	//DMS Circle
-	lcd_circle(43, 289, 26, CUSTOM_2);
-	lcd_circle(43, 289, 25, CUSTOM_2);
-	lcd_circle(43, 289, 24, CUSTOM_2);
-	lcd_circle(43, 289, 23, YELLOW);
-	lcd_circle(43, 289, 22, CUSTOM_2);
-	lcd_circle(43, 289, 21, CUSTOM_2);
-	lcd_circle(43, 289, 20, CUSTOM_2);
+	lcd_circle(43, 289, 26, CUSTOM_2); //
+	lcd_circle(43, 289, 25, CUSTOM_2); //
+	lcd_circle(43, 289, 24, CUSTOM_2); //
+	lcd_circle(43, 289, 23, YELLOW); //
+	lcd_circle(43, 289, 22, CUSTOM_2); //
+	lcd_circle(43, 289, 21, CUSTOM_2); //
+	lcd_circle(43, 289, 20, CUSTOM_2); //
 
 	// OFF POSITION
-	lcd_fillcircle(43, 289, 19, LIGHT_GRAY);
+	lcd_fillcircle(43, 289, 19, LIGHT_GRAY); //
 	// ON POSITION
-	lcd_fillcircle(43, 289, 19, YELLOW);
+	lcd_fillcircle(43, 289, 19, YELLOW); //
 
 	//MEX VEL Circle
-	lcd_circle(119, 289, 26, CUSTOM_2);
-	lcd_circle(119, 289, 25, CUSTOM_2);
-	lcd_circle(119, 289, 24, CUSTOM_2);
-	lcd_circle(119, 289, 23, YELLOW);
-	lcd_circle(119, 289, 22, CUSTOM_2);
-	lcd_circle(119, 289, 21, CUSTOM_2);
-	lcd_circle(119, 289, 20, CUSTOM_2);
+	lcd_circle(119, 289, 26, CUSTOM_2); //
+	lcd_circle(119, 289, 25, CUSTOM_2); //
+	lcd_circle(119, 289, 24, CUSTOM_2); //
+	lcd_circle(119, 289, 23, YELLOW); //
+	lcd_circle(119, 289, 22, CUSTOM_2); //
+	lcd_circle(119, 289, 21, CUSTOM_2); //
+	lcd_circle(119, 289, 20, CUSTOM_2); //
 
 	// OFF POSITION
-	lcd_fillcircle(119, 289, 19, LIGHT_GRAY);
+	lcd_fillcircle(119, 289, 19, LIGHT_GRAY); //
 	// ON POSITION
-	lcd_fillcircle(119, 289, 19, YELLOW);
+	lcd_fillcircle(119, 289, 19, YELLOW); //
 
 	/********** NON-STATIC *********/
 
-	//Throttle 
+	//Throttle
 
 	//Velocity
 
