@@ -19,6 +19,11 @@
 #include "font5x7.h"
 #include <string.h>
 
+//EXTRA #includes
+#include "fontLarge.h"
+#include "fontVelLabel.h"
+#include "fontBrakeLabel.h"
+
 /******************************************************************************
  * Local variables
  *****************************************************************************/
@@ -932,4 +937,89 @@ void HSVtoRGB(int *r, int *g,int *b,int h,int s,int v )
                         *b = q;
                         break;
         }
+}
+
+/*****************************************************************************
+ *
+ * Description:
+ *    Draw a character on the display. (fontLarge)
+ *
+ * Params:
+ *    [in] x - x value for the character
+ *    [in] y - y value for the character
+ *    [in] ch - the character
+ *
+ ****************************************************************************/
+unsigned char 
+lcd_putLargeChar(unsigned short x, 
+            unsigned short y, 
+            unsigned char ch)
+{  
+  unsigned char data = 0;
+  unsigned char i = 0, j = 0;
+
+  lcd_color_t color = BLACK;
+
+  if((x >= (DISPLAY_WIDTH - 8)) || (y >= (DISPLAY_HEIGHT - 8)) )
+  {
+    return( 0 );
+  }
+
+  if( (ch < 0x20) || (ch > 0x7f) )
+  {
+    ch = 0x20;		/* unknown character will be set to blank */
+  }
+
+  ch -= 0x20;
+  for(i=0; i<66; i++)
+  {
+    data = fontLarge[ch][i];
+    for(j=0; j<55; j++)
+    {
+      if( (data&font_mask[j])==0 )
+      {  
+        color = backgroundColor;
+      }
+      else
+      {
+        color = foregroundColor;
+      }
+      lcd_point(x, y, color);       
+      x++;
+    }   
+    y++;
+    x -= 55;
+  }
+  return( 1 );
+}
+
+/*****************************************************************************
+ *
+ * Description:
+ *    Draw a string on the display.
+ *
+ * Params:
+ *    [in] x - x value for the string
+ *    [in] y - y value for the string
+ *    [in] pStr - the string
+ *
+ ****************************************************************************/
+void 
+lcd_putLargeString(unsigned short x, 
+              unsigned short y, 
+              unsigned char *pStr)
+{
+  while(1)
+  {      
+	  if( (*pStr)=='\0' )
+	  {
+		  break;
+	  }
+	  if( lcd_putLargeChar(x, y, *pStr++) == 0 )
+	  {
+  		break;
+  	}
+  	x += 55;
+  }
+  return;
 }
