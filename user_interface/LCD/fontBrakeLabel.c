@@ -8,7 +8,7 @@
  *****************************************************************************/
 
 /* X*12 */
-const unsigned char fontVelLabel[][12] = 
+const unsigned char fontBrakeLabel[][12] = 
 {
 // "B"
     {
