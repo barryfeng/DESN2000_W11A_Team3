@@ -755,6 +755,40 @@ lcd_putChar(unsigned short x,
   return( 1 );
 }
 
+unsigned char putBigChar(unsigned short x, unsigned short y, unsigned char ch) {
+    unsigned char data = 0;
+    unsigned char i = 0, j = 0;
+
+    unsigned short disp_width_offset_x = 41;
+    unsigned short disp_width_offset_y = 71;
+
+    lcd_color_t color = BLACK;
+
+    if ((x >= (DISPLAY_WIDTH - disp_width_offset_x)) || (y >= (DISPLAY_HEIGHT - disp_width_offset_y))) {
+        return (0);
+    }
+
+    if ((ch < 0x20) || (ch > 0x7f)) {
+        ch = 0x20; /* unknown character will be set to blank */
+    }
+
+    ch -= 0x20;
+    for (i = 0; i < disp_width_offset_y; i++) {
+        data = font40x70[ch][i];
+        for (j = 0; j < 6; j++) {
+            if ((data & font_mask[j]) == 0) {
+                color = backgroundColor;
+            } else {
+                color = foregroundColor;
+            }
+            lcd_point(x, y, color);
+            x++;
+        }
+        y++;
+        x -= 6;
+    }
+    return (1);
+}
 /*****************************************************************************
  *
  * Description:

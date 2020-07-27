@@ -36,7 +36,7 @@ static void set_pwm(int duty_cycle) {
 }
 
 void run_controller(void) {
-    static Controller pi_controller = {0, 0, 0, 0, 0, 0};
+    static Controller pi_controller;
     static uint32_t compensation = 0;
     static uint8_t dms_state = 0, mem_dms_state = 0;
 
