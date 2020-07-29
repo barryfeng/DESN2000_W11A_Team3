@@ -27,11 +27,6 @@ void init_adc(void) {
     PINSEL1 |= (0x01 << 14);  // Select P0.23 to AD0[0]
 }
 
-void init_dac(void) {
-    PINSEL1 |= ~(0x03 << 20);
-    PINSEL1 |= (0x02 << 20);
-}
-
 // Set PWM out to GPIO P1.3
 void init_pwm(void) {
     PCONP |= (1 << 5);    // Power on PWM0 power/clock control
@@ -54,24 +49,36 @@ void init_pwm(void) {
     PWM0TCR = (1 << 0) | (1 << 3);  // Enable PWM0 and Reset PWM0 TC
 }
 
-// Set brakes to GPIO P1.0
-void init_brakes(void) {
-    PINSEL2 &= ~((1 << 0) | (1 << 1));
-    PINSEL2 |= 0x0;
+void init_spi(void) {
+    PINSEL0 |= (0x3 << 29);         // SCLK
+    PINSEL1 |= (0x3 << 2);          // MISO
+    PINSEL1 |= (0x3 << 4);          // MOSI
 
-    FIO1DIR |= (1 << 0);
+    PINSEL1 &= ~(0x3 << 8);         // CP
+    FIO0DIR |= (1 << 20);
+
+    S0SPCR = 0x093C;            
+    S0SPCCR = 0x24;
 }
 
-// When the use_UART0.c file is called, UART0 will be configured.
-/*
-void init_uart(void) {
-    // Use UART0
+void spi_write(unsigned char data) {
+    char result;
 
-    PCONP |= (1 << 3);          // Enable power for UART
-    PCLKSEL0 |= (0b11 << 6);    // Set the clock signal that will be suplied to UART0
-    U0LCR |= (1 << 7);          // Enable access to Divisor Latches (DLAB = 1)
-    U0FCR |= 1;                 // Enable FIFO for UART0 Rx and Tx
+    FIO0PIN &= ~(1 << 20);          // Set CS_TP low to begin SPI transmission
+    S0SPDR = data;                  //Transmit data on MOSI
 
-    //U0LCR |= (1 << 7);        // This enables UART interrupts (DLAB = 0)
+    while ((S0SPSR >> 7) == 0);     // Transmit 0x00 on MOSI and wait to read from MISO
+    result = S0SPSR;
+
+    FIO0PIN |= (1 << 20);           // Set CS_TP high after SPI transmission complete
 }
-*/
+
+unsigned char spi_read(void) {
+    FIO0PIN &= ~(1 << 20);          // Set CS_TP low to begin SPI transmission
+
+    while ((S0SPSR >> 7) == 0);     // Transmit 0x00 on MOSI and wait to read from MISO
+
+    FIO0PIN |= (1 << 20);           // Set CS_TP high after SPI transmission complete
+    
+    return S0SPSR;                  // Return read result
+}

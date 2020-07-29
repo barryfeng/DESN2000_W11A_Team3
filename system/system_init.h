@@ -11,9 +11,8 @@
 
 void init_pll(void);
 void init_adc(void);
-void init_dac(void);
 void init_pwm(void);
-void init_brakes(void);
-void init_uart(void);
+void init_spi(void);
+void spi_write(unsigned char data);
 
 #endif

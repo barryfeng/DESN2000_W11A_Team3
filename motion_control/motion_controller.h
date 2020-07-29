@@ -9,6 +9,7 @@
 #include "master_controller.h"
 #include "../system/system_timer.h"
 #include "fixed_point_pid.h"
+#include "../system/system_init.h"
 
 #define kP 10.0
 #define kI 0.0
@@ -17,6 +18,9 @@
 #define ADC_SHIFT 22
 
 #define CYCLE_TIME 5
+
+#define ACTIVATE_BRAKES 1
+#define DEACTIVATE_BRAKES 0
 
 static uint32_t get_voltage(void);
 
