@@ -16,11 +16,12 @@ int get_prescaler(modifier_t target_modifier) {
     return prescale - 1;
 }
 
-// Add __fiq to this
-void master_isr_handler(void) /* __fiq */ {
+// TODO: Add __fiq to this
+/*__fiq*/ void master_isr_handler(void) {
     long int ir = T0IR;
 
     run_controller();
+    // lcd here    
 
     T0IR = ir;       // Write back to IR to clear Interrupt Flag
     VICVectAddr = 0x0;    // End of interrupt execution
@@ -45,9 +46,13 @@ void start_master_isr(unsigned int target, modifier_t unit) {
 
     T0TCR = 0x01;                                   // Start timer
 
-    while (T0TC != T0MR0);                          // Wait for timer to reset
+    while (T0TC != T0MR0);                          // Wait for timer to match
 
-    T0TCR = 0x00;                                   // Reset timer counter
+    T0TCR = 0x02;                                   // Reset timer counter
+}
+
+void stop_master_isr(void) {
+    T0TCR = 0x2;                                    // Reset and disable timer counter
 }
 
 /**
@@ -65,10 +70,9 @@ void delay_timer2(unsigned int target) {
     T2MCR = (1 << 1);    // Reset on match
 
     T2TCR = 0x01;  // Start timer
-    while (T2TC != T2MR0)
-        ;  // Wait for timer to reset
+    while (T2TC != T2MR0);  // Wait for timer to match
 
-    T2TCR = 0x00;  // Reset timer counter
+    T2TCR = 0x02;  // Reset timer counter
 }
 
 /**
@@ -86,7 +90,7 @@ void delay_timer3(unsigned int target) {
     T3MCR = (1 << 1);           // Reset on match
 
     T3TCR = 0x01;               // Start timer
-    while (T3TC != T3MR0);      // Wait for timer to reset
+    while (T3TC != T3MR0);      // Wait for timer to match
 
-    T3TCR = 0x00;               // Reset timer counter
+    T3TCR = 0x02;               // Reset timer counter
 }

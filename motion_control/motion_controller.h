@@ -19,8 +19,11 @@
 
 #define CYCLE_TIME 5
 
-#define ACTIVATE_BRAKES 1
-#define DEACTIVATE_BRAKES 0
+#define BRAKE_ACTIVE 1
+#define BRAKE_INACTIVE 0
+
+#define DRIVE_ACTIVE 1
+#define DRIVE_INACTIVE 0
 
 static uint32_t get_voltage(void);
 

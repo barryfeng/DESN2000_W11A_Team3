@@ -9,10 +9,18 @@ int main(void) {
     hw_init();
     
     start_master_isr(CYCLE_TIME, 'm');
+    while (1) {
+        // update_drive_state()
+        if (check_diag_conditions()) {
+            // load_diag_code();
+            // run_diag_code();
+        }
+
+    }
 }
 
 void hw_init(void) {
-    init_pll();                 // starts pll and sets cclk to 60mhz
+    init_pll();
     init_adc();
     init_pwm();
     init_spi();
@@ -24,4 +32,5 @@ void lr_init(void) {
     light_rail.dms_state = 0x0; 
     light_rail.vel_setpoint = 0;
     light_rail.velocity = 0;
+    light_rail.drive_state = 1;
 }

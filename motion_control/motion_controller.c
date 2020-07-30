@@ -97,7 +97,7 @@ static void update_brake_state(void) {
  */
 static void set_brake(void) {
     light_rail.vel_setpoint = 0;
-    spi_write(ACTIVATE_BRAKES);
+    spi_write(BRAKE_ACTIVE);
 }
 
 /**
@@ -105,7 +105,7 @@ static void set_brake(void) {
  * pin LOW.
  */
 static void release_brake(void) {
-    spi_write(DEACTIVATE_BRAKES);
+    spi_write(BRAKE_INACTIVE);
 }
 
 /**
