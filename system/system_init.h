@@ -5,6 +5,7 @@
 #include <lpc24XX.h>
 #include "constants.h"
 #include "stdint.h"
+#include "user_interface/LCD/lcd_main.h"
 
 #define PLOCK 0x00000400
 #define PWM_DC_DEF 50

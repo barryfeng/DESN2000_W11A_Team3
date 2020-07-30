@@ -21,7 +21,9 @@ int get_prescaler(modifier_t target_modifier) {
     long int ir = T0IR;
 
     run_controller();
-    // lcd here    
+    // lcd here
+    touch_screen_press();
+    lcd_run();
 
     T0IR = ir;       // Write back to IR to clear Interrupt Flag
     VICVectAddr = 0x0;    // End of interrupt execution

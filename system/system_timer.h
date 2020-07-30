@@ -4,6 +4,7 @@
 
 #include "system_init.h"
 #include "motion_control/motion_controller.h"
+#include "user_interface/touchscreen/touch_screen_read.h"
 
 typedef char modifier_t;
 #define MODIFIER_SEC 1

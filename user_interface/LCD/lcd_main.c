@@ -1,45 +1,6 @@
-#include "lpc24xx.h"
-#include "delay.h"
-#include "lcd/lcd_hw.h"
-#include "lcd/lcd_grph.h"
-#include "lcd/lcd_cfg.h"
-#include "lcd/sdram.h"
+#include "lcd_main.h"
 
-// EXTRA #INCLUDES
-#include <master_controller.h>
-
-// EXTRA #DEFINES
-#define OFF 0
-#define ON 1
-#define RELEASE 0
-#define APPLY 0
-#define STOP 0
-#define MAX_VEL 50
-
-/*
-void lcd_throttle_lever(int throttle_position);
-void lcd_indicator_state(unsigned short x0, unsigned short y0, unsigned short r, int state);
-*/
-
-void constant_borders();
-void constant_velocity_on();
-void constant_throttle_on();
-void constant_stops_on();
-void constant_brake_on();
-void constant_dms_on();
-void constant_max_vel_on();
-void constant_sd_on();
-void constant_velocity_off();
-void constant_throttle_off();
-void constant_stops_off();
-void constant_brake_off();
-void constant_dms_off();
-void constant_max_vel_off();
-void constant_sd_off();
-void lcd_rectangle_thickness(unsigned short x0, unsigned short y0, unsigned short x0, unsigned short y0, int thickness, lcd_color_t color);
-void lcd_circle_thickness(unsigned short x0, unsigned short y0, unsigned short r, int thickness, lcd_color_t color);
-
-int main(void) {
+void lcd_start() {	//DO NOT REMOVE FROM THIS FILE
 	//Setup external SDRAM. Used for Frame Buffer
 	sdramInit();
 	
@@ -51,16 +12,13 @@ int main(void) {
 	lcdTurnOn();
 	
 	//Draw a background with lcd_fillScreen
-	//Otherwise you will write random noise to the screen!
-	lcd_fillScreen(CUSTOM_1); //
-
-	/********** STATIC *********/
+	lcd_fillScreen(CUSTOM_1);
 
 	//BORDERS
-	void constant_borders();
+	constant_borders();
+}
 
-	/********** NON-STATIC *********/
-	
+void lcd_run() {	//DO NOT REMOVE FROM THIS FILE
 	int vel_ms = light_rail.velocity >> 16;
 	int vel_kmh = ceil(vel_ms/3.6);
 	int dms_state = light_rail.dms;
@@ -70,7 +28,7 @@ int main(void) {
 	//INT TO STRING (returns integer in base 10)
 	itoa(vel_kmh, vel_str, 10);
 
-	if (dms_state = ON || (vel_kmh = STOP && brake_state = APPLY)) {
+	if (dms_state == ON || (vel_kmh == STOP && brake_state == APPLY)) {
 		//VELOCITY
 		constant_velocity_off();
 		//THROTTLE
@@ -107,25 +65,6 @@ int main(void) {
 	} else {
 		constant_max_vel_on();
 	}
-
-	/////////////////////////////////
-	// TOUCHSCREEEN
-
-	if (/*BRAKE Pushed*/) {
-		light_rail.brake = ON;
-	} else {
-		light_rail.brake = OFF;
-	}
-
-	if (/*SD Pushed*/) {
-		/*light_rail.SD*/ = ON;
-	} else {
-		/*light_rail.SD*/ = OFF;
-	}
-	/////////////////////////////////
-
-	//Do nothing more
-	//while (1) { }
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////
