@@ -10,9 +10,7 @@ void run_diag_code(unsigned int *code) {
 }
 
 int check_diag_conditions(void) {
-    if (light_rail.drive_state == DRIVE_ACTIVE) {
-        return 0;
-    } else if (light_rail.velocity != 0) {
+    if (light_rail.velocity != 0) {
         return 0;
     } else if (light_rail.vel_setpoint != 0) {
         return 0;
