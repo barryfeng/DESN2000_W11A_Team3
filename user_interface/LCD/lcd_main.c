@@ -290,7 +290,7 @@ void constant_sd_off() {
 
 ///////////////////////////////////////////////////////////////////////////////////////////
 
-void lcd_rectangle_thickness(unsigned short x0, unsigned short y0, unsigned short x0, unsigned short y0, int thickness, lcd_color_t color) {
+void lcd_rectangle_thickness(unsigned short x0, unsigned short y0, unsigned short x1, unsigned short y1, int thickness, lcd_color_t color) {
 
 	for (int i = 0; i < thickness, i++;) {
 		lcd_drawRect(x0 + i, y0 + i, x1 - i, y1 - i, color);
