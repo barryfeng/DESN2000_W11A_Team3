@@ -14,6 +14,7 @@ int get_prescaler(modifier_t target_modifier);
 
 void master_isr_handler(void) /* __fiq */;
 void start_master_isr(unsigned int target, modifier_t unit);
+void stop_master_isr(void);
 
 void init_timer2(modifier_t unit);
 void delay_timer2(unsigned int target);
