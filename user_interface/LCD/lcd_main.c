@@ -184,29 +184,42 @@ void constant_brake() {
 }
 
 void constant_safety_indicators() {
-	//DMS Circle
-	lcd_circle_thickness(43, 289, 26, 3, CUSTOM_2);
-	lcd_circle(43, 289, 23, YELLOW);
-	lcd_circle_thickness(43, 289, 22, 3, CUSTOM_2);
-
 	// DMS Label
-	lcd_rectangle_thickness(17, 245, 69, 257, 2, CUSTOM_2);
-	lcd_fillRect(19, 247, 67, 255, LIGHT_GRAY);
+	lcd_rectangle_thickness(46, 246, 98, 258, 2, CUSTOM_2);
+	lcd_fillRect(48, 248, 96, 256, LIGHT_GRAY);
 	//putString(x,y,"DMS");
-
-	//MAX VEL Circle
-	lcd_circle_thickness(119, 289, 26, 3, CUSTOM_2);
-	lcd_circle(119, 289, 23, YELLOW);
-	lcd_circle_thickness(119, 289, 22, 3, CUSTOM_2);
+	
+	//DMS Circle
+	lcd_circle_thickness(72, 289, 26, 3, CUSTOM_2);
+	lcd_circle(72, 289, 26, YELLOW);
+	lcd_circle_thickness(72, 289, 26, 3, CUSTOM_2);
 
 	// MAX VEL Label
-	lcd_rectangle_thickness(93, 245, 145, 257, 2, CUSTOM_2);
-	lcd_fillRect(95, 247, 143, 255, LIGHT_GRAY);
+	lcd_rectangle_thickness(103, 246, 155, 258, 2, CUSTOM_2);
+	lcd_fillRect(105, 248, 153, 256, LIGHT_GRAY);
 	//putString(x,y,"MAX VEL");
+
+	//MAX VEL Circle
+	lcd_circle_thickness(129, 289, 26, 3, CUSTOM_2);
+	lcd_circle(129, 289, 23, YELLOW);
+	lcd_circle_thickness(129, 289, 22, 3, CUSTOM_2);
+}
+
+void constant_sd() {
+	//SD Label
+	lcd_rectangle_thickness(7, 246, 39, 258, 2, CUSTOM_2);
+	lcd_fillRect(9, 248, 37, 256, LIGHT_GRAY);
+	//putString(x,y,"SD");
+
+	//SD Rectangle
+	lcd_rectangle_thickness(7, 264, 39, 314, 2, CUSTOM_2);
+	lcd_drawRect(9, 266, 37, 312, WHITE);
+	lcd_rectangle_thickness(10, 267, 36, 311, 2, CUSTOM_2);
+	lcd_fillRect(12, 269, 34, 309, WHITE);
 }
 
 void lcd_rectangle_thickness(unsigned short x0, unsigned short y0, unsigned short x0, unsigned short y0, int thickness, lcd_color_t color) {
-	
+
 	for (int i = 0; i < thickness, i++;) {
 		lcd_drawRect(x0 + i, y0 + i, x1 - i, y1 - i, color);
 	}
