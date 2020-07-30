@@ -7,8 +7,10 @@
 #include <SPI_MMC.h>
 
 #define MAX_BLOCK_NUM 0x80
+#define MAX_CODE_SIZE 0xFFFF
 
 extern LightRail light_rail;
+extern uint8_t MMCRDData[MMC_DATA_SIZE];
 
 uint8_t load_diag_code(void);
 void run_diag_code(unsigned int *code);

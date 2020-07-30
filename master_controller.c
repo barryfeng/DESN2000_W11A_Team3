@@ -29,6 +29,7 @@ LightRail light_rail;
  * initialisation section (lr_init). 
  */
 int main(void) {
+
     lr_init();
     hw_init();
 
@@ -43,11 +44,8 @@ int main(void) {
             // i.e. lr.drive_state = !lr.drive_state
             if (check_diag_conditions()) {
                 stop_master_isr();
-                // load code here
 
-
-
-                //run_diag_code();
+                run_diag_code(load_diag_code());
             }
         }
     }

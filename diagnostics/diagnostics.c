@@ -1,8 +1,8 @@
 #include <diagnostics.h>
 
-
-uint8_t load_diag_code(void) {
-    uint32_t read_buf_count, block_num = 0;
+uint16_t load_diag_code(void) {
+    uint32_t read_buf_count, clr_buf_count, block_num = 0;
+    uint16_t diag_code[MAX_CODE_SIZE];
 
     if (mmc_init() != 0) { 
         IOSET0 = SPI_SEL;
@@ -12,11 +12,15 @@ uint8_t load_diag_code(void) {
     for (block_num = 0; block_num < MAX_BLOCK_NUM; block_num++) {
         mmc_read_block(block_num);
 
-        for (int i = 0; i < MMC_DATA_SIZE; i++) /* clear read buffer */
-            MMCRDData[i] = 0x00;
+        // Copy MMCRDATA to diag_code and clear read buffer after MMC read.
+        for (clr_buf_count = 0; clr_buf_count < MMC_DATA_SIZE; clr_buf_count++)
+            diag_code[MMC_DATA_SIZE * block_num + clr_buf_count] = 
+                MMCRDData[clr_buf_count];
+            MMCRDData[clr_buf_count] = 0x00;
     }
-}
 
+    return diag_code;
+}
 
 /**
  * This function takes in the address of the code loaded into SDRAM from the 
