@@ -11,6 +11,8 @@ int main(void) {
     start_master_isr(CYCLE_TIME, 'm');
     while (1) {
         // update_drive_state()
+        // i.e. edit lcd touch screen code to invert the drive state
+        // i.e. lr.drive_state = !lr.drive_state
         if (check_diag_conditions()) {
             // load_diag_code();
             // run_diag_code();
