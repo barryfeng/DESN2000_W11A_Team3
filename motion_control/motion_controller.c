@@ -16,25 +16,56 @@
 
 extern LightRail light_rail;
 
+/**
+ * This function samples the ADC output and reads the voltage feedback
+ * from the motor. The ADC is started using AD0CR and the result is obtained
+ * using a bitshift and bitmask.
+ * 
+ * The ADC value is then converted to an equivalent voltage using a magic
+ * number multiplication (to reduce latency caused by integer division). The
+ * equivalent voltage is given by the equation:
+ * 
+ * VOLTAGE = (result * 3.3 / 1023 << 16)
+ * 
+ * Note that the 16 bit left shift is to convert the voltage to a Q16.0 number.
+ */
 static uint32_t get_voltage(void) {
 
     static uint16_t result;
 
-    AD0CR = AD0CR | (1 << 24);  // start adc start
-    while (!(AD0DR1 & 0x80000000));  // wait for adc to finish
+    AD0CR = AD0CR | (1 << 24);
+    while (!(AD0DR1 & 0x80000000));
     result = AD0DR1;
     result = (result >> 6);
     result = (result & 0x000003FF);
 
-    // Convert ADC value to equivalent voltage (result*3.3/1023 << 16)
     return ((0x34DA * result) >> (ADC_SHIFT - VEL_SHIFT));
 }
 
+/**
+ * This function sets a new PWM duty cycle. The PWM0 match register is 
+ * set to the argument duty_cycle and PWM0 is latched to the new duty cycle.
+ */
 static void set_pwm(int duty_cycle) {
-    PWM0MR1 = duty_cycle;               // Set new PWM0 MR1 match value
-    PWM0LER = (1 << 1);                 // Update PWM0 Latch for MR0, MR1
+    PWM0MR1 = duty_cycle;
+    PWM0LER = (1 << 1);
 }
 
+/**
+ * This function runs a single iteration or step of the light rail controller.
+ * The controller structure, compensation values and dms state are statically
+ * defined and will only be initialised on the first controller iteration.
+ * 
+ * The function will also ensure that the controller is initialised once by
+ * checked the initialised member of the pi_controller structure.
+ * 
+ * The DMS and brake states are then checked and updated accordingly. Next, 
+ * the the PI controller is stepped and the controller output is passed to
+ * the set_pwm function as feedback.
+ * 
+ * The function ensures that power is only applied to the motors if the brakes
+ * are disabled.
+ */
 void run_controller(void) {
     static Controller pi_controller;
     static uint32_t compensation = 0;

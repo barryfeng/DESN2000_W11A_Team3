@@ -1,6 +1,5 @@
-#ifndef FIXED_POINT_PID_H
-
-#define FIXED_POINT_PID_H
+#ifndef __FIXED_POINT_PID_H__
+#define __FIXED_POINT_PID_H__
 
 #define INTEG_MAX (INT32_MAX)
 #define INTEG_MIN (INT32_MIN)

@@ -95,18 +95,21 @@ int16_t step_controller(int16_t sp, int16_t fb, Controller pi_controller) {
     return compensate;
 }
 
+/**
+ * This function converts a floating point number to Q notation.
+ */
 static uint32_t f_to_q(float in) {
-    uint32_t param;
+    uint32_t qval;
 
     if (in > PARAM_MAX || in < 0) {
         return 0;
     }
 
-    param = in * PARAM_MULT;
+    qval = in * PARAM_MULT;
 
-    if (in != 0 && param == 0) {
+    if (in != 0 && qval == 0) {
         return 0;
     }
 
-    return param;
+    return qval;
 }
