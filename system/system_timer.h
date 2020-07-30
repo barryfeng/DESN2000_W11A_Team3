@@ -21,4 +21,6 @@ void delay_timer2(unsigned int target);
 void init_timer3(modifier_t unit);
 void delay_timer3(unsigned int target);
 
+extern LightRail light_rail;
+
 #endif

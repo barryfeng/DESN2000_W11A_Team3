@@ -11,6 +11,9 @@
 #include "./system/system_init.h"
 #include "diagnostics/diagnostics.h"
 
+#define ISR_ACTIVE 1
+#define ISR_INACTIVE 0
+
 void hw_init(void);
 void lr_init(void);
 typedef struct lr {
@@ -18,7 +21,8 @@ typedef struct lr {
     uint32_t vel_setpoint;      // Write to this.
     uint8_t brake_state;        // Write to this.
     uint8_t dms_state;          // Read from this.
-    uint8_t drive_state;       // Read from this.
+    uint8_t drive_state;        // Read from this.
+    uint8_t master_tmr_state;   
 } LightRail;
 
 

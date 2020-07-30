@@ -17,7 +17,7 @@
 #define VEL_SHIFT 16
 #define ADC_SHIFT 22
 
-#define CYCLE_TIME 5
+#define CYCLE_TIME 10
 
 #define BRAKE_ACTIVE 1
 #define BRAKE_INACTIVE 0

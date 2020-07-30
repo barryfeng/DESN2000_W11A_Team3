@@ -8,16 +8,27 @@ int main(void) {
     lr_init();
     hw_init();
     
-    start_master_isr(CYCLE_TIME, 'm');
-    while (1) {
-        // update_drive_state()
-        // i.e. edit lcd touch screen code to invert the drive state
-        // i.e. lr.drive_state = !lr.drive_state
-        if (check_diag_conditions()) {
-            // load_diag_code();
-            // run_diag_code();
-        }
 
+    while (1) {
+        if (light_rail.drive_state == DRIVE_ACTIVE) {
+            start_master_isr(CYCLE_TIME, 'm');
+        } else {
+            // update_drive_state()
+            // i.e. edit lcd touch screen code to invert the drive state
+            // i.e. lr.drive_state = !lr.drive_state
+            if (check_diag_conditions()) {
+                // load code here
+            }
+        }
+    }
+
+}
+
+void toggle_master_isr(void) {
+    if (light_rail.master_tmr_state == ISR_ACTIVE) {
+        light_rail.master_tmr_state = ISR_INACTIVE;
+    } else {
+        light_rail.master_tmr_state = ISR_ACTIVE;
     }
 }
 
@@ -35,4 +46,5 @@ void lr_init(void) {
     light_rail.vel_setpoint = 0;
     light_rail.velocity = 0;
     light_rail.drive_state = 1;
+    light_rail.master_tmr_state = 0;
 }
