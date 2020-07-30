@@ -4,6 +4,7 @@
 
 #include <lpc24XX.h>
 #include "constants.h"
+#include "stdint.h"
 
 #define PLOCK 0x00000400
 #define PWM_DC_DEF 50
@@ -14,5 +15,6 @@ void init_adc(void);
 void init_pwm(void);
 void init_spi(void);
 void spi_write(unsigned char data);
+uint8_t spi_read(void);
 
 #endif

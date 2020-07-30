@@ -1,8 +1,20 @@
 #include <diagnostics.h>
 
 
-void load_diag_code(void) {
-    
+uint8_t load_diag_code(void) {
+    uint32_t read_buf_count, block_num = 0;
+
+    if (mmc_init() != 0) { 
+        IOSET0 = SPI_SEL;
+        return 0;
+    }
+
+    for (block_num = 0; block_num < MAX_BLOCK_NUM; block_num++) {
+        mmc_read_block(block_num);
+
+        for (int i = 0; i < MMC_DATA_SIZE; i++) /* clear read buffer */
+            MMCRDData[i] = 0x00;
+    }
 }
 
 
@@ -34,4 +46,21 @@ int check_diag_conditions(void) {
     }
 
     return 1;
+}
+
+/**
+ * SPI receives a block of data based on the length.
+ */
+void spi_read_block(uint8_t *buf, uint32_t blk_len) {
+    for (uint32_t i = 0; i < blk_len; i++) {
+        *buf = spi_read();
+        buf++;
+    }
+}
+
+void spi_write_block(uint8_t *buf, uint32_t blk_len) {
+    for (int i = 0; i < blk_len; i++) {
+        spi_write(*buf);
+        buf++;
+    }
 }

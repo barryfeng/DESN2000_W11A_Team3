@@ -1,7 +1,0 @@
-Feature 1
-
-    Load diagnostic code from SD card and run.
-
-Feature 3
-
-    Log data to storage and provide some means of access to this data (SWI API) 

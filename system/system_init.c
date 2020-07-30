@@ -73,7 +73,7 @@ void spi_write(unsigned char data) {
     FIO0PIN |= (1 << 20);           // Set CS_TP high after SPI transmission complete
 }
 
-unsigned char spi_read(void) {
+uint8_t spi_read(void) {
     FIO0PIN &= ~(1 << 20);          // Set CS_TP low to begin SPI transmission
 
     while ((S0SPSR >> 7) == 0);     // Transmit 0x00 on MOSI and wait to read from MISO
