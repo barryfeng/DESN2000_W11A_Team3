@@ -70,7 +70,7 @@ void lr_init(void) {
     light_rail.velocity = 0x1;
     light_rail.dms_state = 0x0; 
     light_rail.vel_setpoint = 0;
-    light_rail.velocity = 0;
+    light_rail.brake_state = 1;
     light_rail.drive_state = 1;
     light_rail.master_tmr_state = 0;
 }

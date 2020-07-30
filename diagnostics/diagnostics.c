@@ -1,3 +1,17 @@
+/**
+ * FILENAME :           diagnostics.c
+ * DESCRIPTION :        File to load and execute light rail diagnostic code.
+ * 
+ * NOTES :
+ * 
+ * AUTHOR :             Barry Feng   
+ * 
+ * START DATE :         31 Jul 20
+ * 
+ * CHANGES :
+ * -- 31/07/2020 --     File created.
+ */
+
 #include <diagnostics.h>
 
 uint16_t load_diag_code(void) {
