@@ -24,6 +24,9 @@ void lcd_run();
 void constant_borders();
 void constant_labels();
 
+void lcd_backlight_on();
+void lcd_backlight_off();
+
 void constant_velocity_on();
 void constant_throttle_plus_on();
 void constant_throttle_minus_on();
