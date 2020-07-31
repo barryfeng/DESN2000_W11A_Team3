@@ -31,30 +31,11 @@ void lcd_run() {	//DO NOT REMOVE FROM THIS FILE
 	//INT TO STRING (returns integer in base 10)
 	itoa(vel_kmh, vel_str, 10);
 
+	//LCD BACKLIGHT
 	if (dms_state == ON || (vel_kmh == STOP && brake_state == APPLY)) {
-		//VELOCITY
-		constant_velocity_off();
-		//THROTTLE
-		constant_throttle_plus_off();
-		constant_throttle_minus_off();
-		//STOPS
-		constant_stops_off();
-		//BRAKE
-		constant_brake_off();
-		//SD
-		constant_sd_off();
+		lcd_backlight_off();
 	} else {
-		//VELOCITY
-		constant_velocity_on();
-		//THROTTLE
-		constant_throttle_plus_on();
-		constant_throttle_minus_on();
-		//STOPS
-		constant_stops_on();
-		//BRAKE
-		constant_brake_on();
-		//SD
-		constant_sd_on();
+		lcd_backlight_on();
 	}
 
 	//DMS
@@ -72,7 +53,9 @@ void lcd_run() {	//DO NOT REMOVE FROM THIS FILE
 	}
 }
 
-/////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////
+///*    LCD START CONSTANTS    *///
+///////////////////////////////////
 
 void constant_borders() {
 	//Outer Border
@@ -129,7 +112,49 @@ void constant_labels() {
 	//putString(x,y,"SD");
 }
 
-/////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////
+///*    LCD BACKLIGHT    *///
+/////////////////////////////
+
+void lcd_backlight_on() {
+	//VELOCITY
+	constant_velocity_on();
+
+	//THROTTLE
+	constant_throttle_plus_on();
+	constant_throttle_minus_on();
+
+	//STOPS
+	constant_stops_on();
+
+	//BRAKE
+	constant_brake_on();
+
+	//SD
+	constant_sd_on();
+}
+
+void lcd_backlight_off() {
+	//VELOCITY
+	constant_velocity_off();
+
+	//THROTTLE
+	constant_throttle_plus_off();
+	constant_throttle_minus_off();
+
+	//STOPS
+	constant_stops_off();
+
+	//BRAKE
+	constant_brake_off();
+
+	//SD
+	constant_sd_off();
+}
+
+//////////////////////////////////////
+///*    LCD RUN CONSTANTS (ON)    *///
+//////////////////////////////////////
 
 void constant_velocity_on() {
 	//Velocity Circle
@@ -208,9 +233,20 @@ void constant_sd_on() {
 	lcd_drawRect(9, 266, 37, 312, WHITE);
 	lcd_rectangle_thickness(10, 267, 36, 311, 2, CUSTOM_2);
 	lcd_fillRect(12, 269, 34, 309, WHITE);
+
+	//SD Symbol
+	lcd_fillRect(16, 277, 30, 305, CUSTOM_2);
+	for (int i = 0; i < 4, i++;) {
+		lcd_fillRect(17 + i, 276 - i, 30, 276 - i, CUSTOM_2);
+	}
+	for (int i = 0; i < 5, i++;) {
+		lcd_fillRect(21 + 2*i, 274, 21 + 2*i, 276, YELLOW);
+	}
 }
 
-/////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////
+///*    LCD RUN CONSTANTS (OFF)    *///
+///////////////////////////////////////
 
 void constant_velocity_off() {
 	//Velocity Circle
@@ -291,9 +327,20 @@ void constant_sd_off() {
 	lcd_drawRect(9, 266, 37, 312, LIGHT_GRAY);
 	lcd_rectangle_thickness(10, 267, 36, 311, 2, CUSTOM_2);
 	lcd_fillRect(12, 269, 34, 309, LIGHT_GRAY);
+
+	//SD Symbol
+	lcd_fillRect(16, 277, 30, 305, CUSTOM_2);
+	for (int i = 0; i < 4, i++;) {
+		lcd_fillRect(17 + i, 276 - i, 30, 276 - i, CUSTOM_2);
+	}
+	for (int i = 0; i < 5, i++;) {
+		lcd_fillRect(21 + 2*i, 274, 21 + 2*i, 276, YELLOW);
+	}
 }
 
-/////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////
+///*    LCD SHAPE THICKNESS    *///
+///////////////////////////////////
 
 void lcd_rectangle_thickness(unsigned short x0, unsigned short y0, unsigned short x1, unsigned short y1, int thickness, lcd_color_t color) {
 
