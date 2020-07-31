@@ -16,6 +16,9 @@ void lcd_start() {	//DO NOT REMOVE FROM THIS FILE
 
 	//BORDERS
 	constant_borders();
+
+	//LABELS
+	constant_labels();
 }
 
 void lcd_run() {	//DO NOT REMOVE FROM THIS FILE
@@ -32,7 +35,8 @@ void lcd_run() {	//DO NOT REMOVE FROM THIS FILE
 		//VELOCITY
 		constant_velocity_off();
 		//THROTTLE
-		constant_throttle_off();
+		constant_throttle_plus_off();
+		constant_throttle_minus_off();
 		//STOPS
 		constant_stops_off();
 		//BRAKE
@@ -43,7 +47,8 @@ void lcd_run() {	//DO NOT REMOVE FROM THIS FILE
 		//VELOCITY
 		constant_velocity_on();
 		//THROTTLE
-		constant_throttle_on();
+		constant_throttle_plus_on();
+		constant_throttle_minus_on();
 		//STOPS
 		constant_stops_on();
 		//BRAKE
@@ -86,7 +91,45 @@ void constant_borders() {
 	lcd_drawRect(161, 241, 239, 319, CUSTOM_2);
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////
+void constant_labels() {
+	//Velocity Label
+	//putVelString(x,y,"positive km/h");
+
+	//Throttle Label
+	lcd_rectangle_thickness(198, 52, 236, 64, 2, CUSTOM_2);
+	lcd_fillRect(200, 54, 234, 62, LIGHT_GRAY);
+	//putString(x,y,"THROTTLE");
+
+	// Current Stop Label
+	lcd_rectangle_thickness(7, 6, 115, 18, 2, CUSTOM_2);
+	lcd_fillRect(9, 8, 113, 16, LIGHT_GRAY);
+	//putString(x,y,"CURRENT STOP");
+
+	// Next Stop Label
+	lcd_rectangle_thickness(126, 6, 234, 18, 2, CUSTOM_2);
+	lcd_fillRect(128, 8, 232, 16, LIGHT_GRAY);
+	//putString(x,y,"NEXT STOP");
+
+	// Brake Label
+	//putBrakeString(x,y,"BRAKE");
+
+	// DMS Label
+	lcd_rectangle_thickness(46, 246, 98, 258, 2, CUSTOM_2);
+	lcd_fillRect(48, 248, 96, 256, LIGHT_GRAY);
+	//putString(x,y,"DMS");
+
+	// MAX VEL Label
+	lcd_rectangle_thickness(103, 246, 155, 258, 2, CUSTOM_2);
+	lcd_fillRect(105, 248, 153, 256, LIGHT_GRAY);
+	//putString(x,y,"MAX VEL");
+
+	//SD Label
+	lcd_rectangle_thickness(7, 246, 39, 258, 2, CUSTOM_2);
+	lcd_fillRect(9, 248, 37, 256, LIGHT_GRAY);
+	//putString(x,y,"SD");
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////
 
 void constant_velocity_on() {
 	//Velocity Circle
@@ -94,40 +137,38 @@ void constant_velocity_on() {
 	lcd_circle(98, 144, 90, GREEN);
 	lcd_circle_thickness(98, 144, 89, 2, CUSTOM_2);
 	lcd_fillcircle(98, 144, 87, GREEN);
-	//Velocity Label
-	//putVelString(x,y,"positive km/h");
 }
 
-void constant_throttle_on() {
-	//Throttle Label
-	lcd_rectangle_thickness(198, 52, 236, 64, 2, CUSTOM_2);
-	lcd_fillRect(200, 54, 234, 62, LIGHT_GRAY);
-	//putString(x,y,"THROTTLE");
-
+void constant_throttle_plus_on() {
 	//Throttle Rectangle
-	lcd_rectangle_thickness(200, 67, 234, 235, 2, CUSTOM_2);
-	lcd_drawRect(202, 69, 232, 233, MAGENTA);
-	lcd_rectangle_thickness(203, 70, 231, 232, 2, CUSTOM_2);
-	lcd_fillRect(205, 72, 229, 230, MAGENTA);
+	lcd_rectangle_thickness(200, 68, 234, 149, 2, CUSTOM_2);
+	lcd_drawRect(202, 70, 232, 147, MAGENTA);
+	lcd_rectangle_thickness(203, 71, 231, 146, 2, CUSTOM_2);
+	lcd_fillRect(205, 73, 229, 144, MAGENTA);
+
+	//Plus Symbol
+	lcd_fillRect(216, 98, 218, 119, CUSTOM_2);
+	lcd_fillRect(208, 107, 226, 110, CUSTOM_2);
+}
+
+void constant_throttle_minus_on() {
+	//Throttle Rectangle
+	lcd_rectangle_thickness(200, 154, 234, 235, 2, CUSTOM_2);
+	lcd_drawRect(202, 156, 232, 233, MAGENTA);
+	lcd_rectangle_thickness(203, 157, 231, 232, 2, CUSTOM_2);
+	lcd_fillRect(205, 159, 229, 230, MAGENTA);
+
+	//Minus Symbol
+	lcd_fillRect(208, 193, 226, 196, CUSTOM_2);
 }
 
 void constant_stops_on() {
-	// Current Stop Label
-	lcd_rectangle_thickness(7, 6, 115, 18, 2, CUSTOM_2);
-	lcd_fillRect(9, 8, 113, 16, LIGHT_GRAY);
-	//putString(x,y,"CURRENT STOP");
-
 	//Current Stop Rectangle
 	lcd_rectangle_thickness(5, 23, 117, 43, 2, CUSTOM_2);
 	lcd_drawRect(7, 25, 115, 41, CYAN);
 	lcd_rectangle_thickness(8, 26, 114, 40, 2, CUSTOM_2);
 	lcd_fillRect(10, 28, 112, 38, CYAN);
 	//putString(x,y,"current stop location");
-
-	// Next Stop Label
-	lcd_rectangle_thickness(126, 6, 234, 18, 2, CUSTOM_2);
-	lcd_fillRect(128, 8, 232, 16, LIGHT_GRAY);
-	//putString(x,y,"NEXT STOP");
 	
 	//Next Stop Rectangle
 	lcd_rectangle_thickness(124, 23, 236, 43, 2, CUSTOM_2);
@@ -143,17 +184,9 @@ void constant_brake_on() {
 	lcd_circle(200, 280, 33, RED);
 	lcd_circle_thickness(200, 280, 32, 2, CUSTOM_2);
 	lcd_fillcircle(200, 280, 30, RED);
-
-	// Brake Label
-	//putBrakeString(x,y,"Brake");
 }
 
 void constant_dms_on() {
-	// DMS Label
-	lcd_rectangle_thickness(46, 246, 98, 258, 2, CUSTOM_2);
-	lcd_fillRect(48, 248, 96, 256, LIGHT_GRAY);
-	//putString(x,y,"DMS");
-	
 	//DMS Circle
 	lcd_circle_thickness(72, 289, 26, 3, CUSTOM_2);
 	lcd_circle(72, 289, 26, YELLOW);
@@ -162,11 +195,6 @@ void constant_dms_on() {
 }
 
 void constant_max_vel_on() {
-	// MAX VEL Label
-	lcd_rectangle_thickness(103, 246, 155, 258, 2, CUSTOM_2);
-	lcd_fillRect(105, 248, 153, 256, LIGHT_GRAY);
-	//putString(x,y,"MAX VEL");
-
 	//MAX VEL Circle
 	lcd_circle_thickness(129, 289, 26, 3, CUSTOM_2);
 	lcd_circle(129, 289, 23, YELLOW);
@@ -175,11 +203,6 @@ void constant_max_vel_on() {
 }
 
 void constant_sd_on() {
-	//SD Label
-	lcd_rectangle_thickness(7, 246, 39, 258, 2, CUSTOM_2);
-	lcd_fillRect(9, 248, 37, 256, LIGHT_GRAY);
-	//putString(x,y,"SD");
-
 	//SD Rectangle
 	lcd_rectangle_thickness(7, 264, 39, 314, 2, CUSTOM_2);
 	lcd_drawRect(9, 266, 37, 312, WHITE);
@@ -187,7 +210,7 @@ void constant_sd_on() {
 	lcd_fillRect(12, 269, 34, 309, WHITE);
 }
 
-////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////
 
 void constant_velocity_off() {
 	//Velocity Circle
@@ -199,36 +222,36 @@ void constant_velocity_off() {
 	//putVelString(x,y,"0 km/h");
 }
 
-void constant_throttle_off() {
-	//Throttle Label
-	lcd_rectangle_thickness(198, 52, 236, 64, 2, CUSTOM_2);
-	lcd_fillRect(200, 54, 234, 62, LIGHT_GRAY);
-	//putString(x,y,"THROTTLE");
-
+void constant_throttle_plus_off() {
 	//Throttle Rectangle
-	lcd_rectangle_thickness(200, 67, 234, 235, 2, CUSTOM_2);
-	lcd_drawRect(202, 69, 232, 233, LIGHT_GRAY);
-	lcd_rectangle_thickness(203, 70, 231, 232, 2, CUSTOM_2);
-	lcd_fillRect(205, 72, 229, 230, LIGHT_GRAY);
+	lcd_rectangle_thickness(200, 68, 234, 149, 2, CUSTOM_2);
+	lcd_drawRect(202, 70, 232, 147, LIGHT_GRAY);
+	lcd_rectangle_thickness(203, 71, 231, 146, 2, CUSTOM_2);
+	lcd_fillRect(205, 73, 229, 144, LIGHT_GRAY);
+
+	//Plus Symbol
+	lcd_fillRect(216, 98, 218, 119, CUSTOM_2);
+	lcd_fillRect(208, 107, 226, 110, CUSTOM_2);
+}
+
+void constant_throttle_minus_off() {
+	//Throttle Rectangle
+	lcd_rectangle_thickness(200, 154, 234, 235, 2, CUSTOM_2);
+	lcd_drawRect(202, 156, 232, 233, LIGHT_GRAY);
+	lcd_rectangle_thickness(203, 157, 231, 232, 2, CUSTOM_2);
+	lcd_fillRect(205, 159, 229, 230, LIGHT_GRAY);
+
+	//Minus Symbol
+	lcd_fillRect(208, 193, 226, 196, CUSTOM_2);
 }
 
 void constant_stops_off() {
-	// Current Stop Label
-	lcd_rectangle_thickness(7, 6, 115, 18, 2, CUSTOM_2);
-	lcd_fillRect(9, 8, 113, 16, LIGHT_GRAY);
-	//putString(x,y,"CURRENT STOP");
-
 	//Current Stop Rectangle
 	lcd_rectangle_thickness(5, 23, 117, 43, 2, CUSTOM_2);
 	lcd_drawRect(7, 25, 115, 41, LIGHT_GRAY);
 	lcd_rectangle_thickness(8, 26, 114, 40, 2, CUSTOM_2);
 	lcd_fillRect(10, 28, 112, 38, LIGHT_GRAY);
 	//putString(x,y,"empty string");
-
-	// Next Stop Label
-	lcd_rectangle_thickness(126, 6, 234, 18, 2, CUSTOM_2);
-	lcd_fillRect(128, 8, 232, 16, LIGHT_GRAY);
-	//putString(x,y,"NEXT STOP");
 	
 	//Next Stop Rectangle
 	lcd_rectangle_thickness(124, 23, 236, 43, 2, CUSTOM_2);
@@ -244,17 +267,9 @@ void constant_brake_off() {
 	lcd_circle(200, 280, 33, LIGHT_GRAY);
 	lcd_circle_thickness(200, 280, 32, 2, CUSTOM_2);
 	lcd_fillcircle(200, 280, 30, LIGHT_GRAY);
-
-	// Brake Label
-	//putBrakeString(x,y,"Brake");
 }
 
 void constant_dms_off() {
-	// DMS Label
-	lcd_rectangle_thickness(46, 246, 98, 258, 2, CUSTOM_2);
-	lcd_fillRect(48, 248, 96, 256, LIGHT_GRAY);
-	//putString(x,y,"DMS");
-	
 	//DMS Circle
 	lcd_circle_thickness(72, 289, 26, 3, CUSTOM_2);
 	lcd_circle(72, 289, 26, LIGHT_GRAY);
@@ -263,11 +278,6 @@ void constant_dms_off() {
 }
 
 void constant_max_vel_off() {
-	// MAX VEL Label
-	lcd_rectangle_thickness(103, 246, 155, 258, 2, CUSTOM_2);
-	lcd_fillRect(105, 248, 153, 256, LIGHT_GRAY);
-	//putString(x,y,"MAX VEL");
-
 	//MAX VEL Circle
 	lcd_circle_thickness(129, 289, 26, 3, CUSTOM_2);
 	lcd_circle(129, 289, 23, LIGHT_GRAY);
@@ -276,11 +286,6 @@ void constant_max_vel_off() {
 }
 
 void constant_sd_off() {
-	//SD Label
-	lcd_rectangle_thickness(7, 246, 39, 258, 2, CUSTOM_2);
-	lcd_fillRect(9, 248, 37, 256, LIGHT_GRAY);
-	//putString(x,y,"SD");
-
 	//SD Rectangle
 	lcd_rectangle_thickness(7, 264, 39, 314, 2, CUSTOM_2);
 	lcd_drawRect(9, 266, 37, 312, LIGHT_GRAY);
@@ -288,7 +293,7 @@ void constant_sd_off() {
 	lcd_fillRect(12, 269, 34, 309, LIGHT_GRAY);
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////
 
 void lcd_rectangle_thickness(unsigned short x0, unsigned short y0, unsigned short x1, unsigned short y1, int thickness, lcd_color_t color) {
 
@@ -305,15 +310,3 @@ void lcd_circle_thickness(unsigned short x0, unsigned short y0, unsigned short r
 	}
 
 }
-
-/*
-
-void lcd_throttle_lever(int throttle_position) {
-	int i = 0;
-	while () {
-		lcd_fillRect(206, 220, 229, 229, DARK_GRAY);
-	}
-		
-}
-
-*/
