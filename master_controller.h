@@ -2,7 +2,8 @@
 
 #define MASTCNTRL_H
 
-#define DATA_LOG_SIZE 128 //Size of logged data (aligned to 4 words) -> size of data TBC!
+//Size of logged data (aligned to 4 words)
+#define DATA_LOG_SIZE 160 
 
 #include "stdint.h"
 #include "string.h"

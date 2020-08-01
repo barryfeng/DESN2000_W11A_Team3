@@ -1,22 +1,26 @@
 /**
  * FILENAME :        access_data.c
- * DESCRIPTION :     API for data_management.s
+ * DESCRIPTION :     API for accessing and storing data
+ * SUPERSEEDED:      OLD_access_data.c
  * 
  * NOTES :           use this file to store or view logged data
  * 
  * AUTHOR :          Adam Witt   
  * 
- * START DATE :      26 Jul 20
+ * START DATE :      1 Aug 20
  * 
  * CHANGES :
- * -- 12/07/2020 --  File created.
+ * -- 1/08/2020 --  File created.
  */
 
 #include "master_controller.h"
-
 extern LightRail light_rail;
 
-extern void data_start(char *data_string, int SWI_operation);
+extern void store(uint32_t vel, uint32_t vel_setpoint, uint8_t brake, uint8_t dms);
+extern uint32_t view_vel();
+extern uint32_t view_vel_setpoint();
+extern uint8_t view_brake();
+extern uint8_t view_dms();
 
 void store_data() {
     uint32_t velocity = light_rail.velocity;
@@ -24,24 +28,25 @@ void store_data() {
     uint8_t brake_state = light_rail.brake_state;
     uint8_t dms_state = light_rail.dms_state;
 
-    //String that contains all the data from the function arguments
-    char data_string[64] = "";  //Size 64 is sufficient and also allows data to be aligned every two words
-
-    char *velocity;
-    sprintf(velocity, "Velocity = %d km/h. ", velocity);
-
-    char *brake;
-    sprintf(brake, "Brake state = %d. /n", brake);
-
-    strcat(data_string, velocity); //Concatenate strings
-    strcat(data_string, brake); //Concatenate strings
-
-    //Call function in assembly to store the data
-    data_start(data_string, 0);
+    store(velocity, vel_setpoint, brake_state, dms_state);
 }
 
-LightRail view_data() {
-    LightRail data;
+uint32_t access_velocity() {
+    uint32_t velocity = view_vel();
+    return velocity;
+}
 
-    return data;
+uint32_t access_velocity_setpoint() {
+    uint32_t velocity_setpoint = view_vel_setpoint();
+    return velocity_setpoint;
+}
+
+uint8_t access_brake_state() {
+    uint32_t brake_state = view_brake();
+    return brake_state;
+}
+
+uint8_t access_dms_state() {
+    uint32_t dms_state = view_dms();
+    return dms_state;
 }
