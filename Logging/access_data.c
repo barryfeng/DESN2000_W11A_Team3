@@ -39,3 +39,9 @@ void store_data() {
     //Call function in assembly to store the data
     data_start(data_string, 0);
 }
+
+LightRail view_data() {
+    LightRail data;
+
+    return data;
+}
