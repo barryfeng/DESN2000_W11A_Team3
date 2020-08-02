@@ -13,14 +13,7 @@
  * -- 1/08/2020 --  File created.
  */
 
-#include "master_controller.h"
-extern LightRail light_rail;
-
-extern void store(uint32_t vel, uint32_t vel_setpoint, uint8_t brake, uint8_t dms);
-extern uint32_t view_vel();
-extern uint32_t view_vel_setpoint();
-extern uint8_t view_brake();
-extern uint8_t view_dms();
+#include "access_data.h"
 
 void store_data() {
     uint32_t velocity = light_rail.velocity;

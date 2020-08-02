@@ -21,9 +21,9 @@ int get_prescaler(modifier_t target_modifier) {
     long int ir = T0IR;
 
     run_controller();
-    // lcd here
     touch_screen_press();
     lcd_run();
+    store_data();
 
     T0IR = ir;       // Write back to IR to clear Interrupt Flag
     VICVectAddr = 0x0;    // End of interrupt execution
@@ -41,8 +41,8 @@ void start_master_isr(unsigned int target, modifier_t unit) {
     T0MR0 = target - 1;                             // Zero indexed match
     T0MCR = (1 << 1) | (1 << 0);                    // Interrupt and reset on match
 
-    VICIntSelect &= ~(0x10);                        // Timer 0 selected as IRQ
-    VICIntEnable |= 0x10;                           // Timer 0 interrupt enabled
+    VICIntSelect &= ~(0x1 << 4);                        // Timer 0 selected as IRQ
+    VICIntEnable |= (0x1 << 4);                           // Timer 0 interrupt enabled
     VICVectPriority0 = 1;                           // Timer 0 interrupt priority set to maximum.
     VICVectAddr0 = (unsigned)master_isr_handler;    // Timer 0 interrupt address
 
