@@ -69,7 +69,8 @@ void spi_write(unsigned char data) {
 
     while ((S0SPSR >> 7) == 0);     // Transmit 0x00 on MOSI and wait to read from MISO
     result = S0SPSR;
-
+		(void)result;										// Silence unused variable warning
+	
     FIO0PIN |= (1 << 20);           // Set CS_TP high after SPI transmission complete
 }
 

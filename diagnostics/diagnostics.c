@@ -17,13 +17,12 @@
 extern LightRail light_rail;
 extern uint8_t MMCRDData[MMC_DATA_SIZE];
 
-uint16_t* load_diag_code(void) {
+void load_diag_code(uint16_t diagnostic_code[MAX_DIAGNOSTIC_CODE_SIZE]) {
     uint32_t clr_buf_count, block_num = 0;
-    uint16_t diag_code[MAX_CODE_SIZE];
 
-    if (mmc_init() != 0) { 
+    if (mmc_init() != 0) {
         IOSET0 = SPI_SEL;
-        return 0;
+        return;
     }
 
     for (block_num = 0; block_num < MAX_BLOCK_NUM; block_num++) {
@@ -31,12 +30,10 @@ uint16_t* load_diag_code(void) {
 
         // Copy MMCRDATA to diag_code and clear read buffer after MMC read.
         for (clr_buf_count = 0; clr_buf_count < MMC_DATA_SIZE; clr_buf_count++)
-            diag_code[MMC_DATA_SIZE * block_num + clr_buf_count] = 
+            diagnostic_code[MMC_DATA_SIZE * block_num + clr_buf_count] =
                 MMCRDData[clr_buf_count];
             MMCRDData[clr_buf_count] = 0x00;
     }
-
-    return diag_code;
 }
 
 /**
