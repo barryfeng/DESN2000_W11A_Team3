@@ -138,7 +138,7 @@
             <RestoreToolbox>1</RestoreToolbox>
           </Target>
           <RunDebugAfterBuild>0</RunDebugAfterBuild>
-          <TargetSelection>-1</TargetSelection>
+          <TargetSelection>0</TargetSelection>
           <SimDlls>
             <CpuDll></CpuDll>
             <CpuDllArguments></CpuDllArguments>
@@ -152,7 +152,7 @@
             <PeripheralDll></PeripheralDll>
             <PeripheralDllArguments></PeripheralDllArguments>
             <InitializationFile></InitializationFile>
-            <Driver></Driver>
+            <Driver>BIN\UL2ARM.DLL</Driver>
           </TargetDlls>
         </DebugOption>
         <Utilities>
@@ -348,7 +348,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>..\motion_control;..\system;..\..\DESN2000_W11A_Team3</IncludePath>
+              <IncludePath>..\motion_control;..\system;..\..\DESN2000_W11A_Team3;..\diagnostics;..\logging;..\user_interface</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -367,7 +367,7 @@
             </VariousControls>
           </Aads>
           <LDads>
-            <umfTarg>0</umfTarg>
+            <umfTarg>1</umfTarg>
             <Ropi>0</Ropi>
             <Rwpi>0</Rwpi>
             <noStLib>0</noStLib>
@@ -434,6 +434,34 @@
               <FilePath>..\system\system_timer.c</FilePath>
             </File>
           </Files>
+        </Group>
+        <Group>
+          <GroupName>logging</GroupName>
+          <Files>
+            <File>
+              <FileName>access_data.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\logging\access_data.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>diagnostics</GroupName>
+          <Files>
+            <File>
+              <FileName>diagnostics.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\diagnostics\diagnostics.c</FilePath>
+            </File>
+            <File>
+              <FileName>SPI_MMC.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\diagnostics\SPI_MMC.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>user_interface</GroupName>
         </Group>
       </Groups>
     </Target>

@@ -29,7 +29,8 @@ LightRail light_rail;
  * initialisation section (lr_init). 
  */
 int main(void) {
-
+	uint16_t diagnostic_code[MAX_DIAGNOSTIC_CODE_SIZE];
+	
     lr_init();
     hw_init();
 
@@ -45,7 +46,8 @@ int main(void) {
             if (check_diag_conditions()) {
                 stop_master_isr();
 
-                run_diag_code(load_diag_code());
+				load_diag_code(diagnostic_code);
+                run_diag_code(diagnostic_code);
             }
         }
     }
@@ -62,7 +64,8 @@ void hw_init(void) {
     init_adc();
     init_pwm();
     init_spi();
-    lcd_start();
+    init_lcd();
+    init_ultrasonic();
 }
 
 void lr_init(void) {

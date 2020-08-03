@@ -15,7 +15,9 @@ void init_pll(void);
 void init_adc(void);
 void init_pwm(void);
 void init_spi(void);
+void init_ultrasonic(void);
 void spi_write(unsigned char data);
 uint8_t spi_read(void);
+
 
 #endif

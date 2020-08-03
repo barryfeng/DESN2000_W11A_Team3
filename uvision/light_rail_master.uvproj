@@ -348,7 +348,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>..\motion_control;..\system;..\..\DESN2000_W11A_Team3</IncludePath>
+              <IncludePath>..\motion_control;..\system;..\..\DESN2000_W11A_Team3;..\diagnostics;..\logging;..\user_interface;..\user_interface\LCD</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -434,6 +434,49 @@
               <FilePath>..\system\system_timer.c</FilePath>
             </File>
           </Files>
+        </Group>
+        <Group>
+          <GroupName>logging</GroupName>
+          <Files>
+            <File>
+              <FileName>access_data.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\logging\access_data.c</FilePath>
+            </File>
+            <File>
+              <FileName>data_management.s</FileName>
+              <FileType>2</FileType>
+              <FilePath>..\logging\data_management.s</FilePath>
+            </File>
+            <File>
+              <FileName>exception_vector_table.s</FileName>
+              <FileType>2</FileType>
+              <FilePath>..\logging\exception_vector_table.s</FilePath>
+            </File>
+            <File>
+              <FileName>swi_handler.s</FileName>
+              <FileType>2</FileType>
+              <FilePath>..\logging\swi_handler.s</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>diagnostics</GroupName>
+          <Files>
+            <File>
+              <FileName>diagnostics.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\diagnostics\diagnostics.c</FilePath>
+            </File>
+            <File>
+              <FileName>SPI_MMC.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\diagnostics\SPI_MMC.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>user_interface</GroupName>
         </Group>
       </Groups>
     </Target>

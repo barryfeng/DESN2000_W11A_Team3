@@ -61,6 +61,17 @@ void init_spi(void) {
     S0SPCCR = 0x24;
 }
 
+void init_ultrasonic(void) {
+    init_timer2('u');
+
+    PINSEL6 &= ~(0x3 << 0);
+    PINSEL6 &= ~(0x3 << 2);
+    PINSEL6 &= ~(0x3 << 4);
+    PINSEL6 &= ~(0x3 << 6);
+
+    FIO3DIR |= ULTRAS_ALL;
+}
+
 void spi_write(unsigned char data) {
     char result;
 
@@ -69,7 +80,8 @@ void spi_write(unsigned char data) {
 
     while ((S0SPSR >> 7) == 0);     // Transmit 0x00 on MOSI and wait to read from MISO
     result = S0SPSR;
-
+		(void)result;               // Silence unused variable warning
+	
     FIO0PIN |= (1 << 20);           // Set CS_TP high after SPI transmission complete
 }
 

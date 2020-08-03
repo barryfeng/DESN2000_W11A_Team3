@@ -11,6 +11,7 @@
 #include "motion_controller.h"
 #include "./system/system_init.h"
 #include "diagnostics/diagnostics.h"
+#include "lcd_main.h"
 
 #define ISR_ACTIVE 1
 #define ISR_INACTIVE 0

@@ -25,7 +25,27 @@
 #define DRIVE_ACTIVE 1
 #define DRIVE_INACTIVE 0
 
+#define ULTRAS_TRIGGER 0x0
+#define ULTRAS_1_ECHO 0x1
+#define ULTRAS_2_ECHO 0x2
+#define ULTRAS_3_ECHO 0x3
+#define ULTRAS_ALL 0xF
+#define ULTRAS_SETUP_TIME 2
+#define ULTRAS_TRIG_TIME 10
+#define DIVIDE_3 0x55555556
+#define Q_SHIFT 16
+
+/**
+ * Set minimum obsctacle distance at 4m for assistive-braking. The defined
+ * value is obtained using:
+ *      (4 * 2 / 0.0343) << 16
+ * The multiply 2, divide 0.0343 scales the 4 meters for the speed of sound
+ * and for the distance to the obstacle (and not back).
+ */
+#define MIN_OBSTACLE_DIST 0xE93C74
+
 static uint32_t get_voltage(void);
+static uint32_t get_ultrasonic_data(void);
 
 static void set_pwm(int);
 

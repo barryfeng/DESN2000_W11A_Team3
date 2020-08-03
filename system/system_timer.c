@@ -1,5 +1,7 @@
 #include <system_timer.h>
 
+extern LightRail light_rail;
+
 int get_prescaler(modifier_t target_modifier) {
     int prescale = 0;
     
@@ -21,9 +23,9 @@ int get_prescaler(modifier_t target_modifier) {
     long int ir = T0IR;
 
     run_controller();
-    // lcd here
     touch_screen_press();
     lcd_run();
+    store_data();
 
     T0IR = ir;       // Write back to IR to clear Interrupt Flag
     VICVectAddr = 0x0;    // End of interrupt execution
@@ -41,8 +43,8 @@ void start_master_isr(unsigned int target, modifier_t unit) {
     T0MR0 = target - 1;                             // Zero indexed match
     T0MCR = (1 << 1) | (1 << 0);                    // Interrupt and reset on match
 
-    VICIntSelect &= ~(0x10);                        // Timer 0 selected as IRQ
-    VICIntEnable |= 0x10;                           // Timer 0 interrupt enabled
+    VICIntSelect &= ~(0x1 << 4);                        // Timer 0 selected as IRQ
+    VICIntEnable |= (0x1 << 4);                           // Timer 0 interrupt enabled
     VICVectPriority0 = 1;                           // Timer 0 interrupt priority set to maximum.
     VICVectAddr0 = (unsigned)master_isr_handler;    // Timer 0 interrupt address
 
@@ -51,10 +53,14 @@ void start_master_isr(unsigned int target, modifier_t unit) {
     while (T0TC != T0MR0);                          // Wait for timer to match
 
     T0TCR = 0x02;                                   // Reset timer counter
+
+    light_rail.master_tmr_state = 1;
 }
 
 void stop_master_isr(void) {
     T0TCR = 0x2;                                    // Reset and disable timer counter
+    
+    light_rail.master_tmr_state = 0;
 }
 
 /**
@@ -62,19 +68,34 @@ void stop_master_isr(void) {
  * */
 
 void init_timer2(modifier_t unit) {
-    T2CTCR = 0x00;               // Set timer 0 to timer mode
+    T2CTCR = 0x0;               // Set timer 0 to timer mode
     T2PR = get_prescaler(unit);  // Set prescaler (default seconds)
-    T2TCR = 0x02;                // Reset timer0
+    T2TCR = 0x2;                // Reset timer0
 }
 
 void delay_timer2(unsigned int target) {
     T2MR0 = target - 1;  // Zero indexed match
     T2MCR = (1 << 1);    // Reset on match
 
-    T2TCR = 0x01;  // Start timer
+    T2TCR = 0x1;  // Start timer
     while (T2TC != T2MR0);  // Wait for timer to match
 
-    T2TCR = 0x02;  // Reset timer counter
+    T2TCR = 0x2;  // Reset and disable timer counter
+}
+
+void start_timer2_stopwatch(void) {
+    T2TCR = 0x1;
+}
+
+uint32_t split_timer2_stopwatch(void) {
+    return (uint32_t) T2TC;
+}
+
+uint32_t reset_timer2_stopwatch(void) {
+    uint32_t count = T2TC;
+    T2TCR = 0x2;  // Reset and disable timer counter
+
+    return count;
 }
 
 /**
