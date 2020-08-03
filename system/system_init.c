@@ -1,20 +1,45 @@
+/**
+ * FILENAME :           system_init.c
+ * DESCRIPTION :        Light rail system intialisation 
+ * 
+ * NOTES :
+ * 
+ * AUTHOR :             Barry Feng   
+ * 
+ * START DATE :         20 June 20
+ * 
+ * CHANGES :
+ * -- 20/06/2020 --     File created.
+ */
+
 #include "system_init.h"
 
-void init_pll(void) {  // Initialise PLL for clock generation
-    CLKSRCSEL = 0x00;  // Set clock to internal RC oscillator.
-    PLLCON = 0x01;     // Enable PLLE, Disable PLLC
-    PLLCFG = 0x0003B;  // Set M = 59, N = 1 for PLL multiplier
+/**
+ * The phaselocked loop generates a 60MHz clock for the light rail system.
+ * The configuration steps are below.
+ */
+void init_pll(void) {
+    // Set clock to internal RC oscillator.
+    CLKSRCSEL = 0x00;
 
-    PLLFEED = 0xAA;  // Pass PLLFEED feed sequence for PLLCON and PLLCFG registers to take effect
+    // Enable PLLE, Disable PLLC
+    PLLCON = 0x01;
+
+    // Set M = 59, N = 1 for PLL multiplier
+    PLLCFG = 0x0003B;
+
+    // Pass PLLFEED feed sequence for PLLCON/PLLCFG registers to take effect
+    PLLFEED = 0xAA;  
     PLLFEED = 0x55;
 
     // Wait for the PLL to achieve lock by monitoring the PLOCK bit in the PLLSTAT register.
     while (!(PLLSTAT & PLOCK));  
 
     PLLCON = 0x03;
-    PLLFEED = 0xAA;  // Pass PLLFEED feed sequence for PLLCON and PLLCFG registers to take effect
+
+    // Pass PLLFEED feed sequence for PLLCON/PLLCFG registers to take effect
+    PLLFEED = 0xAA;  
     PLLFEED = 0x55;
-    // PCLKSEL0 = 0x01;  // Supply CCLK to PCLK Watchdog
 }
 
 // Set ADC out to P0.23
