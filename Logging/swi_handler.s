@@ -32,7 +32,7 @@ SWI_JUMP_TABLE													; jump table
 
 ; NOTE: registers R0-R3 contain the data to be stored
 
-SWI_store       STMFD R6, {R0-R3}!                              ; load data into memory and update base register after transfer
+SWI_store       STMFD R6!, {R0-R3}                              ; load data into memory and update base register after transfer
 				
 				B SWI_EXIT
 
