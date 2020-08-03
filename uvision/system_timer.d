@@ -21,6 +21,7 @@ system_timer.o: ..\motion_control\../system/system_init.h
 system_timer.o: ..\..\DESN2000_W11A_Team3\diagnostics/diagnostics.h
 system_timer.o: ..\diagnostics\SPI_MMC.h
 system_timer.o: ..\diagnostics\diagnostics.h
+system_timer.o: ..\user_interface\LCD\lcd_main.h
 system_timer.o: ..\..\DESN2000_W11A_Team3\user_interface/touchscreen/touch_screen_read.h
 system_timer.o: ..\..\DESN2000_W11A_Team3\user_interface/touchscreen/button_press.h
 system_timer.o: ..\..\DESN2000_W11A_Team3\user_interface/touchscreen/touch.h

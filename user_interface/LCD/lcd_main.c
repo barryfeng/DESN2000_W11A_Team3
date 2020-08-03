@@ -1,6 +1,8 @@
 #include "lcd_main.h"
 
-void lcd_start() {	//DO NOT REMOVE FROM THIS FILE
+extern LightRail light_rail;
+
+void init_lcd() {	//DO NOT REMOVE FROM THIS FILE
 	//Setup external SDRAM. Used for Frame Buffer
 	sdramInit();
 	
@@ -23,25 +25,24 @@ void lcd_start() {	//DO NOT REMOVE FROM THIS FILE
 
 void lcd_run() {	//DO NOT REMOVE FROM THIS FILE
 	int vel_ms = light_rail.velocity >> 16;
-	int vel_kmh = ceil(vel_ms/3.6);
-	int dms_state = light_rail.dms;
-	int brake_state = light_rail.brake;
+	int vel_kmh = vel_ms * 3.6;
 
 	char vel_str[100];
 	//INT TO STRING (returns integer in base 10)
 	itoa(vel_kmh, vel_str, 10);
 
 	//LCD BACKLIGHT
-	if (dms_state == ON || (vel_kmh == STOP && brake_state == APPLY)) {
-		lcd_backlight_off();
+	if (light_rail.dms_state == ON 
+		|| (vel_kmh == STOP && light_rail.brake_state == APPLY)) {
+			lcd_backlight_off();
 	} else {
 		lcd_backlight_on();
 	}
 
 	//DMS
-	if (dms_state == OFF) {
+	if (light_rail.dms_state == OFF) {
 		constant_dms_off();
-	} else if (dms_state == ON) {
+	} else if (light_rail.dms_state == ON) {
 		constant_dms_on();
 	}
 

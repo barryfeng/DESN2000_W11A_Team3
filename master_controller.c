@@ -64,7 +64,7 @@ void hw_init(void) {
     init_adc();
     init_pwm();
     init_spi();
-    lcd_start();
+    init_lcd();
 }
 
 void lr_init(void) {

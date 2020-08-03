@@ -25,3 +25,4 @@ system_init.o: ..\motion_control\fixed_point_pid.h
 system_init.o: ..\..\DESN2000_W11A_Team3\diagnostics/diagnostics.h
 system_init.o: ..\diagnostics\SPI_MMC.h
 system_init.o: ..\diagnostics\diagnostics.h
+system_init.o: ..\user_interface\LCD\lcd_main.h

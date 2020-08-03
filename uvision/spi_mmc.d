@@ -25,3 +25,4 @@ spi_mmc.o: ..\..\DESN2000_W11A_Team3\logging/access_data.h
 spi_mmc.o: ..\motion_control\fixed_point_pid.h
 spi_mmc.o: ..\..\DESN2000_W11A_Team3\diagnostics/diagnostics.h
 spi_mmc.o: ..\diagnostics\SPI_MMC.h
+spi_mmc.o: ..\user_interface\LCD\lcd_main.h

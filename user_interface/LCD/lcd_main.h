@@ -18,7 +18,7 @@
 #define STOP 0
 #define MAX_VEL 50
 
-void lcd_start(void);
+void init_lcd(void);
 void lcd_run(void);
 
 void constant_borders(void);
