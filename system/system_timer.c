@@ -6,7 +6,7 @@ int get_prescaler(modifier_t target_modifier) {
     int prescale = 0;
     
     if (target_modifier == 'm') {
-        prescale = CCLK / MODIFIER_MILLI;q
+        prescale = CCLK / MODIFIER_MILLI;
     } else if (target_modifier == 'u') {
         prescale = CCLK / MODIFIER_MICRO;
     } else if (target_modifier == 's') {
