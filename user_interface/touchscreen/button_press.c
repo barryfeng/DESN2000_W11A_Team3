@@ -73,14 +73,3 @@ int inside_sd(int point_x, int point_y) {
 	return 0;
 }
 
-// //Draw a new bubble
-// void newbubble() {
-// 	// place and size a random bubble so it does not escape the screen
-// 	bubble_r = 10 + (rand() % 30);
-// 	bubble_x = (bubble_r*2) + (rand() % (240 - bubble_r*4));
-// 	bubble_y = (bubble_r*2) + (rand() % (320 - bubble_r*4));
-	
-// 	// draw the bubble on the screen
-// 	lcd_fillScreen(BLUE_BG);	
-// 	lcd_fillcircle(bubble_x, bubble_y, bubble_r, PURPLE);
-// }
