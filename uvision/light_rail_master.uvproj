@@ -348,7 +348,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>..\motion_control;..\system;..\..\DESN2000_W11A_Team3</IncludePath>
+              <IncludePath>..\motion_control;..\system;..\..\DESN2000_W11A_Team3;..\diagnostics;..\logging;..\user_interface</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -434,6 +434,34 @@
               <FilePath>..\system\system_timer.c</FilePath>
             </File>
           </Files>
+        </Group>
+        <Group>
+          <GroupName>logging</GroupName>
+          <Files>
+            <File>
+              <FileName>access_data.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\logging\access_data.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>diagnostics</GroupName>
+          <Files>
+            <File>
+              <FileName>diagnostics.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\diagnostics\diagnostics.c</FilePath>
+            </File>
+            <File>
+              <FileName>SPI_MMC.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\diagnostics\SPI_MMC.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>user_interface</GroupName>
         </Group>
       </Groups>
     </Target>

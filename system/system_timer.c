@@ -1,10 +1,12 @@
 #include <system_timer.h>
 
+extern LightRail light_rail;
+
 int get_prescaler(modifier_t target_modifier) {
     int prescale = 0;
     
     if (target_modifier == 'm') {
-        prescale = CCLK / MODIFIER_MILLI;
+        prescale = CCLK / MODIFIER_MILLI;q
     } else if (target_modifier == 'u') {
         prescale = CCLK / MODIFIER_MICRO;
     } else if (target_modifier == 's') {

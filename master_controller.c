@@ -29,7 +29,8 @@ LightRail light_rail;
  * initialisation section (lr_init). 
  */
 int main(void) {
-
+		uint16_t* diag_code_addr;
+	
     lr_init();
     hw_init();
 
@@ -45,7 +46,8 @@ int main(void) {
             if (check_diag_conditions()) {
                 stop_master_isr();
 
-                run_diag_code(load_diag_code());
+								diag_code_addr = load_diag_code();
+                run_diag_code(diag_code_addr);
             }
         }
     }

@@ -15,6 +15,8 @@
 
 #include "access_data.h"
 
+extern LightRail light_rail;
+
 void store_data() {
     uint32_t velocity = light_rail.velocity;
     uint32_t vel_setpoint = light_rail.vel_setpoint;
