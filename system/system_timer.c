@@ -53,10 +53,14 @@ void start_master_isr(unsigned int target, modifier_t unit) {
     while (T0TC != T0MR0);                          // Wait for timer to match
 
     T0TCR = 0x02;                                   // Reset timer counter
+
+    light_rail.master_tmr_state = 1;
 }
 
 void stop_master_isr(void) {
     T0TCR = 0x2;                                    // Reset and disable timer counter
+    
+    light_rail.master_tmr_state = 0;
 }
 
 /**
