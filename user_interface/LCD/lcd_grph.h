@@ -76,6 +76,20 @@ void lcd_fontColor(lcd_color_t foreground, lcd_color_t background);
 
 void lcd_picture(unsigned short x, unsigned short y, unsigned short width, unsigned short height, unsigned short *pPicture);
 
+// CUSTOM
+
+unsigned char lcd_putVelChar(unsigned short x, unsigned short y, unsigned char ch);
+
+void lcd_putVelString(unsigned short x, unsigned short y, unsigned char *pStr);
+
+unsigned char lcd_putVelLabelChar(unsigned short x, unsigned short y, unsigned char ch);
+
+void lcd_putVelLabelString(unsigned short x, unsigned short y, unsigned char *pStr);
+
+unsigned char lcd_putBrakeLabelChar(unsigned short x, unsigned short y, unsigned char ch);
+
+void lcd_putBrakeLabelString(unsigned short x, unsigned short y, unsigned char *pStr);
+
 
 
 
