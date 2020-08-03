@@ -939,7 +939,7 @@ lcd_putVelChar(unsigned short x,
   ch -= 0x20;
   for(i=0; i<66; i++)
   {
-    data = fontLarge[ch][i];
+    data = fontVel[ch][i];
     for(j=0; j<55; j++)
     {
       if( (data&font_mask[j])==0 )
@@ -981,11 +981,181 @@ lcd_putVelString(unsigned short x,
 	  {
 		  break;
 	  }
-	  if( lcd_putLargeChar(x, y, *pStr++) == 0 )
+	  if( lcd_putVelChar(x, y, *pStr++) == 0 )
 	  {
   		break;
   	}
   	x += 55;
+  }
+  return;
+}
+
+/*****************************************************************************
+ *
+ * Description:
+ *    Draw a character on the display. (fontVelLabel)
+ *
+ * Params:
+ *    [in] x - x value for the character
+ *    [in] y - y value for the character
+ *    [in] ch - the character
+ *
+ ****************************************************************************/
+unsigned char 
+lcd_putVelLabelChar(unsigned short x, 
+            unsigned short y, 
+            unsigned char ch)
+{  
+  unsigned char data = 0;
+  unsigned char i = 0, j = 0;
+
+  lcd_color_t color = BLACK;
+
+  if((x >= (DISPLAY_WIDTH - 8)) || (y >= (DISPLAY_HEIGHT - 8)) )
+  {
+    return( 0 );
+  }
+
+  if( (ch < 0x20) || (ch > 0x7f) )
+  {
+    ch = 0x20;		/* unknown character will be set to blank */
+  }
+
+  ch -= 0x20;
+  for(i=0; i<19; i++)
+  {
+    data = fontVelLabel[ch][i];
+    for(j=0; j<18; j++)
+    {
+      if( (data&font_mask[j])==0 )
+      {  
+        color = backgroundColor;
+      }
+      else
+      {
+        color = foregroundColor;
+      }
+      lcd_point(x, y, color);       
+      x++;
+    }   
+    y++;
+    x -= 18;
+  }
+  return( 1 );
+}
+
+/*****************************************************************************
+ *
+ * Description:
+ *    Draw a string on the display. (fontVelLabel)
+ *
+ * Params:
+ *    [in] x - x value for the string
+ *    [in] y - y value for the string
+ *    [in] pStr - the string
+ *
+ ****************************************************************************/
+void 
+lcd_putVelLabelString(unsigned short x, 
+              unsigned short y, 
+              unsigned char *pStr)
+{
+  while(1)
+  {      
+	  if( (*pStr)=='\0' )
+	  {
+		  break;
+	  }
+	  if( lcd_putVelLabelChar(x, y, *pStr++) == 0 )
+	  {
+  		break;
+  	}
+  	x += 18;
+  }
+  return;
+}
+
+/*****************************************************************************
+ *
+ * Description:
+ *    Draw a character on the display. (fontBrakeLabel)
+ *
+ * Params:
+ *    [in] x - x value for the character
+ *    [in] y - y value for the character
+ *    [in] ch - the character
+ *
+ ****************************************************************************/
+unsigned char 
+lcd_putBrakeLabelChar(unsigned short x, 
+            unsigned short y, 
+            unsigned char ch)
+{  
+  unsigned char data = 0;
+  unsigned char i = 0, j = 0;
+
+  lcd_color_t color = BLACK;
+
+  if((x >= (DISPLAY_WIDTH - 8)) || (y >= (DISPLAY_HEIGHT - 8)) )
+  {
+    return( 0 );
+  }
+
+  if( (ch < 0x20) || (ch > 0x7f) )
+  {
+    ch = 0x20;		/* unknown character will be set to blank */
+  }
+
+  ch -= 0x20;
+  for(i=0; i<12; i++)
+  {
+    data = fontBrakeLabel[ch][i];
+    for(j=0; j<10; j++)
+    {
+      if( (data&font_mask[j])==0 )
+      {  
+        color = backgroundColor;
+      }
+      else
+      {
+        color = foregroundColor;
+      }
+      lcd_point(x, y, color);       
+      x++;
+    }   
+    y++;
+    x -= 10;
+  }
+  return( 1 );
+}
+
+/*****************************************************************************
+ *
+ * Description:
+ *    Draw a string on the display. (fontBrakeLabel)
+ *
+ * Params:
+ *    [in] x - x value for the string
+ *    [in] y - y value for the string
+ *    [in] pStr - the string
+ *
+ ****************************************************************************/
+void 
+lcd_putBrakeLabelString(unsigned short x, 
+              unsigned short y, 
+              unsigned char *pStr)
+{
+  while(1)
+  {      
+	  if( (*pStr)=='\0' )
+	  {
+		  break;
+	  }
+	  if( lcd_putBrakeLabelChar(x, y, *pStr++) == 0 )
+	  {
+  		break;
+  	}
+  	x += 10;
   }
   return;
 }
