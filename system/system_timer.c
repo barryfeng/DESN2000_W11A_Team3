@@ -68,19 +68,34 @@ void stop_master_isr(void) {
  * */
 
 void init_timer2(modifier_t unit) {
-    T2CTCR = 0x00;               // Set timer 0 to timer mode
+    T2CTCR = 0x0;               // Set timer 0 to timer mode
     T2PR = get_prescaler(unit);  // Set prescaler (default seconds)
-    T2TCR = 0x02;                // Reset timer0
+    T2TCR = 0x2;                // Reset timer0
 }
 
 void delay_timer2(unsigned int target) {
     T2MR0 = target - 1;  // Zero indexed match
     T2MCR = (1 << 1);    // Reset on match
 
-    T2TCR = 0x01;  // Start timer
+    T2TCR = 0x1;  // Start timer
     while (T2TC != T2MR0);  // Wait for timer to match
 
-    T2TCR = 0x02;  // Reset timer counter
+    T2TCR = 0x2;  // Reset and disable timer counter
+}
+
+void start_timer2_stopwatch(void) {
+    T2TCR = 0x1;
+}
+
+uint32_t split_timer2_stopwatch(void) {
+    return (uint32_t) T2TC;
+}
+
+uint32_t reset_timer2_stopwatch(void) {
+    uint32_t count = T2TC;
+    T2TCR = 0x2;  // Reset and disable timer counter
+
+    return count;
 }
 
 /**

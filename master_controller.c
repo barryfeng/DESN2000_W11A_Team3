@@ -65,6 +65,7 @@ void hw_init(void) {
     init_pwm();
     init_spi();
     init_lcd();
+    init_ultrasonic();
 }
 
 void lr_init(void) {
