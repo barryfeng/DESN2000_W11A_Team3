@@ -32,8 +32,7 @@ void lcd_run() {	//DO NOT REMOVE FROM THIS FILE
 	itoa(vel_kmh, vel_str, 10);
 
 	//LCD BACKLIGHT
-	if (light_rail.dms_state == ON 
-		|| (vel_kmh == STOP && light_rail.brake_state == APPLY)) {
+	if (vel_kmh == STOP && light_rail.brake_state == APPLY) {
 			lcd_backlight_off();
 	} else {
 		lcd_backlight_on();
