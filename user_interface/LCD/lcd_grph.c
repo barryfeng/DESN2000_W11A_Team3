@@ -20,7 +20,7 @@
 #include <string.h>
 
 //EXTRA #includes
-#include "fontLarge.h"
+#include "fontVel.h"
 #include "fontVelLabel.h"
 #include "fontBrakeLabel.h"
 
@@ -760,40 +760,6 @@ lcd_putChar(unsigned short x,
   return( 1 );
 }
 
-unsigned char putBigChar(unsigned short x, unsigned short y, unsigned char ch) {
-    unsigned char data = 0;
-    unsigned char i = 0, j = 0;
-
-    unsigned short disp_width_offset_x = 41;
-    unsigned short disp_width_offset_y = 71;
-
-    lcd_color_t color = BLACK;
-
-    if ((x >= (DISPLAY_WIDTH - disp_width_offset_x)) || (y >= (DISPLAY_HEIGHT - disp_width_offset_y))) {
-        return (0);
-    }
-
-    if ((ch < 0x20) || (ch > 0x7f)) {
-        ch = 0x20; /* unknown character will be set to blank */
-    }
-
-    ch -= 0x20;
-    for (i = 0; i < disp_width_offset_y; i++) {
-        data = font40x70[ch][i];
-        for (j = 0; j < 6; j++) {
-            if ((data & font_mask[j]) == 0) {
-                color = backgroundColor;
-            } else {
-                color = foregroundColor;
-            }
-            lcd_point(x, y, color);
-            x++;
-        }
-        y++;
-        x -= 6;
-    }
-    return (1);
-}
 /*****************************************************************************
  *
  * Description:
@@ -942,7 +908,7 @@ void HSVtoRGB(int *r, int *g,int *b,int h,int s,int v )
 /*****************************************************************************
  *
  * Description:
- *    Draw a character on the display. (fontLarge)
+ *    Draw a character on the display. (fontVel)
  *
  * Params:
  *    [in] x - x value for the character
@@ -951,7 +917,7 @@ void HSVtoRGB(int *r, int *g,int *b,int h,int s,int v )
  *
  ****************************************************************************/
 unsigned char 
-lcd_putLargeChar(unsigned short x, 
+lcd_putVelChar(unsigned short x, 
             unsigned short y, 
             unsigned char ch)
 {  
@@ -996,7 +962,7 @@ lcd_putLargeChar(unsigned short x,
 /*****************************************************************************
  *
  * Description:
- *    Draw a string on the display.
+ *    Draw a string on the display. (fontVel)
  *
  * Params:
  *    [in] x - x value for the string
@@ -1005,7 +971,7 @@ lcd_putLargeChar(unsigned short x,
  *
  ****************************************************************************/
 void 
-lcd_putLargeString(unsigned short x, 
+lcd_putVelString(unsigned short x, 
               unsigned short y, 
               unsigned char *pStr)
 {
