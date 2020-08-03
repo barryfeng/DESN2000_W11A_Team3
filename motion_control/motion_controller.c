@@ -17,7 +17,7 @@
 extern LightRail light_rail;
 
 /**
- * This function samples the ADC output and reads the voltage feedback
+ * This function samples the ADC0 output and reads the voltage feedback
  * from the motor. The ADC is started using AD0CR and the result is obtained
  * using a bitshift and bitmask.
  * 
@@ -40,6 +40,50 @@ static uint32_t get_voltage(void) {
     result = (result & 0x000003FF);
 
     return ((0x34DA * result) >> (ADC_SHIFT - VEL_SHIFT));
+}
+
+/**
+ * This function samples the output of three standard HC-SR04 ultrasonic 
+ * sensors and uses this as an input to the assistive braking capability.
+ * 
+ * PINOUT --
+ * TRIGGER PINS -- All three HC-SR04 can be connected to P3.0 GPIO.
+ * ECHO PINS    -- #1 HC-SR04 connected to P3.1 GPIO.
+ *              -- #2 HC-SR04 connected to P3.2 GPIO.
+ *              -- #3 HC-SR04 connected to P3.3 GPIO.
+ * 
+ * RETURNS --
+ *  The function will return an adjusted_distance in Q16.0 notation, for
+ *  ease of calculation, the following scaling factor has been applied.
+ *      DISTANCE = (RETURN >> 16 * 0.034/2) (0.34 for speed of sound in air).
+ */
+static uint32_t get_ultrasonic_data(void) {
+    uint32_t duration1 = 0, duration2 = 0, duration3 = 0;
+
+    FIO3PIN &= ~(ULTRAS_ALL);
+    delay_timer2(ULTRAS_SETUP_TIME);
+
+    FIO3PIN |= 0x1 << ULTRAS_TRIGGER;
+    delay_timer2(ULTRAS_TRIG_TIME);
+    FIO3PIN &= ~(0x1 << ULTRAS_TRIGGER);
+
+    start_timer2_stopwatch();
+    while (
+        ((FIO3PIN >> ULTRAS_1_ECHO) & 1) || 
+        ((FIO3PIN >> ULTRAS_2_ECHO) & 1) ||
+        ((FIO3PIN >> ULTRAS_1_ECHO) & 1)) {
+        if (!((FIO3PIN >> ULTRAS_1_ECHO) & 1)) {
+            duration1 = split_timer2_stopwatch();
+        } else if (!((FIO3PIN >> ULTRAS_2_ECHO) & 1)) {
+            duration2 = split_timer2_stopwatch();
+        } else if (!((FIO3PIN >> ULTRAS_3_ECHO) & 1)) {
+            duration3 = split_timer2_stopwatch();
+        }
+    }
+
+    reset_timer2_stopwatch();
+
+    return ((duration1 + duration2 + duration3) * DIVIDE_3) << Q_SHIFT;
 }
 
 /**
@@ -73,6 +117,10 @@ void run_controller(void) {
 
     if (!pi_controller.initialised) {
         pi_controller = init_controller(kP, kI);
+    }
+
+    if (get_ultrasonic_data() <= MIN_OBSTACLE_DIST) {
+        set_brake();
     }
 
     update_dms_state(dms_state, mem_dms_state);
@@ -128,6 +176,7 @@ static void update_brake_state(void) {
  */
 static void set_brake(void) {
     light_rail.vel_setpoint = 0;
+    light_rail.brake_state = 1;
     spi_write(BRAKE_ACTIVE);
 }
 
@@ -136,6 +185,7 @@ static void set_brake(void) {
  * pin LOW.
  */
 static void release_brake(void) {
+    light_rail.brake_state = 0;
     spi_write(BRAKE_INACTIVE);
 }
 
