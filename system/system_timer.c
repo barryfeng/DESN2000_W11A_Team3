@@ -1,3 +1,17 @@
+/**
+ * FILENAME :           system_timer.c
+ * DESCRIPTION :        Light rail timer intialisation 
+ * 
+ * NOTES :
+ * 
+ * AUTHOR :             Barry Feng   
+ * 
+ * START DATE :         20 June 20
+ * 
+ * CHANGES :
+ * -- 20/06/2020 --     File created.
+ */
+
 #include <system_timer.h>
 
 extern LightRail light_rail;

@@ -27,10 +27,13 @@ IRQ_Addr        DCD     IRQ_Handler
 FIQ_Addr        DCD     FIQ_Handler
 
 Undef_Handler   B       Undef_Handler			; Currently an infinite loop
-				IMPORT  SWI_Handler				; Currently an infinite loop
+
+				IMPORT  SWI_Handler				; handler for software interrupt
+
 PAbt_Handler    B       PAbt_Handler			; Currently an infinite loop
 DAbt_Handler    B       DAbt_Handler			; Currently an infinite loop
 IRQ_Handler		B		IRQ_Handler				; Currently an infinite loop
 FIQ_Handler     B       FIQ_Handler				; Currently an infinite loop
+Reset_Handler   B       Reset_Handler           ; Currently an infinite loop
 
 				END
