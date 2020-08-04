@@ -1,14 +1,13 @@
 // "0-9"
 
-#include "lpc24xx.h"
-#include "font_macro.h"
+#include "fontVel.h"
 
 /******************************************************************************
  * Global variables
  *****************************************************************************/
 
 /* X*66 */
-const unsigned char fontVel[][66] = 
+const uint64_t fontVel[][66] = 
 {
 // "0"
     {

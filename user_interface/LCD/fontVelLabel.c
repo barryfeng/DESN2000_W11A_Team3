@@ -1,14 +1,13 @@
 // "KM/H"
 
-#include "lpc24xx.h"
-#include "font_macro.h"
+#include "fontVelLabel.h"
 
 /******************************************************************************
  * Global variables
  *****************************************************************************/
 
 /* X*_9 */
-const unsigned char fontVelLabel[][19] = 
+const uint32_t fontVelLabel[][19] = 
 {
 // "k"
     {

@@ -109,7 +109,7 @@ sdramInit(void)
     __asm("nop");
     
   //Set correct refresh period
-  EMC_DYN_RFSH = (unsigned int)(Fcclk / 250 / 8192) + 1;
+  EMC_DYN_RFSH = (unsigned int)(60000000 / 250 / 8192) + 1;
     
   //Send command: MODE
   EMC_DYN_CTRL = 0x00000083;

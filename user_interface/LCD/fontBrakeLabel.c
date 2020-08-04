@@ -1,14 +1,13 @@
 // "BRAKE"
 
-#include "lpc24xx.h"
-#include "font_macro.h"
+#include "fontBrakeLabel.h"
 
 /******************************************************************************
  * Global variables
  *****************************************************************************/
 
 /* X*12 */
-const unsigned char fontBrakeLabel[][12] = 
+const uint16_t fontBrakeLabel[][12] = 
 {
 // "B"
     {
