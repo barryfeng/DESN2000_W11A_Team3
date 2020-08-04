@@ -15,7 +15,7 @@
  * Includes
  *****************************************************************************/
 
-#include "lpc24xx.h"
+#include "LPC24XX.h"
 #include "lcd_hw.h"
 #include "../delay.h"
 
@@ -325,7 +325,7 @@ lcd_ctrl_init(tLcdParams* pParams)
   
   // clear palette
   
-  pPal = (unsigned int*) LCD_PAL_ADDR;
+  pPal = (unsigned int*) LCD_PAL;
   for(i = 0; i < 128; i++)
   {
     *pPal = 0;
