@@ -3,5 +3,4 @@
 
 extern const unsigned char font5x7[][8];
 
-
 #endif

@@ -1,0 +1,12 @@
+touch_screen_read.o: ..\user_interface\touchscreen\touch_screen_read.c
+touch_screen_read.o: ..\user_interface\touchscreen\touch_screen_read.h
+touch_screen_read.o: ..\user_interface\touchscreen\button_press.h
+touch_screen_read.o: ..\..\DESN2000_W11A_Team3\master_controller.h
+touch_screen_read.o: C:\Keil\ARM\RV31\Inc\stdint.h
+touch_screen_read.o: C:\Keil\ARM\RV31\Inc\string.h
+touch_screen_read.o: ..\motion_control\motion_controller.h
+touch_screen_read.o: ..\..\DESN2000_W11A_Team3\LPC24XX.h
+touch_screen_read.o: C:\Keil\ARM\RV31\Inc\stdlib.h
+touch_screen_read.o: ..\..\DESN2000_W11A_Team3\master_controller.h
+touch_screen_read.o: ..\motion_control\../system/system_timer.h
+touch_screen_read.o: ..\motion_control\../system/system_init.h

@@ -1,0 +1,11 @@
+button_press.o: ..\user_interface\touchscreen\button_press.c
+button_press.o: ..\user_interface\touchscreen\button_press.h
+button_press.o: ..\..\DESN2000_W11A_Team3\master_controller.h
+button_press.o: C:\Keil\ARM\RV31\Inc\stdint.h
+button_press.o: C:\Keil\ARM\RV31\Inc\string.h
+button_press.o: ..\motion_control\motion_controller.h
+button_press.o: ..\..\DESN2000_W11A_Team3\LPC24XX.h
+button_press.o: C:\Keil\ARM\RV31\Inc\stdlib.h
+button_press.o: ..\..\DESN2000_W11A_Team3\master_controller.h
+button_press.o: ..\motion_control\../system/system_timer.h
+button_press.o: ..\motion_control\../system/system_init.h

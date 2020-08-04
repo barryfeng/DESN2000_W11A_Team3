@@ -9,8 +9,8 @@ char* replace_char(char* str, char find, char replace);
 
 int main(void) {
 
-    FILE* fp = fopen("velfont.txt", "r");
-    FILE* fp2 = fopen("newvel.txt", "w");
+    FILE* fp = fopen("brakefont.txt", "r");
+    FILE* fp2 = fopen("newbrake.txt", "w");
     char buf[BUF_SIZE];
 
     while (!feof(fp)) {

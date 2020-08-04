@@ -4,6 +4,7 @@
 
 #include "button_press.h"
 #include "touch.h"
+#include "string.h"
 
 void touch_screen_press(void);
 void pressure_calc(char *pressure, char x, char y, char z1, char z2);
