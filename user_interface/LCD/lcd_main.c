@@ -74,7 +74,7 @@ void lcd_run() {	//DO NOT REMOVE FROM THIS FILE
 				j++; 
 				k--;
 			}
-			i++
+			i++;
 		}
 		//lcd_putString(x, y, light_rail_stop[i]);
 		//lcd_putString(x, y, light_rail_stop[i + 1]);
