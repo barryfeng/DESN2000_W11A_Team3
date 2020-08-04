@@ -64,13 +64,17 @@ void lcd_run() {	//DO NOT REMOVE FROM THIS FILE
 		//lcd_putString(x, y, light_rail_stop[i + 1]);
 		i++;
 	} else if (light_rail.brake_state == APPLY && light_rail_stop[i + 1] == '\0') {
-
-		for (int i = 0; i < MAX_STOPS - 1; i++) {
-			for (int j = 0, k = strlen(light_rail_stop[i + 1]) - 1; j < k; j++, k--) {
+		i = 0;
+		while (i < MAX_STOPS - 1) {
+			int j = 0, k = strlen(light_rail_stop[i + 1]) - 1;
+			while (j < k) {
 				char temp = light_rail_stop[i + 1][j];
 				light_rail_stop[i + 1][j] = light_rail_stop[i + 1][k];
 				light_rail_stop[i + 1][k] = temp;
+				j++; 
+				k--;
 			}
+			i++
 		}
 		//lcd_putString(x, y, light_rail_stop[i]);
 		//lcd_putString(x, y, light_rail_stop[i + 1]);
@@ -264,11 +268,15 @@ void constant_sd_on() {
 
 	//SD Symbol
 	lcd_fillRect(16, 277, 30, 305, CUSTOM_2);
-	for (int i = 0; i < 4, i++;) {
+	int i = 0;
+	while (i < 4) {
 		lcd_fillRect(17 + i, 276 - i, 30, 276 - i, CUSTOM_2);
+		i++;
 	}
-	for (int i = 0; i < 5, i++;) {
-		lcd_fillRect(21 + 2*i, 274, 21 + 2*i, 276, YELLOW);
+	int j = 0;
+	while (j < 5) {
+		lcd_fillRect(21 + 2*j, 274, 21 + 2*j, 276, YELLOW);
+		j++;
 	}
 }
 
@@ -362,11 +370,15 @@ void constant_sd_off() {
 
 	//SD Symbol
 	lcd_fillRect(16, 277, 30, 305, CUSTOM_2);
-	for (int i = 0; i < 4, i++;) {
+	int i = 0;
+	while (i < 4) {
 		lcd_fillRect(17 + i, 276 - i, 30, 276 - i, CUSTOM_2);
+		i++;
 	}
-	for (int i = 0; i < 5, i++;) {
-		lcd_fillRect(21 + 2*i, 274, 21 + 2*i, 276, LIGHT_GRAY);
+	int j = 0;
+	while (j < 5) {
+		lcd_fillRect(21 + 2*j, 274, 21 + 2*j, 276, LIGHT_GRAY);
+		j++;
 	}
 }
 
@@ -375,17 +387,19 @@ void constant_sd_off() {
 ///////////////////////////////////
 
 void lcd_rectangle_thickness(unsigned short x0, unsigned short y0, unsigned short x1, unsigned short y1, int thickness, lcd_color_t color) {
-
-	for (int i = 0; i < thickness, i++;) {
+	int i = 0;
+	while (i < thickness) {
 		lcd_drawRect(x0 + i, y0 + i, x1 - i, y1 - i, color);
+		i++;
 	}
 
 }
 
 void lcd_circle_thickness(unsigned short x0, unsigned short y0, unsigned short r, int thickness, lcd_color_t color) {
-	
-	for (int i = 0; i < thickness, i++;) {
+	int i = 0;
+	while (i < thickness) {
 		lcd_circle(x0 , y0, r - i, color);
+		i++;
 	}
 
 }
