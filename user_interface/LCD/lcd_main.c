@@ -29,6 +29,10 @@ void lcd_run() {	//DO NOT REMOVE FROM THIS FILE
 	int vel_ms = light_rail.velocity >> 16;
 	int vel_kmh = vel_ms * 3.6;
 
+	char vel_str[100]; // for INT TO STRING BELOW
+
+	int i = 0; // for MAX VEL STATE CHECK BELOW
+
 	//LCD BACKLIGHT
 	if (vel_kmh == STOP && light_rail.brake_state == APPLY) {
 		lcd_backlight_off();
@@ -37,7 +41,6 @@ void lcd_run() {	//DO NOT REMOVE FROM THIS FILE
 	}
 
 	//INT TO STRING (returns integer in base 10)
-	char vel_str[100];
 	itoa(vel_kmh, vel_str, 10);
 	//lcd_putVelString(x, y, vel_str);
 
@@ -55,7 +58,7 @@ void lcd_run() {	//DO NOT REMOVE FROM THIS FILE
 		constant_max_vel_on();
 	}
 
-	int i = 0;
+
     char light_rail_stop[MAX_STOPS][MAX_STOP_STRING_SIZE] = {"CENTRAL", "HAYMARKET", "CHINATOWN", "TOWN HALL", "QVB", "WYNYARD", "BRIDGE ST", "CIRC QUAY"};
 
 	//CURRENT/NEXT STOP CHECK
@@ -260,6 +263,9 @@ void constant_max_vel_on() {
 }
 
 void constant_sd_on() {
+	int i = 0;	// for SD Symbol below
+	int j = 0;	// for SD Symbol below
+
 	//SD Rectangle
 	lcd_rectangle_thickness(7, 264, 39, 314, 2, CUSTOM_2);
 	lcd_drawRect(9, 266, 37, 312, WHITE);
@@ -268,12 +274,12 @@ void constant_sd_on() {
 
 	//SD Symbol
 	lcd_fillRect(16, 277, 30, 305, CUSTOM_2);
-	int i = 0;
+
 	while (i < 4) {
 		lcd_fillRect(17 + i, 276 - i, 30, 276 - i, CUSTOM_2);
 		i++;
 	}
-	int j = 0;
+
 	while (j < 5) {
 		lcd_fillRect(21 + 2*j, 274, 21 + 2*j, 276, YELLOW);
 		j++;
@@ -362,6 +368,9 @@ void constant_max_vel_off() {
 }
 
 void constant_sd_off() {
+	int i = 0; // for SD Symbol below
+	int j = 0; // for SD Symbol below
+
 	//SD Rectangle
 	lcd_rectangle_thickness(7, 264, 39, 314, 2, CUSTOM_2);
 	lcd_drawRect(9, 266, 37, 312, LIGHT_GRAY);
@@ -370,12 +379,11 @@ void constant_sd_off() {
 
 	//SD Symbol
 	lcd_fillRect(16, 277, 30, 305, CUSTOM_2);
-	int i = 0;
 	while (i < 4) {
 		lcd_fillRect(17 + i, 276 - i, 30, 276 - i, CUSTOM_2);
 		i++;
 	}
-	int j = 0;
+
 	while (j < 5) {
 		lcd_fillRect(21 + 2*j, 274, 21 + 2*j, 276, LIGHT_GRAY);
 		j++;
