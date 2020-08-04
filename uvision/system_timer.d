@@ -2,7 +2,6 @@ system_timer.o: ..\system\system_timer.c
 system_timer.o: ..\system\system_timer.h
 system_timer.o: ..\system\system_init.h
 system_timer.o: ..\..\DESN2000_W11A_Team3\lpc24XX.h
-system_timer.o: ..\..\DESN2000_W11A_Team3\constants.h
 system_timer.o: C:\Keil\ARM\RV31\Inc\stdint.h
 system_timer.o: ..\..\DESN2000_W11A_Team3\user_interface/LCD/lcd_main.h
 system_timer.o: ..\user_interface\delay.h
@@ -25,4 +24,5 @@ system_timer.o: ..\user_interface\LCD\lcd_main.h
 system_timer.o: ..\..\DESN2000_W11A_Team3\user_interface/touchscreen/touch_screen_read.h
 system_timer.o: ..\..\DESN2000_W11A_Team3\user_interface/touchscreen/button_press.h
 system_timer.o: ..\..\DESN2000_W11A_Team3\user_interface/touchscreen/touch.h
+system_timer.o: C:\Keil\ARM\RV31\Inc\stdio.h
 system_timer.o: ..\..\DESN2000_W11A_Team3\logging/access_data.h

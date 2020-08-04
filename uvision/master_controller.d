@@ -8,7 +8,6 @@ master_controller.o: C:\Keil\ARM\RV31\Inc\stdlib.h
 master_controller.o: ..\..\DESN2000_W11A_Team3\master_controller.h
 master_controller.o: ..\motion_control\../system/system_timer.h
 master_controller.o: ..\motion_control\../system/system_init.h
-master_controller.o: ..\..\DESN2000_W11A_Team3\constants.h
 master_controller.o: ..\..\DESN2000_W11A_Team3\user_interface/LCD/lcd_main.h
 master_controller.o: ..\user_interface\delay.h
 master_controller.o: ..\user_interface\lcd/lcd_hw.h
@@ -19,6 +18,7 @@ master_controller.o: ..\..\DESN2000_W11A_Team3\motion_control/motion_controller.
 master_controller.o: ..\..\DESN2000_W11A_Team3\user_interface/touchscreen/touch_screen_read.h
 master_controller.o: ..\..\DESN2000_W11A_Team3\user_interface/touchscreen/button_press.h
 master_controller.o: ..\..\DESN2000_W11A_Team3\user_interface/touchscreen/touch.h
+master_controller.o: C:\Keil\ARM\RV31\Inc\stdio.h
 master_controller.o: ..\..\DESN2000_W11A_Team3\logging/access_data.h
 master_controller.o: ..\motion_control\fixed_point_pid.h
 master_controller.o: ..\..\DESN2000_W11A_Team3\diagnostics/diagnostics.h

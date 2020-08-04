@@ -16,12 +16,12 @@ void press_button(char x, char y) {
 	} else if (inside_throttle_plus(point_x, point_y)) {
 		//activate increase throttle
 		if (light_rail.velocity < 180) {
-			light_rail.velocity += ceil(5/3.6) << 16;
+			light_rail.velocity += 2 << 16;
 		}
 	} else if (inside_throttle_minus(point_x, point_y)) {
 		//activate decrease throttle
 		if (light_rail.velocity > 0) {
-			light_rail.velocity -= ceil(5/3.6) << 16;
+			light_rail.velocity -= 2 << 16;
 		}
 	} else if (inside_sd(point_x, point_y)) {
 		//activate diagnostic code running

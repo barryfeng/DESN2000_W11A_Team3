@@ -32,8 +32,7 @@ int get_prescaler(modifier_t target_modifier) {
     return prescale - 1;
 }
 
-// TODO: Add __fiq to this
-/*__fiq*/ void master_isr_handler(void) {
+__irq void master_isr_handler(void) {
     long int ir = T0IR;
 
     run_controller();
@@ -45,7 +44,8 @@ int get_prescaler(modifier_t target_modifier) {
     VICVectAddr = 0x0;    // End of interrupt execution
 }
 
-/**
+
+    /**
  * ARGS:
  * */
 

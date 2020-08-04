@@ -7,21 +7,36 @@
 ### List of Objects: adding '"motion_controller.o"'
 ### List of Objects: adding '"system_init.o"'
 ### List of Objects: adding '"system_timer.o"'
-### List of Objects: adding '"access_data.o"'
 ### List of Objects: adding '"diagnostics.o"'
 ### List of Objects: adding '"spi_mmc.o"'
+### List of Objects: adding '"delay.o"'
+### List of Objects: adding '"button_press.o"'
+### List of Objects: adding '"touch.o"'
+### List of Objects: adding '"touch_screen_read.o"'
+### List of Objects: adding '"font5x7.o"'
+### List of Objects: adding '"fontbrakelabel.o"'
+### List of Objects: adding '"fontvel.o"'
+### List of Objects: adding '"fontvellabel.o"'
+### List of Objects: adding '"lcd_grph.o"'
+### List of Objects: adding '"lcd_hw.o"'
+### List of Objects: adding '"lcd_main.o"'
+### List of Objects: adding '"sdram.o"'
+### List of Objects: adding '"access_data.o"'
+### List of Objects: adding '".\data_management.o"'
+### List of Objects: adding '".\swi_handler.o"'
+### List of Objects: adding '".\exception_vector_table.o"'
 ### ADS-LD Command completed:
---cpu ARM7TDMI "lpc2400.o" "master_controller.o" "fixed_point_pid.o" "motion_controller.o" "system_init.o" "system_timer.o" "access_data.o" "diagnostics.o" "spi_mmc.o" --strict --scatter "light_rail_master.sct" 
+--cpu ARM7TDMI "lpc2400.o" "master_controller.o" "fixed_point_pid.o" "motion_controller.o" "system_init.o" "system_timer.o" "diagnostics.o" "spi_mmc.o" "delay.o" "button_press.o" "touch.o" "touch_screen_read.o" "font5x7.o" "fontbrakelabel.o" "fontvel.o" "fontvellabel.o" "lcd_grph.o" "lcd_hw.o" "lcd_main.o" "sdram.o" "access_data.o" ".\data_management.o" ".\swi_handler.o" ".\exception_vector_table.o" --strict --scatter "light_rail_master.sct" 
 --summary_stderr --info summarysizes --map --xref --callgraph --symbols 
 --info sizes --info totals --info unused --info veneers 
  --list ".\light_rail_master.map" -o "light_rail_master.axf"### Preparing Environment (PrepEnvAds)
 ### ADS-LD Output File: 'light_rail_master.axf'
 ### ADS-LD Command File: 'light_rail_master.lnp'
 ### Checking for dirty Components...
-### Creating CmdFile 'light_rail_master.lnp', Handle=0x00000C58
+### Creating CmdFile 'light_rail_master.lnp', Handle=0x00000968
 ### Writing '.lnp' file
 ### ADS-LD Command file 'light_rail_master.lnp' is ready.
 ### ADS-LD: About to start ADS-LD Thread.
-### ADS-LD: executed with 8 errors
+### ADS-LD: executed with 1 errors
 ### Updating obj list
 ### LDADS_file() completed.

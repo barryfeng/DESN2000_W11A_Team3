@@ -14,7 +14,7 @@ typedef char modifier_t;
 
 int get_prescaler(modifier_t target_modifier);
 
-void master_isr_handler(void) /* __fiq */;
+__irq void master_isr_handler(void);
 void start_master_isr(unsigned int target, modifier_t unit);
 void stop_master_isr(void);
 

@@ -4,7 +4,7 @@
 ; This has been moved into it's own file for readability.
 
                 PRESERVE8						; Preserve 8-bit Alignment
-                AREA    RESET, CODE, READONLY
+                AREA    DATA, CODE, READONLY
 
 ResetVect       LDR     PC, Reset_Addr			; 0x0000
 UndefVect       LDR     PC, Undef_Addr			; 0x0004

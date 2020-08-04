@@ -27,7 +27,7 @@ extern LightRail light_rail;
  * 
  * VOLTAGE = (result * 3.3 / 1023 << 16)
  * 
- * Note that the 16 bit left shift is to convert the voltage to a Q16.0 number.
+ * Note that the 16 bit left shift is to convert the voltage to a Q22.0 number.
  */
 static uint32_t get_voltage(void) {
 
@@ -53,7 +53,7 @@ static uint32_t get_voltage(void) {
  *              -- #3 HC-SR04 connected to P3.3 GPIO.
  * 
  * RETURNS --
- *  The function will return an adjusted_distance in Q16.0 notation, for
+ *  The function will return an adjusted_distance in Q22.0 notation, for
  *  ease of calculation, the following scaling factor has been applied.
  *      DISTANCE = (RETURN >> 16 * 0.034/2) (0.34 for speed of sound in air).
  */
@@ -212,7 +212,7 @@ static void reset_dms(void) {
 }
 
 /**
- * This function returns a binary fixed-point velocity which is Q16.0.
+ * This function returns a binary fixed-point velocity which is Q22.0.
  * The returned result is also right shifted by 16 bits from the true velocity
  * to maintain resolution. The velocity in meters per second is obtained by 
  * adjusting the voltage by a scaling factor of (100/(2.5 * 3.6) = 11.11). This

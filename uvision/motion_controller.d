@@ -7,7 +7,6 @@ motion_controller.o: ..\..\DESN2000_W11A_Team3\master_controller.h
 motion_controller.o: C:\Keil\ARM\RV31\Inc\string.h
 motion_controller.o: ..\motion_control\motion_controller.h
 motion_controller.o: ..\..\DESN2000_W11A_Team3\./system/system_init.h
-motion_controller.o: ..\..\DESN2000_W11A_Team3\constants.h
 motion_controller.o: ..\..\DESN2000_W11A_Team3\user_interface/LCD/lcd_main.h
 motion_controller.o: ..\user_interface\delay.h
 motion_controller.o: ..\user_interface\lcd/lcd_hw.h
@@ -22,5 +21,6 @@ motion_controller.o: ..\motion_control\../system/system_timer.h
 motion_controller.o: ..\..\DESN2000_W11A_Team3\user_interface/touchscreen/touch_screen_read.h
 motion_controller.o: ..\..\DESN2000_W11A_Team3\user_interface/touchscreen/button_press.h
 motion_controller.o: ..\..\DESN2000_W11A_Team3\user_interface/touchscreen/touch.h
+motion_controller.o: C:\Keil\ARM\RV31\Inc\stdio.h
 motion_controller.o: ..\..\DESN2000_W11A_Team3\logging/access_data.h
 motion_controller.o: ..\motion_control\fixed_point_pid.h

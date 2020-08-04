@@ -3,7 +3,6 @@
 #define SYSINIT
 
 #include <lpc24XX.h>
-#include "constants.h"
 #include "stdint.h"
 #include "user_interface/LCD/lcd_main.h"
 
