@@ -56,7 +56,7 @@ void lcd_run() {	//DO NOT REMOVE FROM THIS FILE
 	}
 
 	int i = 0;
-    char light_rail_stop[MAX_STOPS][MAX_STOP_STRING SIZE] = {"CENTRAL", "HAYMARKET", "CHINATOWN", "TOWN HALL", "QVB", "WYNYARD", "BRIDGE ST", "CIRC QUAY"};
+    char light_rail_stop[MAX_STOPS][MAX_STOP_STRING_SIZE] = {"CENTRAL", "HAYMARKET", "CHINATOWN", "TOWN HALL", "QVB", "WYNYARD", "BRIDGE ST", "CIRC QUAY"};
 
 	//CURRENT/NEXT STOP CHECK
 	if (light_rail.brake_state == APPLY && light_rail_stop[i + 1] != '\0') {
@@ -64,7 +64,7 @@ void lcd_run() {	//DO NOT REMOVE FROM THIS FILE
 		//lcd_putString(x, y, light_rail_stop[i + 1]);
 		i++;
 	} else if (light_rail.brake_state == APPLY && light_rail_stop[i + 1] == '\0') {
-		
+
 		for (int i = 0; i < MAX_STOPS - 1; i++) {
 			for (int j = 0, k = strlen(light_rail_stop[i + 1]) - 1; j < k; j++, k--) {
 				char temp = light_rail_stop[i + 1][j];
