@@ -24,33 +24,49 @@ void init_lcd() {	//DO NOT REMOVE FROM THIS FILE
 }
 
 void lcd_run() {	//DO NOT REMOVE FROM THIS FILE
-	int vel_ms = light_rail.velocity >> 16;
-	int vel_kmh = vel_ms * 3.6;
-
-	char vel_str[100];
-	//INT TO STRING (returns integer in base 10)
-	itoa(vel_kmh, vel_str, 10);
 
 	//LCD BACKLIGHT
 	if (vel_kmh == STOP && light_rail.brake_state == APPLY) {
-			lcd_backlight_off();
+		lcd_backlight_off();
 	} else {
 		lcd_backlight_on();
 	}
 
-	//DMS
+	//CALCULATE VELOCITY 
+	int vel_ms = light_rail.velocity >> 16;
+	int vel_kmh = vel_ms * 3.6;
+
+	//INT TO STRING (returns integer in base 10)
+	char vel_str[100];
+	itoa(vel_kmh, vel_str, 10);
+	//lcd_putVelString(x, y, vel_str);
+
+	//DMS STATE CHECK
 	if (light_rail.dms_state == OFF) {
 		constant_dms_off();
 	} else if (light_rail.dms_state == ON) {
 		constant_dms_on();
 	}
 
-	//MAX VEL
+	//MAX VEL STATE CHECK
 	if (vel_kmh < MAX_VEL) {
 		constant_max_vel_off();	
 	} else {
 		constant_max_vel_on();
 	}
+
+	int i = 0;
+    char stops[6] = {"STRATHFIELD", "REDFERN", "CENTRAL", "TOWN HALL", "WYNYARD", '\0'};
+
+	//CURRENT/NEXT STOP CHECK
+	if (light_rail.brake_state == APPLY && stop[i] != '\0'){
+		//lcd_putString(x, y, stops[i + 1]);
+		//lcd_putString(x, y, stops[i + 2]);
+	} else {
+		//lcd_putString(x, y, stops[i]);
+		//lcd_putString(x, y, stops[i + 1]);
+	}
+
 }
 
 ///////////////////////////////////
@@ -75,13 +91,10 @@ void constant_borders() {
 }
 
 void constant_labels() {
-	//Velocity Label
-	//putVelString(x,y,"positive km/h");
-
 	//Throttle Label
 	lcd_rectangle_thickness(198, 52, 236, 64, 2, CUSTOM_2);
 	lcd_fillRect(200, 54, 234, 62, LIGHT_GRAY);
-	//putString(x,y,"THROTTLE");
+	//putString(x,y,"THROT");
 
 	// Current Stop Label
 	lcd_rectangle_thickness(7, 6, 115, 18, 2, CUSTOM_2);
@@ -92,9 +105,6 @@ void constant_labels() {
 	lcd_rectangle_thickness(126, 6, 234, 18, 2, CUSTOM_2);
 	lcd_fillRect(128, 8, 232, 16, LIGHT_GRAY);
 	//putString(x,y,"NEXT STOP");
-
-	// Brake Label
-	//putBrakeString(x,y,"BRAKE");
 
 	// DMS Label
 	lcd_rectangle_thickness(46, 246, 98, 258, 2, CUSTOM_2);
@@ -162,6 +172,9 @@ void constant_velocity_on() {
 	lcd_circle(98, 144, 90, GREEN);
 	lcd_circle_thickness(98, 144, 89, 2, CUSTOM_2);
 	lcd_fillcircle(98, 144, 87, GREEN);
+
+	//Velocity Label
+	//putVelLabelString(x,y,"KM/H");
 }
 
 void constant_throttle_plus_on() {
@@ -209,6 +222,9 @@ void constant_brake_on() {
 	lcd_circle(200, 280, 33, RED);
 	lcd_circle_thickness(200, 280, 32, 2, CUSTOM_2);
 	lcd_fillcircle(200, 280, 30, RED);
+
+	// Brake Label
+	//putBrakeLabelString(x,y,"BRAKE");
 }
 
 void constant_dms_on() {
@@ -254,16 +270,17 @@ void constant_velocity_off() {
 	lcd_circle(98, 144, 90, LIGHT_GRAY);
 	lcd_circle_thickness(98, 144, 89, 2, CUSTOM_2);
 	lcd_fillcircle(98, 144, 87, LIGHT_GRAY);
+
 	//Velocity Label
-	//putVelString(x,y,"0 km/h");
+	//putVelLabelString(x,y,"KM/H");
 }
 
 void constant_throttle_plus_off() {
 	//Throttle Rectangle
 	lcd_rectangle_thickness(200, 68, 234, 149, 2, CUSTOM_2);
-	lcd_drawRect(202, 70, 232, 147, LIGHT_GRAY);
+	lcd_drawRect(202, 70, 232, 147, MAGENTA);
 	lcd_rectangle_thickness(203, 71, 231, 146, 2, CUSTOM_2);
-	lcd_fillRect(205, 73, 229, 144, LIGHT_GRAY);
+	lcd_fillRect(205, 73, 229, 144, MAGENTA);
 
 	//Plus Symbol
 	lcd_fillRect(216, 98, 218, 119, CUSTOM_2);
@@ -303,6 +320,9 @@ void constant_brake_off() {
 	lcd_circle(200, 280, 33, LIGHT_GRAY);
 	lcd_circle_thickness(200, 280, 32, 2, CUSTOM_2);
 	lcd_fillcircle(200, 280, 30, LIGHT_GRAY);
+
+	// Brake Label
+	//putBrakeLabelString(x,y,"BRAKE");
 }
 
 void constant_dms_off() {
@@ -334,7 +354,7 @@ void constant_sd_off() {
 		lcd_fillRect(17 + i, 276 - i, 30, 276 - i, CUSTOM_2);
 	}
 	for (int i = 0; i < 5, i++;) {
-		lcd_fillRect(21 + 2*i, 274, 21 + 2*i, 276, YELLOW);
+		lcd_fillRect(21 + 2*i, 274, 21 + 2*i, 276, LIGHT_GRAY);
 	}
 }
 
