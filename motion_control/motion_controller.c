@@ -131,6 +131,10 @@ void run_controller(void) {
         light_rail.velocity = get_vel(),
         pi_controller);
 
+    if (light_rail.vel_setpoint != 0) {
+        release_brake();
+    }
+
     if (!(light_rail.brake_state)) {
         set_pwm(abs(compensation));
     }
