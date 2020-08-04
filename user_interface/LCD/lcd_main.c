@@ -25,16 +25,16 @@ void init_lcd() {	//DO NOT REMOVE FROM THIS FILE
 
 void lcd_run() {	//DO NOT REMOVE FROM THIS FILE
 
+	//CALCULATE VELOCITY 
+	int vel_ms = light_rail.velocity >> 16;
+	int vel_kmh = vel_ms * 3.6;
+
 	//LCD BACKLIGHT
 	if (vel_kmh == STOP && light_rail.brake_state == APPLY) {
 		lcd_backlight_off();
 	} else {
 		lcd_backlight_on();
 	}
-
-	//CALCULATE VELOCITY 
-	int vel_ms = light_rail.velocity >> 16;
-	int vel_kmh = vel_ms * 3.6;
 
 	//INT TO STRING (returns integer in base 10)
 	char vel_str[100];
@@ -59,7 +59,7 @@ void lcd_run() {	//DO NOT REMOVE FROM THIS FILE
     char stops[6] = {"STRATHFIELD", "REDFERN", "CENTRAL", "TOWN HALL", "WYNYARD", '\0'};
 
 	//CURRENT/NEXT STOP CHECK
-	if (light_rail.brake_state == APPLY && stop[i] != '\0'){
+	if (light_rail.brake_state == APPLY && stops[i] != '\0') {
 		//lcd_putString(x, y, stops[i + 1]);
 		//lcd_putString(x, y, stops[i + 2]);
 	} else {
