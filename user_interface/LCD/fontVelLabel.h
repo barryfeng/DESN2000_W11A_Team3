@@ -5,6 +5,6 @@
 #include "lpc24xx.h"
 #include "stdint.h"
 
-extern uint32_t fontVelLabel[][19];
+extern const uint32_t fontVelLabel[][19];
 
 #endif

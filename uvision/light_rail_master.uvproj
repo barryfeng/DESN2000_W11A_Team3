@@ -348,7 +348,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>..\motion_control;..\system;..\..\DESN2000_W11A_Team3;..\diagnostics;..\logging;..\user_interface;..\user_interface\LCD</IncludePath>
+              <IncludePath>..\motion_control;..\system;..\..\DESN2000_W11A_Team3;..\diagnostics;..\logging;..\user_interface;..\user_interface\LCD;..\user_interface\touchscreen</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>

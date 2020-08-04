@@ -477,6 +477,68 @@
         </Group>
         <Group>
           <GroupName>user_interface</GroupName>
+          <Files>
+            <File>
+              <FileName>delay.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_interface\delay.c</FilePath>
+            </File>
+            <File>
+              <FileName>button_press.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_interface\touchscreen\button_press.c</FilePath>
+            </File>
+            <File>
+              <FileName>touch.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_interface\touchscreen\touch.c</FilePath>
+            </File>
+            <File>
+              <FileName>touch_screen_read.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_interface\touchscreen\touch_screen_read.c</FilePath>
+            </File>
+            <File>
+              <FileName>font5x7.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_interface\LCD\font5x7.c</FilePath>
+            </File>
+            <File>
+              <FileName>fontBrakeLabel.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_interface\LCD\fontBrakeLabel.c</FilePath>
+            </File>
+            <File>
+              <FileName>fontVel.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_interface\LCD\fontVel.c</FilePath>
+            </File>
+            <File>
+              <FileName>fontVelLabel.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_interface\LCD\fontVelLabel.c</FilePath>
+            </File>
+            <File>
+              <FileName>lcd_grph.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_interface\LCD\lcd_grph.c</FilePath>
+            </File>
+            <File>
+              <FileName>lcd_hw.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_interface\LCD\lcd_hw.c</FilePath>
+            </File>
+            <File>
+              <FileName>lcd_main.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_interface\LCD\lcd_main.c</FilePath>
+            </File>
+            <File>
+              <FileName>sdram.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\user_interface\LCD\sdram.c</FilePath>
+            </File>
+          </Files>
         </Group>
       </Groups>
     </Target>
