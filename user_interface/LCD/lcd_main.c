@@ -28,10 +28,12 @@ void lcd_run() {	//DO NOT REMOVE FROM THIS FILE
 	//CALCULATE VELOCITY 
 	int vel_ms = light_rail.velocity >> 16;
 	int vel_kmh = vel_ms * 3.6;
+	//for INT TO STRING BELOW
+	char vel_str[100]; 
+	//for CURRENT/NEXT STOP CHECK BELOW
+	int i = 0; 
+	char light_rail_stop[MAX_STOPS][MAX_STOP_STRING_SIZE] = {"CENTRAL", "HAYMARKET", "CHINATOWN", "TOWN HALL", "QVB", "WYNYARD", "BRIDGE ST", "CIRC QUAY"};
 
-	char vel_str[100]; // for INT TO STRING BELOW
-
-	int i = 0; // for MAX VEL STATE CHECK BELOW
 
 	//LCD BACKLIGHT
 	if (vel_kmh == STOP && light_rail.brake_state == APPLY) {
@@ -57,9 +59,6 @@ void lcd_run() {	//DO NOT REMOVE FROM THIS FILE
 	} else {
 		constant_max_vel_on();
 	}
-
-
-    char light_rail_stop[MAX_STOPS][MAX_STOP_STRING_SIZE] = {"CENTRAL", "HAYMARKET", "CHINATOWN", "TOWN HALL", "QVB", "WYNYARD", "BRIDGE ST", "CIRC QUAY"};
 
 	//CURRENT/NEXT STOP CHECK
 	if (light_rail.brake_state == APPLY && light_rail_stop[i + 1] != '\0') {
