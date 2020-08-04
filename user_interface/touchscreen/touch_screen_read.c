@@ -7,20 +7,11 @@ void touch_screen_press(void) {
 	touch_read_xy(&x,&y, &z1, &z2);
 	//Calculate the pressure
 	pressure_calc(&pressure, x, y, z1, z2);
-
-	//Display pressure on screen (for diagnostic purposes uncomment)
-	//display_pressure(pressure);
 	
 	//press the button
 	if (pressure > threshold) {
 		press_button(x, y);
 	}
-}
-
-void display_pressure(char pressure) {
-	unsigned char str[10];
-	sprintf(str, "pressure: %d", pressure);
-	lcd_putString(10, 10, str);
 }
 
 void pressure_calc(char *pressure, char x, char y, char z1, char z2) {
