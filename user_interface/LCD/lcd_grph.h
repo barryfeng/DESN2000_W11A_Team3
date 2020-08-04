@@ -37,7 +37,7 @@ typedef unsigned short lcd_color_t;
 #define   YELLOW		0xFFE0      /* 255, 255, 0   */
 #define   WHITE			0xFFFF      /* 255, 255, 255 */
 
-#define   CUSTOM_1      0x23B7      /* 33, 116, 185 - Light Blue */ 
+#define   CUSTOM_1      0x02D3      /* 1, 88, 155 - Navy Blue */ 
 #define   CUSTOM_2      0x3186      /* 49, 51, 52 - Dark Grey/Blue */
 
 #define		RGBENC(r,g,b)	((r&0x1F)<<11) | ((g&0x3F)<<5) | (b&0x1F)
