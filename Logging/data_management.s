@@ -25,6 +25,6 @@ view_brake          SWI SWI_brake
 
 view_dms            SWI SWI_dms
 
-finish              MOV PC, LR
+finish              BX LR
 			    
                     END
