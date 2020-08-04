@@ -1,0 +1,9 @@
+lcd_grph.o: ..\user_interface\LCD\lcd_grph.c
+lcd_grph.o: ..\..\DESN2000_W11A_Team3\lpc24xx.h
+lcd_grph.o: ..\user_interface\LCD\lcd_hw.h
+lcd_grph.o: ..\user_interface\LCD\lcd_grph.h
+lcd_grph.o: ..\user_interface\LCD\font5x7.h
+lcd_grph.o: C:\Keil\ARM\RV31\Inc\string.h
+lcd_grph.o: ..\user_interface\LCD\fontVel.h
+lcd_grph.o: ..\user_interface\LCD\fontVelLabel.h
+lcd_grph.o: ..\user_interface\LCD\fontBrakeLabel.h

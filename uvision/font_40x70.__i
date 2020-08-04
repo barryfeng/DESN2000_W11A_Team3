@@ -1,0 +1,1 @@
+-c --cpu ARM7TDMI -D__EVAL -g -O0 --apcs=interwork -I..\motion_control -I..\system -I..\..\DESN2000_W11A_Team3 -I..\diagnostics -I..\logging -I..\user_interface -I..\user_interface\LCD -I C:\Keil\ARM\RV31\Inc -I C:\Keil\ARM\CMSIS\Include -I C:\Keil\ARM\Inc\Philips -o "font_40x70.o" --omf_browse "font_40x70.crf" --depend "font_40x70.d" "..\user_interface\font_40x70.c"
