@@ -18,7 +18,7 @@ void touch_screen_press(void) {
 }
 
 void display_pressure(char pressure) {
-	char str[10];
+	unsigned char str[10];
 	sprintf(str, "pressure: %d", pressure);
 	lcd_putString(10, 10, str);
 }
