@@ -43,7 +43,7 @@ void lcd_run() {	//DO NOT REMOVE FROM THIS FILE
 	}
 
 	//INT TO STRING (returns integer in base 10)
-	itoa(vel_kmh, vel_str, 10);
+	integer_to_string(vel_kmh, vel_str, 10);
 	//lcd_putVelString(x, y, vel_str);
 
 	//DMS STATE CHECK
@@ -409,4 +409,48 @@ void lcd_circle_thickness(unsigned short x0, unsigned short y0, unsigned short r
 		i++;
 	}
 
+}
+
+///////////////////////////////////////////
+///*    INTEGER TO STRING CONVERTER    *///
+///////////////////////////////////////////
+
+void reverse_string(char string[], int length) {
+	int start = 0, end = length - 1;
+	while (start < end) {
+		swap(*(string + start), *(string + end));
+		start++;
+		end--;
+	}
+}
+
+char* integer_to_string(int integer, char* string, int radix) {
+	int i = 0; 
+	bool neg_check = false;
+
+	if (integer == 0) {
+		string[i + 1] = '0';
+		string[i] = '\0';
+		return string;
+	}
+
+	if (integer < 0 && radix == 10) {
+		integer = -integer;
+		neg_check = true;
+	}
+
+	while (integer != 0) {
+		int remainder = integer % radix;
+		string[i + 1] = (remainder >= 10) ? (remainder - 10) + 'a' : remainder + '0';
+		integer = integer / radix;
+	}
+
+	if (neg_check == true) {
+		string[i + 1] = '-';
+	}
+
+	string[i] = '\0';
+	reverse_string(string, i);
+
+	return string;
 }
