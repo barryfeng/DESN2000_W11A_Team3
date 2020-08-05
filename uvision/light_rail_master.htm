@@ -3,7 +3,7 @@
 <title>Static Call Graph - [C:\Users\BarryPC\OneDrive - UNSW\22 Year 2\YR2T2\DESN2000\02 PROJECT\DESN2000_W11A_Team3\uvision\light_rail_master.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image C:\Users\BarryPC\OneDrive - UNSW\22 Year 2\YR2T2\DESN2000\02 PROJECT\DESN2000_W11A_Team3\uvision\light_rail_master.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 4.1 [Build 894]: Last Updated: Thu Aug 06 01:57:56 2020
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 4.1 [Build 894]: Last Updated: Thu Aug 06 02:35:55 2020
 <BR><P>
 <H3>Maximum Stack Usage =     131192 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -49,6 +49,8 @@ Function Pointers
  <LI><a href="#[5]">SWI_Handler</a> from lpc2400.o(RESET) referenced from lpc2400.o(RESET)
  <LI><a href="#[4]">Undef_Handler</a> from lpc2400.o(RESET) referenced from lpc2400.o(RESET)
  <LI><a href="#[c]">__main</a> from __main.o(!!!main) referenced from lpc2400.o(RESET)
+ <LI><a href="#[86]">constant_sd_on</a> from lcd_main.o(.text) referenced from lcd_main.o(.text)
+ <LI><a href="#[91]">constant_velocity_off</a> from lcd_main.o(.text) referenced from lcd_main.o(.text)
  <LI><a href="#[b]">main</a> from master_controller.o(.text) referenced from rtentry2.o(.ARM.Collect$$rtentry$$0000000D)
  <LI><a href="#[4a]">master_isr_handler</a> from system_timer.o(.text) referenced from system_timer.o(.text)
 </UL>
@@ -330,7 +332,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[4a]"></a>master_isr_handler</STRONG> (ARM, 52 bytes, Stack size 32 bytes, system_timer.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 424 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 416 + Unknown Stack Size
 <LI>Call Chain = master_isr_handler &rArr; lcd_run &rArr; lcd_backlight_off &rArr; constant_velocity_off &rArr; lcd_fillcircle &rArr; hLine
 </UL>
 <BR>[Calls]<UL><LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;touch_screen_press
@@ -449,7 +451,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[7d]"></a>mdelay</STRONG> (ARM, 48 bytes, Stack size 0 bytes, delay.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sdramInit
+<BR><BR>[Called By]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sdramInit
 <LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcdTurnOn
 <LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_display_init
 </UL>
@@ -545,15 +547,15 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vLine
 <LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;hLine
 </UL>
-<BR>[Called By]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_throttle_plus_off
-<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_throttle_minus_off
-<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_stops_off
-<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_sd_off
-<LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_throttle_plus_on
-<LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_throttle_minus_on
-<LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_stops_on
-<LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_sd_on
-<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_borders
+<BR>[Called By]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_throttle_plus_off
+<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_throttle_minus_off
+<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_stops_off
+<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_sd_off
+<LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_throttle_plus_on
+<LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_throttle_minus_on
+<LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_stops_on
+<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_sd_on
+<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_borders
 <LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_rectangle_thickness
 </UL>
 
@@ -563,14 +565,14 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vLine
 <LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;hLine
 </UL>
-<BR>[Called By]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_throttle_plus_off
-<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_throttle_minus_off
-<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_stops_off
-<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_sd_off
-<LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_throttle_plus_on
-<LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_throttle_minus_on
-<LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_stops_on
-<LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_sd_on
+<BR>[Called By]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_throttle_plus_off
+<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_throttle_minus_off
+<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_stops_off
+<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_sd_off
+<LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_throttle_plus_on
+<LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_throttle_minus_on
+<LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_stops_on
+<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_sd_on
 <LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_labels
 </UL>
 
@@ -585,15 +587,15 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_point
 </UL>
-<BR>[Called By]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_velocity_off
-<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_brake_off
-<LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_velocity_on
+<BR>[Called By]<UL><LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_velocity_off
+<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_brake_off
+<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_velocity_on
 <LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_brake_on
-<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_dms_off
-<LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_dms_on
-<LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_max_vel_off
-<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_max_vel_on
-<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_circle_thickness
+<LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_dms_off
+<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_dms_on
+<LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_max_vel_off
+<LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_max_vel_on
+<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_circle_thickness
 </UL>
 
 <P><STRONG><a name="[6d]"></a>lcd_fillcircle</STRONG> (ARM, 1772 bytes, Stack size 120 bytes, lcd_grph.o(.text))
@@ -602,24 +604,31 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_point
 <LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;hLine
 </UL>
-<BR>[Called By]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_velocity_off
-<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_brake_off
-<LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_velocity_on
+<BR>[Called By]<UL><LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_velocity_off
+<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_brake_off
+<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_velocity_on
 <LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_brake_on
-<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_dms_off
-<LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_dms_on
-<LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_max_vel_off
-<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_max_vel_on
+<LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_dms_off
+<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_dms_on
+<LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_max_vel_off
+<LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_max_vel_on
 </UL>
 
-<P><STRONG><a name="[6e]"></a>lcd_putChar</STRONG> (ARM, 236 bytes, Stack size 32 bytes, lcd_grph.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_point
+<P><STRONG><a name="[6e]"></a>lcd_putChar</STRONG> (ARM, 236 bytes, Stack size 32 bytes, lcd_grph.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = lcd_putChar
+</UL>
+<BR>[Calls]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_point
 </UL>
 <BR>[Called By]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_putString
 </UL>
 
-<P><STRONG><a name="[6f]"></a>lcd_putString</STRONG> (ARM, 88 bytes, Stack size 16 bytes, lcd_grph.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_putChar
+<P><STRONG><a name="[6f]"></a>lcd_putString</STRONG> (ARM, 88 bytes, Stack size 16 bytes, lcd_grph.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = lcd_putString &rArr; lcd_putChar
+</UL>
+<BR>[Calls]<UL><LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_putChar
+</UL>
+<BR>[Called By]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_labels
+<LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_run
 </UL>
 
 <P><STRONG><a name="[ec]"></a>lcd_fontColor</STRONG> (ARM, 20 bytes, Stack size 0 bytes, lcd_grph.o(.text), UNUSED)
@@ -638,34 +647,54 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HSVtoRGB
 </UL>
 
-<P><STRONG><a name="[74]"></a>lcd_putVelChar</STRONG> (ARM, 244 bytes, Stack size 32 bytes, lcd_grph.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_point
+<P><STRONG><a name="[74]"></a>lcd_putVelChar</STRONG> (ARM, 244 bytes, Stack size 32 bytes, lcd_grph.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = lcd_putVelChar
+</UL>
+<BR>[Calls]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_point
 </UL>
 <BR>[Called By]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_putVelString
 </UL>
 
-<P><STRONG><a name="[75]"></a>lcd_putVelString</STRONG> (ARM, 88 bytes, Stack size 16 bytes, lcd_grph.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_putVelChar
+<P><STRONG><a name="[75]"></a>lcd_putVelString</STRONG> (ARM, 88 bytes, Stack size 16 bytes, lcd_grph.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = lcd_putVelString &rArr; lcd_putVelChar
+</UL>
+<BR>[Calls]<UL><LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_putVelChar
+</UL>
+<BR>[Called By]<UL><LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_run
 </UL>
 
-<P><STRONG><a name="[76]"></a>lcd_putVelLabelChar</STRONG> (ARM, 248 bytes, Stack size 32 bytes, lcd_grph.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_point
+<P><STRONG><a name="[76]"></a>lcd_putVelLabelChar</STRONG> (ARM, 248 bytes, Stack size 32 bytes, lcd_grph.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = lcd_putVelLabelChar
+</UL>
+<BR>[Calls]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_point
 </UL>
 <BR>[Called By]<UL><LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_putVelLabelString
 </UL>
 
-<P><STRONG><a name="[77]"></a>lcd_putVelLabelString</STRONG> (ARM, 88 bytes, Stack size 16 bytes, lcd_grph.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_putVelLabelChar
+<P><STRONG><a name="[77]"></a>lcd_putVelLabelString</STRONG> (ARM, 88 bytes, Stack size 16 bytes, lcd_grph.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = lcd_putVelLabelString &rArr; lcd_putVelLabelChar
+</UL>
+<BR>[Calls]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_putVelLabelChar
+</UL>
+<BR>[Called By]<UL><LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_velocity_off
+<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_velocity_on
 </UL>
 
-<P><STRONG><a name="[78]"></a>lcd_putBrakeLabelChar</STRONG> (ARM, 248 bytes, Stack size 32 bytes, lcd_grph.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_point
+<P><STRONG><a name="[78]"></a>lcd_putBrakeLabelChar</STRONG> (ARM, 248 bytes, Stack size 32 bytes, lcd_grph.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = lcd_putBrakeLabelChar
+</UL>
+<BR>[Calls]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_point
 </UL>
 <BR>[Called By]<UL><LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_putBrakeLabelString
 </UL>
 
-<P><STRONG><a name="[79]"></a>lcd_putBrakeLabelString</STRONG> (ARM, 88 bytes, Stack size 16 bytes, lcd_grph.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_putBrakeLabelChar
+<P><STRONG><a name="[79]"></a>lcd_putBrakeLabelString</STRONG> (ARM, 88 bytes, Stack size 16 bytes, lcd_grph.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = lcd_putBrakeLabelString &rArr; lcd_putBrakeLabelChar
+</UL>
+<BR>[Calls]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_putBrakeLabelChar
+</UL>
+<BR>[Called By]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_brake_off
+<LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_brake_on
 </UL>
 
 <P><STRONG><a name="[ed]"></a>lcdSetColorFormat</STRONG> (ARM, 92 bytes, Stack size 0 bytes, lcd_hw.o(.text), UNUSED)
@@ -709,27 +738,28 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_drawRect
 </UL>
-<BR>[Called By]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_throttle_plus_off
-<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_throttle_minus_off
-<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_stops_off
-<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_sd_off
-<LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_throttle_plus_on
-<LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_throttle_minus_on
-<LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_stops_on
-<LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_sd_on
+<BR>[Called By]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_throttle_plus_off
+<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_throttle_minus_off
+<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_stops_off
+<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_sd_off
+<LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_throttle_plus_on
+<LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_throttle_minus_on
+<LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_stops_on
+<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_sd_on
 <LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_labels
 </UL>
 
-<P><STRONG><a name="[85]"></a>constant_labels</STRONG> (ARM, 396 bytes, Stack size 16 bytes, lcd_main.o(.text))
+<P><STRONG><a name="[85]"></a>constant_labels</STRONG> (ARM, 492 bytes, Stack size 16 bytes, lcd_main.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = constant_labels &rArr; lcd_rectangle_thickness &rArr; lcd_drawRect &rArr; vLine
 </UL>
 <BR>[Calls]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_rectangle_thickness
+<LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_putString
 <LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_fillRect
 </UL>
 <BR>[Called By]<UL><LI><a href="#[23]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init_lcd
 </UL>
 
-<P><STRONG><a name="[86]"></a>constant_borders</STRONG> (ARM, 208 bytes, Stack size 8 bytes, lcd_main.o(.text))
+<P><STRONG><a name="[87]"></a>constant_borders</STRONG> (ARM, 272 bytes, Stack size 8 bytes, lcd_main.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = constant_borders &rArr; lcd_drawRect &rArr; vLine
 </UL>
 <BR>[Calls]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_drawRect
@@ -741,8 +771,8 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 112 + Unknown Stack Size
 <LI>Call Chain = init_lcd &rArr; constant_labels &rArr; lcd_rectangle_thickness &rArr; lcd_drawRect &rArr; vLine
 </UL>
-<BR>[Calls]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sdramInit
-<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_borders
+<BR>[Calls]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sdramInit
+<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_borders
 <LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_labels
 <LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcdInit
 <LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcdTurnOn
@@ -751,150 +781,153 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[1e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;hw_init
 </UL>
 
-<P><STRONG><a name="[88]"></a>lcd_circle_thickness</STRONG> (ARM, 80 bytes, Stack size 32 bytes, lcd_main.o(.text))
+<P><STRONG><a name="[89]"></a>lcd_circle_thickness</STRONG> (ARM, 80 bytes, Stack size 32 bytes, lcd_main.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 132<LI>Call Chain = lcd_circle_thickness &rArr; lcd_circle
 </UL>
 <BR>[Calls]<UL><LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_circle
 </UL>
-<BR>[Called By]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_velocity_off
-<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_brake_off
-<LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_velocity_on
+<BR>[Called By]<UL><LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_velocity_off
+<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_brake_off
+<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_velocity_on
 <LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_brake_on
-<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_dms_off
-<LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_dms_on
-<LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_max_vel_off
-<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_max_vel_on
+<LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_dms_off
+<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_dms_on
+<LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_max_vel_off
+<LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_max_vel_on
 </UL>
 
-<P><STRONG><a name="[89]"></a>constant_max_vel_on</STRONG> (ARM, 108 bytes, Stack size 8 bytes, lcd_main.o(.text))
+<P><STRONG><a name="[8a]"></a>constant_max_vel_on</STRONG> (ARM, 108 bytes, Stack size 8 bytes, lcd_main.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 152<LI>Call Chain = constant_max_vel_on &rArr; lcd_fillcircle &rArr; hLine
 </UL>
-<BR>[Calls]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_circle_thickness
+<BR>[Calls]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_circle_thickness
 <LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_fillcircle
 <LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_circle
 </UL>
 <BR>[Called By]<UL><LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_run
 </UL>
 
-<P><STRONG><a name="[8a]"></a>constant_max_vel_off</STRONG> (ARM, 108 bytes, Stack size 8 bytes, lcd_main.o(.text))
+<P><STRONG><a name="[8b]"></a>constant_max_vel_off</STRONG> (ARM, 108 bytes, Stack size 8 bytes, lcd_main.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 152<LI>Call Chain = constant_max_vel_off &rArr; lcd_fillcircle &rArr; hLine
 </UL>
-<BR>[Calls]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_circle_thickness
+<BR>[Calls]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_circle_thickness
 <LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_fillcircle
 <LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_circle
 </UL>
 <BR>[Called By]<UL><LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_run
 </UL>
 
-<P><STRONG><a name="[8b]"></a>constant_dms_on</STRONG> (ARM, 108 bytes, Stack size 8 bytes, lcd_main.o(.text))
+<P><STRONG><a name="[8c]"></a>constant_dms_on</STRONG> (ARM, 108 bytes, Stack size 8 bytes, lcd_main.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 152<LI>Call Chain = constant_dms_on &rArr; lcd_fillcircle &rArr; hLine
 </UL>
-<BR>[Calls]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_circle_thickness
+<BR>[Calls]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_circle_thickness
 <LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_fillcircle
 <LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_circle
 </UL>
 <BR>[Called By]<UL><LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_run
 </UL>
 
-<P><STRONG><a name="[8c]"></a>constant_dms_off</STRONG> (ARM, 108 bytes, Stack size 8 bytes, lcd_main.o(.text))
+<P><STRONG><a name="[8d]"></a>constant_dms_off</STRONG> (ARM, 108 bytes, Stack size 8 bytes, lcd_main.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 152<LI>Call Chain = constant_dms_off &rArr; lcd_fillcircle &rArr; hLine
 </UL>
-<BR>[Calls]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_circle_thickness
+<BR>[Calls]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_circle_thickness
 <LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_fillcircle
 <LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_circle
 </UL>
 <BR>[Called By]<UL><LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_run
 </UL>
 
-<P><STRONG><a name="[8e]"></a>reverse_string</STRONG> (ARM, 64 bytes, Stack size 4 bytes, lcd_main.o(.text))
+<P><STRONG><a name="[8f]"></a>reverse_string</STRONG> (ARM, 64 bytes, Stack size 4 bytes, lcd_main.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 4<LI>Call Chain = reverse_string
 </UL>
-<BR>[Called By]<UL><LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;integer_to_string
+<BR>[Called By]<UL><LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;integer_to_string
 </UL>
 
-<P><STRONG><a name="[8d]"></a>integer_to_string</STRONG> (ARM, 212 bytes, Stack size 32 bytes, lcd_main.o(.text))
+<P><STRONG><a name="[8e]"></a>integer_to_string</STRONG> (ARM, 212 bytes, Stack size 32 bytes, lcd_main.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = integer_to_string &rArr; __aeabi_idivmod
 </UL>
 <BR>[Calls]<UL><LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_idivmod
-<LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;reverse_string
+<LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;reverse_string
 </UL>
 <BR>[Called By]<UL><LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_run
 </UL>
 
-<P><STRONG><a name="[8f]"></a>constant_sd_on</STRONG> (ARM, 312 bytes, Stack size 24 bytes, lcd_main.o(.text))
+<P><STRONG><a name="[86]"></a>constant_sd_on</STRONG> (ARM, 312 bytes, Stack size 24 bytes, lcd_main.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 112<LI>Call Chain = constant_sd_on &rArr; lcd_rectangle_thickness &rArr; lcd_drawRect &rArr; vLine
 </UL>
 <BR>[Calls]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_rectangle_thickness
 <LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_fillRect
 <LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_drawRect
 </UL>
-<BR>[Called By]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_backlight_on
+<BR>[Called By]<UL><LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_backlight_on
 </UL>
-
-<P><STRONG><a name="[90]"></a>constant_brake_on</STRONG> (ARM, 108 bytes, Stack size 8 bytes, lcd_main.o(.text))
+<BR>[Address Reference Count : 1]<UL><LI> lcd_main.o(.text)
+</UL>
+<P><STRONG><a name="[90]"></a>constant_brake_on</STRONG> (ARM, 124 bytes, Stack size 8 bytes, lcd_main.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 152<LI>Call Chain = constant_brake_on &rArr; lcd_fillcircle &rArr; hLine
 </UL>
-<BR>[Calls]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_circle_thickness
+<BR>[Calls]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_circle_thickness
+<LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_putBrakeLabelString
 <LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_fillcircle
 <LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_circle
 </UL>
-<BR>[Called By]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_backlight_on
+<BR>[Called By]<UL><LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_backlight_on
 </UL>
 
-<P><STRONG><a name="[91]"></a>constant_stops_on</STRONG> (ARM, 268 bytes, Stack size 16 bytes, lcd_main.o(.text))
+<P><STRONG><a name="[92]"></a>constant_stops_on</STRONG> (ARM, 268 bytes, Stack size 16 bytes, lcd_main.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = constant_stops_on &rArr; lcd_rectangle_thickness &rArr; lcd_drawRect &rArr; vLine
 </UL>
 <BR>[Calls]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_rectangle_thickness
 <LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_fillRect
 <LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_drawRect
 </UL>
-<BR>[Called By]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_backlight_on
+<BR>[Called By]<UL><LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_backlight_on
 </UL>
 
-<P><STRONG><a name="[92]"></a>constant_throttle_minus_on</STRONG> (ARM, 168 bytes, Stack size 16 bytes, lcd_main.o(.text))
+<P><STRONG><a name="[93]"></a>constant_throttle_minus_on</STRONG> (ARM, 220 bytes, Stack size 16 bytes, lcd_main.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = constant_throttle_minus_on &rArr; lcd_rectangle_thickness &rArr; lcd_drawRect &rArr; vLine
 </UL>
 <BR>[Calls]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_rectangle_thickness
 <LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_fillRect
 <LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_drawRect
 </UL>
-<BR>[Called By]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_backlight_on
+<BR>[Called By]<UL><LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_backlight_on
 </UL>
 
-<P><STRONG><a name="[93]"></a>constant_throttle_plus_on</STRONG> (ARM, 196 bytes, Stack size 16 bytes, lcd_main.o(.text))
+<P><STRONG><a name="[94]"></a>constant_throttle_plus_on</STRONG> (ARM, 196 bytes, Stack size 16 bytes, lcd_main.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = constant_throttle_plus_on &rArr; lcd_rectangle_thickness &rArr; lcd_drawRect &rArr; vLine
 </UL>
 <BR>[Calls]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_rectangle_thickness
 <LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_fillRect
 <LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_drawRect
 </UL>
-<BR>[Called By]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_backlight_on
+<BR>[Called By]<UL><LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_backlight_on
 </UL>
 
-<P><STRONG><a name="[94]"></a>constant_velocity_on</STRONG> (ARM, 108 bytes, Stack size 8 bytes, lcd_main.o(.text))
+<P><STRONG><a name="[95]"></a>constant_velocity_on</STRONG> (ARM, 124 bytes, Stack size 8 bytes, lcd_main.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 152<LI>Call Chain = constant_velocity_on &rArr; lcd_fillcircle &rArr; hLine
 </UL>
-<BR>[Calls]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_circle_thickness
+<BR>[Calls]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_circle_thickness
+<LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_putVelLabelString
 <LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_fillcircle
 <LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_circle
 </UL>
-<BR>[Called By]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_backlight_on
+<BR>[Called By]<UL><LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_backlight_on
 </UL>
 
-<P><STRONG><a name="[95]"></a>lcd_backlight_on</STRONG> (ARM, 36 bytes, Stack size 8 bytes, lcd_main.o(.text))
+<P><STRONG><a name="[96]"></a>lcd_backlight_on</STRONG> (ARM, 36 bytes, Stack size 8 bytes, lcd_main.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = lcd_backlight_on &rArr; constant_velocity_on &rArr; lcd_fillcircle &rArr; hLine
 </UL>
-<BR>[Calls]<UL><LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_velocity_on
-<LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_throttle_plus_on
-<LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_throttle_minus_on
-<LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_stops_on
+<BR>[Calls]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_velocity_on
+<LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_throttle_plus_on
+<LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_throttle_minus_on
+<LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_stops_on
 <LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_brake_on
-<LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_sd_on
+<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_sd_on
 </UL>
 <BR>[Called By]<UL><LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_run
 </UL>
 
-<P><STRONG><a name="[96]"></a>constant_sd_off</STRONG> (ARM, 312 bytes, Stack size 24 bytes, lcd_main.o(.text))
+<P><STRONG><a name="[97]"></a>constant_sd_off</STRONG> (ARM, 312 bytes, Stack size 24 bytes, lcd_main.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 112<LI>Call Chain = constant_sd_off &rArr; lcd_rectangle_thickness &rArr; lcd_drawRect &rArr; vLine
 </UL>
 <BR>[Calls]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_rectangle_thickness
@@ -904,17 +937,18 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_backlight_off
 </UL>
 
-<P><STRONG><a name="[97]"></a>constant_brake_off</STRONG> (ARM, 108 bytes, Stack size 8 bytes, lcd_main.o(.text))
+<P><STRONG><a name="[98]"></a>constant_brake_off</STRONG> (ARM, 132 bytes, Stack size 8 bytes, lcd_main.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 152<LI>Call Chain = constant_brake_off &rArr; lcd_fillcircle &rArr; hLine
 </UL>
-<BR>[Calls]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_circle_thickness
+<BR>[Calls]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_circle_thickness
+<LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_putBrakeLabelString
 <LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_fillcircle
 <LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_circle
 </UL>
 <BR>[Called By]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_backlight_off
 </UL>
 
-<P><STRONG><a name="[98]"></a>constant_stops_off</STRONG> (ARM, 268 bytes, Stack size 16 bytes, lcd_main.o(.text))
+<P><STRONG><a name="[99]"></a>constant_stops_off</STRONG> (ARM, 268 bytes, Stack size 16 bytes, lcd_main.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = constant_stops_off &rArr; lcd_rectangle_thickness &rArr; lcd_drawRect &rArr; vLine
 </UL>
 <BR>[Calls]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_rectangle_thickness
@@ -924,7 +958,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_backlight_off
 </UL>
 
-<P><STRONG><a name="[99]"></a>constant_throttle_minus_off</STRONG> (ARM, 168 bytes, Stack size 16 bytes, lcd_main.o(.text))
+<P><STRONG><a name="[9a]"></a>constant_throttle_minus_off</STRONG> (ARM, 168 bytes, Stack size 16 bytes, lcd_main.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = constant_throttle_minus_off &rArr; lcd_rectangle_thickness &rArr; lcd_drawRect &rArr; vLine
 </UL>
 <BR>[Calls]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_rectangle_thickness
@@ -934,7 +968,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_backlight_off
 </UL>
 
-<P><STRONG><a name="[9a]"></a>constant_throttle_plus_off</STRONG> (ARM, 248 bytes, Stack size 16 bytes, lcd_main.o(.text))
+<P><STRONG><a name="[9b]"></a>constant_throttle_plus_off</STRONG> (ARM, 196 bytes, Stack size 16 bytes, lcd_main.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = constant_throttle_plus_off &rArr; lcd_rectangle_thickness &rArr; lcd_drawRect &rArr; vLine
 </UL>
 <BR>[Calls]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_rectangle_thickness
@@ -944,31 +978,33 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_backlight_off
 </UL>
 
-<P><STRONG><a name="[9b]"></a>constant_velocity_off</STRONG> (ARM, 108 bytes, Stack size 8 bytes, lcd_main.o(.text))
+<P><STRONG><a name="[91]"></a>constant_velocity_off</STRONG> (ARM, 124 bytes, Stack size 8 bytes, lcd_main.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 152<LI>Call Chain = constant_velocity_off &rArr; lcd_fillcircle &rArr; hLine
 </UL>
-<BR>[Calls]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_circle_thickness
+<BR>[Calls]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_circle_thickness
+<LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_putVelLabelString
 <LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_fillcircle
 <LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_circle
 </UL>
 <BR>[Called By]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_backlight_off
 </UL>
-
+<BR>[Address Reference Count : 1]<UL><LI> lcd_main.o(.text)
+</UL>
 <P><STRONG><a name="[9c]"></a>lcd_backlight_off</STRONG> (ARM, 36 bytes, Stack size 8 bytes, lcd_main.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = lcd_backlight_off &rArr; constant_velocity_off &rArr; lcd_fillcircle &rArr; hLine
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_velocity_off
-<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_throttle_plus_off
-<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_throttle_minus_off
-<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_stops_off
-<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_brake_off
-<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_sd_off
+<BR>[Calls]<UL><LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_velocity_off
+<LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_throttle_plus_off
+<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_throttle_minus_off
+<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_stops_off
+<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_brake_off
+<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_sd_off
 </UL>
 <BR>[Called By]<UL><LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_run
 </UL>
 
-<P><STRONG><a name="[4c]"></a>lcd_run</STRONG> (ARM, 440 bytes, Stack size 232 bytes, lcd_main.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 392<LI>Call Chain = lcd_run &rArr; lcd_backlight_off &rArr; constant_velocity_off &rArr; lcd_fillcircle &rArr; hLine
+<P><STRONG><a name="[4c]"></a>lcd_run</STRONG> (ARM, 764 bytes, Stack size 224 bytes, lcd_main.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 384<LI>Call Chain = lcd_run &rArr; lcd_backlight_off &rArr; constant_velocity_off &rArr; lcd_fillcircle &rArr; hLine
 </UL>
 <BR>[Calls]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
 <LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2d
@@ -976,17 +1012,19 @@ Global Symbols
 <LI><a href="#[34]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy4
 <LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strlen (via Veneer)
 <LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_backlight_off
-<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_backlight_on
-<LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;integer_to_string
-<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_dms_off
-<LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_dms_on
-<LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_max_vel_off
-<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_max_vel_on
+<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_backlight_on
+<LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;integer_to_string
+<LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_dms_off
+<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_dms_on
+<LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_max_vel_off
+<LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constant_max_vel_on
+<LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_putVelString
+<LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_putString
 </UL>
 <BR>[Called By]<UL><LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;master_isr_handler
 </UL>
 
-<P><STRONG><a name="[87]"></a>sdramInit</STRONG> (ARM, 472 bytes, Stack size 16 bytes, sdram.o(.text))
+<P><STRONG><a name="[88]"></a>sdramInit</STRONG> (ARM, 472 bytes, Stack size 16 bytes, sdram.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = sdramInit
 </UL>
 <BR>[Calls]<UL><LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mdelay
@@ -1076,7 +1114,7 @@ Global Symbols
 <P><STRONG><a name="[57]"></a>__aeabi_idivmod</STRONG> (ARM, 384 bytes, Stack size 8 bytes, aeabi_sdiv.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = __aeabi_idivmod
 </UL>
-<BR>[Called By]<UL><LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;integer_to_string
+<BR>[Called By]<UL><LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;integer_to_string
 <LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HSVtoRGB
 <LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pressure_calc
 <LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;press_button
