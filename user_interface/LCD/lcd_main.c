@@ -29,10 +29,11 @@ void lcd_run() {	//DO NOT REMOVE FROM THIS FILE
 	int vel_ms = light_rail.velocity >> 16;
 	int vel_kmh = vel_ms * 3.6;
 	//for INT TO STRING BELOW
-	char vel_str[100]; 
+	unsigned char vel_str[100]; 
 	//for CURRENT/NEXT STOP CHECK BELOW
 	int i = 0; 
-	unsigned char light_rail_stop[MAX_STOPS][MAX_STOP_STRING_SIZE] = {"CENTRAL", "HAYMARKET", "CHINATOWN", "TOWN HALL", "QVB", "WYNYARD", "BRIDGE ST", "CIRC QUAY"};
+	unsigned char light_rail_stop[MAX_STOPS][MAX_STOP_STRING_SIZE] =
+	{"CENTRAL", "HAYMARKET", "CHINATOWN", "TOWN HALL", "QVB", "WYNYARD", "BRIDGE ST", "CIRC QUAY"};
 
 
 	//LCD BACKLIGHT
