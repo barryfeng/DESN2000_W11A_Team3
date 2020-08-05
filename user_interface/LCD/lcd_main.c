@@ -32,7 +32,7 @@ void lcd_run() {	//DO NOT REMOVE FROM THIS FILE
 	char vel_str[100]; 
 	//for CURRENT/NEXT STOP CHECK BELOW
 	int i = 0; 
-	char light_rail_stop[MAX_STOPS][MAX_STOP_STRING_SIZE] = {"CENTRAL", "HAYMARKET", "CHINATOWN", "TOWN HALL", "QVB", "WYNYARD", "BRIDGE ST", "CIRC QUAY"};
+	unsigned char light_rail_stop[MAX_STOPS][MAX_STOP_STRING_SIZE] = {"CENTRAL", "HAYMARKET", "CHINATOWN", "TOWN HALL", "QVB", "WYNYARD", "BRIDGE ST", "CIRC QUAY"};
 
 
 	//LCD BACKLIGHT
