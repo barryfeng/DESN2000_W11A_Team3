@@ -1027,18 +1027,18 @@ Image component sizes
       2432         80          0          0          0       3260   lcd_hw.o
       4448         68         96         20          0       6631   lcd_main.o
        876        108          0          0       1288        708   lpc2400.o
-       216          4          0          0         12       9148   master_controller.o
+       216          4          0          0         12       9324   master_controller.o
       1076         52          0         30         24       2753   motion_controller.o
        500         28          0          0          0        724   sdram.o
         92          4          0          0         30       1232   speed_limit.o
        908         28          0         27       1024       2306   spi_mmc.o
-       776         20          0          0          0       1325   system_init.o
-       660         24          0          0          0       3003   system_timer.o
+       776         20          0          0          0       1333   system_init.o
+       660         24          0          0          0       2999   system_timer.o
        340         16          0          0          0       1099   touch.o
        284         12          0          0          0       1095   touch_screen_read.o
 
     ----------------------------------------------------------------------
-     20368        520       6608         84       2380      59413   Object Totals
+     20368        520       6608         84       2380      59593   Object Totals
          0          0         32          0          0          0   (incl. Generated)
          0          0          0          3          2          0   (incl. Padding)
 
@@ -1115,8 +1115,8 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     25448        760       6608         84       2708      59705   Grand Totals
-     25448        760       6608         84       2708      59705   ELF Image Totals
+     25448        760       6608         84       2708      59885   Grand Totals
+     25448        760       6608         84       2708      59885   ELF Image Totals
      25448        760       6608         84          0          0   ROM Totals
 
 ==============================================================================

@@ -35,6 +35,11 @@ void init_vel_limit_data(void) {
     speed_limit_data[7] = 5;
 }
 
+/**
+ * This function returns the maximum permitted velocity at a certain location
+ * given by the argument loc_id in Q22 notation (8 bit velocity shifted by
+ * 16 bits).
+ */
 uint32_t get_vel_limit_data(uint8_t loc_id) {
     return (speed_limit_data[loc_id] << Q_SHIFT);
 }

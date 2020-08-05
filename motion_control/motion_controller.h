@@ -13,20 +13,32 @@
 #include "../system/system_init.h"
 #include "speed_limit.h"
 
+/**
+ * The following define the kP and kI gain terms for the PI Controller.
+ */
 #define kP 10.0
 #define kI 0.0
 
+/**
+ * The following define appropriate bit shifts to convert ADC values to
+ * Q22 notation velocity values.
+ */
 #define VEL_SHIFT 16
 #define ADC_SHIFT 22
 
-#define CYCLE_TIME 20
-
+/**
+ * The following define state names for brake and drive states.
+ */
 #define BRAKE_ACTIVE 1
 #define BRAKE_INACTIVE 0
 
 #define DRIVE_ACTIVE 1
 #define DRIVE_INACTIVE 0
 
+/**
+ * The following define GPIO pin connections for the HC-SR04 ultrasonic
+ * sensors for obstacle detection.
+ */
 #define ULTRAS_TRIGGER 0x0
 #define ULTRAS_1_ECHO 0x1
 #define ULTRAS_2_ECHO 0x2
