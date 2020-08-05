@@ -11,6 +11,7 @@ lcd_main.o: C:\Keil\ARM\RV31\Inc\stdint.h
 lcd_main.o: C:\Keil\ARM\RV31\Inc\string.h
 lcd_main.o: ..\motion_control\motion_controller.h
 lcd_main.o: C:\Keil\ARM\RV31\Inc\stdlib.h
+lcd_main.o: C:\Keil\ARM\RV31\Inc\math.h
 lcd_main.o: ..\..\DESN2000_W11A_Team3\master_controller.h
 lcd_main.o: ..\motion_control\../system/system_timer.h
 lcd_main.o: ..\motion_control\../system/system_init.h
@@ -22,6 +23,7 @@ lcd_main.o: ..\..\DESN2000_W11A_Team3\user_interface/touchscreen/touch.h
 lcd_main.o: C:\Keil\ARM\RV31\Inc\stdio.h
 lcd_main.o: ..\..\DESN2000_W11A_Team3\logging/access_data.h
 lcd_main.o: ..\motion_control\fixed_point_pid.h
+lcd_main.o: ..\motion_control\speed_limit.h
 lcd_main.o: ..\..\DESN2000_W11A_Team3\diagnostics/diagnostics.h
 lcd_main.o: ..\diagnostics\SPI_MMC.h
 lcd_main.o: ..\diagnostics\diagnostics.h

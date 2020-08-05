@@ -6,6 +6,7 @@ access_data.o: C:\Keil\ARM\RV31\Inc\string.h
 access_data.o: ..\motion_control\motion_controller.h
 access_data.o: ..\..\DESN2000_W11A_Team3\LPC24XX.h
 access_data.o: C:\Keil\ARM\RV31\Inc\stdlib.h
+access_data.o: C:\Keil\ARM\RV31\Inc\math.h
 access_data.o: ..\..\DESN2000_W11A_Team3\master_controller.h
 access_data.o: ..\motion_control\../system/system_timer.h
 access_data.o: ..\motion_control\../system/system_init.h
@@ -22,6 +23,7 @@ access_data.o: ..\..\DESN2000_W11A_Team3\user_interface/touchscreen/touch.h
 access_data.o: C:\Keil\ARM\RV31\Inc\stdio.h
 access_data.o: ..\..\DESN2000_W11A_Team3\logging/access_data.h
 access_data.o: ..\motion_control\fixed_point_pid.h
+access_data.o: ..\motion_control\speed_limit.h
 access_data.o: ..\..\DESN2000_W11A_Team3\diagnostics/diagnostics.h
 access_data.o: ..\diagnostics\SPI_MMC.h
 access_data.o: ..\diagnostics\diagnostics.h

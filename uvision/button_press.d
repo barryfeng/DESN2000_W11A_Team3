@@ -6,6 +6,7 @@ button_press.o: C:\Keil\ARM\RV31\Inc\string.h
 button_press.o: ..\motion_control\motion_controller.h
 button_press.o: ..\..\DESN2000_W11A_Team3\LPC24XX.h
 button_press.o: C:\Keil\ARM\RV31\Inc\stdlib.h
+button_press.o: C:\Keil\ARM\RV31\Inc\math.h
 button_press.o: ..\..\DESN2000_W11A_Team3\master_controller.h
 button_press.o: ..\motion_control\../system/system_timer.h
 button_press.o: ..\motion_control\../system/system_init.h
@@ -22,6 +23,7 @@ button_press.o: ..\..\DESN2000_W11A_Team3\user_interface/touchscreen/touch.h
 button_press.o: C:\Keil\ARM\RV31\Inc\stdio.h
 button_press.o: ..\..\DESN2000_W11A_Team3\logging/access_data.h
 button_press.o: ..\motion_control\fixed_point_pid.h
+button_press.o: ..\motion_control\speed_limit.h
 button_press.o: ..\..\DESN2000_W11A_Team3\diagnostics/diagnostics.h
 button_press.o: ..\diagnostics\SPI_MMC.h
 button_press.o: ..\diagnostics\diagnostics.h

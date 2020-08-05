@@ -6,6 +6,7 @@ diagnostics.o: C:\Keil\ARM\RV31\Inc\stdint.h
 diagnostics.o: C:\Keil\ARM\RV31\Inc\string.h
 diagnostics.o: ..\motion_control\motion_controller.h
 diagnostics.o: C:\Keil\ARM\RV31\Inc\stdlib.h
+diagnostics.o: C:\Keil\ARM\RV31\Inc\math.h
 diagnostics.o: ..\..\DESN2000_W11A_Team3\master_controller.h
 diagnostics.o: ..\motion_control\../system/system_timer.h
 diagnostics.o: ..\motion_control\../system/system_init.h
@@ -22,5 +23,6 @@ diagnostics.o: ..\..\DESN2000_W11A_Team3\user_interface/touchscreen/touch.h
 diagnostics.o: C:\Keil\ARM\RV31\Inc\stdio.h
 diagnostics.o: ..\..\DESN2000_W11A_Team3\logging/access_data.h
 diagnostics.o: ..\motion_control\fixed_point_pid.h
+diagnostics.o: ..\motion_control\speed_limit.h
 diagnostics.o: ..\..\DESN2000_W11A_Team3\diagnostics/diagnostics.h
 diagnostics.o: ..\diagnostics\SPI_MMC.h

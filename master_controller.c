@@ -66,6 +66,7 @@ void hw_init(void) {
     init_spi();
     init_lcd();
     init_ultrasonic();
+    init_vel_limit_data();
 }
 
 void lr_init(void) {

@@ -5,11 +5,13 @@
 #include <LPC24XX.h>
 #include <stdint.h>
 #include <stdlib.h>
+#include <math.h>
 
 #include "master_controller.h"
 #include "../system/system_timer.h"
 #include "fixed_point_pid.h"
 #include "../system/system_init.h"
+#include "speed_limit.h"
 
 #define kP 10.0
 #define kI 0.0
@@ -46,6 +48,7 @@
 
 static uint32_t get_voltage(void);
 static uint32_t get_ultrasonic_data(void);
+static uint8_t get_location_id(void);
 
 static void set_pwm(int);
 

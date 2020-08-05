@@ -7,6 +7,7 @@ touch_screen_read.o: C:\Keil\ARM\RV31\Inc\string.h
 touch_screen_read.o: ..\motion_control\motion_controller.h
 touch_screen_read.o: ..\..\DESN2000_W11A_Team3\LPC24XX.h
 touch_screen_read.o: C:\Keil\ARM\RV31\Inc\stdlib.h
+touch_screen_read.o: C:\Keil\ARM\RV31\Inc\math.h
 touch_screen_read.o: ..\..\DESN2000_W11A_Team3\master_controller.h
 touch_screen_read.o: ..\motion_control\../system/system_timer.h
 touch_screen_read.o: ..\motion_control\../system/system_init.h
@@ -20,8 +21,9 @@ touch_screen_read.o: ..\..\DESN2000_W11A_Team3\motion_control/motion_controller.
 touch_screen_read.o: ..\..\DESN2000_W11A_Team3\user_interface/touchscreen/touch_screen_read.h
 touch_screen_read.o: ..\..\DESN2000_W11A_Team3\logging/access_data.h
 touch_screen_read.o: ..\motion_control\fixed_point_pid.h
+touch_screen_read.o: ..\motion_control\speed_limit.h
+touch_screen_read.o: C:\Keil\ARM\RV31\Inc\stdio.h
 touch_screen_read.o: ..\..\DESN2000_W11A_Team3\diagnostics/diagnostics.h
 touch_screen_read.o: ..\diagnostics\SPI_MMC.h
 touch_screen_read.o: ..\diagnostics\diagnostics.h
 touch_screen_read.o: ..\user_interface\touchscreen\touch.h
-touch_screen_read.o: C:\Keil\ARM\RV31\Inc\stdio.h
