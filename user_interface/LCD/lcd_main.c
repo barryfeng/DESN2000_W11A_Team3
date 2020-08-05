@@ -412,7 +412,7 @@ void lcd_circle_thickness(unsigned short x0, unsigned short y0, unsigned short r
 ///*    INTEGER TO STRING CONVERTER    *///
 ///////////////////////////////////////////
 
-void reverse_string(char string[], int length) {
+void reverse_string(unsigned char string[], int length) {
 	int start = 0, end = length - 1;
 	while (start < end) {
 		char temp = *(string + start);
@@ -423,7 +423,7 @@ void reverse_string(char string[], int length) {
 	}
 }
 
-char* integer_to_string(int integer, unsigned char* string, int radix) {
+unsigned char* integer_to_string(int integer, unsigned char* string, int radix) {
 	int i = 0, neg_check = FALSE;
 
 	if (integer == 0) {
