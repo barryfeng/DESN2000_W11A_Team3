@@ -54,6 +54,6 @@ void lcd_rectangle_thickness(unsigned short x0, unsigned short y0, unsigned shor
 void lcd_circle_thickness(unsigned short x0, unsigned short y0, unsigned short r, int thickness, lcd_color_t color);
 
 void reverse_string(char string[], int length);
-char* integer_to_string(int integer, char* string, int radix);
+char* integer_to_string(int integer, unsigned char* string, int radix);
 
 #endif

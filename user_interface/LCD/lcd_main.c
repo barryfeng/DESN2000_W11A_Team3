@@ -31,7 +31,7 @@ void lcd_run() {	//DO NOT REMOVE FROM THIS FILE
 	//for INT TO STRING BELOW
 	unsigned char vel_str[100]; 
 	//for CURRENT/NEXT STOP CHECK BELOW
-	int i = 0; 
+	static int i = 0; 
 	unsigned char light_rail_stop[MAX_STOPS][MAX_STOP_STRING_SIZE] =
 	{"CENTRAL", "HAYMARKET", "CHINATOWN", "TOWN HALL", "QVB", "WYNYARD", "BRIDGE ST", "CIRC QUAY"};
 
@@ -69,7 +69,7 @@ void lcd_run() {	//DO NOT REMOVE FROM THIS FILE
 	} else if (light_rail.brake_state == APPLY && light_rail_stop[i + 1] == '\0') {
 		i = 0;
 		while (i < MAX_STOPS - 1) {
-			int j = 0, k = strlen(light_rail_stop[i + 1]) - 1;
+			int j = 0, k = strlen((char *)light_rail_stop[i + 1]) - 1;
 			while (j < k) {
 				char temp = light_rail_stop[i + 1][j];
 				light_rail_stop[i + 1][j] = light_rail_stop[i + 1][k];
@@ -423,7 +423,7 @@ void reverse_string(char string[], int length) {
 	}
 }
 
-char* integer_to_string(int integer, char* string, int radix) {
+char* integer_to_string(int integer, unsigned char* string, int radix) {
 	int i = 0, neg_check = FALSE;
 
 	if (integer == 0) {
