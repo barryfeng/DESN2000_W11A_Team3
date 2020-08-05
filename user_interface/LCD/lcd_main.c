@@ -44,7 +44,7 @@ void lcd_run() {	//DO NOT REMOVE FROM THIS FILE
 
 	//INT TO STRING (returns integer in base 10)
 	integer_to_string(vel_kmh, vel_str, 10);
-	//lcd_putVelString(x, y, vel_str);
+	lcd_putVelString(43, 97, vel_str);
 
 	//DMS STATE CHECK
 	if (light_rail.dms_state == OFF) {
@@ -62,8 +62,8 @@ void lcd_run() {	//DO NOT REMOVE FROM THIS FILE
 
 	//CURRENT/NEXT STOP CHECK
 	if (light_rail.brake_state == APPLY && light_rail_stop[i + 1] != '\0') {
-		//lcd_putString(x, y, light_rail_stop[i]);
-		//lcd_putString(x, y, light_rail_stop[i + 1]);
+		lcd_putString(13, 30, light_rail_stop[i]);
+		lcd_putString(131, 30, light_rail_stop[i + i]);
 		i++;
 	} else if (light_rail.brake_state == APPLY && light_rail_stop[i + 1] == '\0') {
 		i = 0;
@@ -78,11 +78,11 @@ void lcd_run() {	//DO NOT REMOVE FROM THIS FILE
 			}
 			i++;
 		}
-		//lcd_putString(x, y, light_rail_stop[i]);
-		//lcd_putString(x, y, light_rail_stop[i + 1]);
+		lcd_putString(13, 30, light_rail_stop[i]);
+		lcd_putString(131, 30, light_rail_stop[i + i]);
 	} else {
-		//lcd_putString(x, y, light_rail_stop[i]);
-		//lcd_putString(x, y, light_rail_stop[i + 1]);	
+		lcd_putString(13, 30, light_rail_stop[i]);
+		lcd_putString(131, 30, light_rail_stop[i + i]);	
 	}
 
 }
@@ -112,32 +112,32 @@ void constant_labels() {
 	//Throttle Label
 	lcd_rectangle_thickness(198, 52, 236, 64, 2, CUSTOM_2);
 	lcd_fillRect(200, 54, 234, 62, LIGHT_GRAY);
-	//putString(x,y,"THROT");
+	lcd_putString(201, 55, "THRT");
 
 	// Current Stop Label
 	lcd_rectangle_thickness(7, 6, 115, 18, 2, CUSTOM_2);
 	lcd_fillRect(9, 8, 113, 16, LIGHT_GRAY);
-	//putString(x,y,"CURRENT STOP");
+	lcd_putString(13, 9, "CURRENT STOP");
 
 	// Next Stop Label
 	lcd_rectangle_thickness(126, 6, 234, 18, 2, CUSTOM_2);
 	lcd_fillRect(128, 8, 232, 16, LIGHT_GRAY);
-	//putString(x,y,"NEXT STOP");
+	lcd_putString(144, 9, "NEXT STOP");
 
 	// DMS Label
 	lcd_rectangle_thickness(46, 246, 98, 258, 2, CUSTOM_2);
 	lcd_fillRect(48, 248, 96, 256, LIGHT_GRAY);
-	//putString(x,y,"DMS");
+	lcd_putString(60, 249, "DMS");
 
 	// MAX VEL Label
 	lcd_rectangle_thickness(103, 246, 155, 258, 2, CUSTOM_2);
 	lcd_fillRect(105, 248, 153, 256, LIGHT_GRAY);
-	//putString(x,y,"MAX VEL");
+	lcd_putString(109, 249, "MAX V");
 
 	//SD Label
 	lcd_rectangle_thickness(7, 246, 39, 258, 2, CUSTOM_2);
 	lcd_fillRect(9, 248, 37, 256, LIGHT_GRAY);
-	//putString(x,y,"SD");
+	lcd_putString(15, 249, "SD");
 }
 
 /////////////////////////////
@@ -192,7 +192,7 @@ void constant_velocity_on() {
 	lcd_fillcircle(98, 144, 87, GREEN);
 
 	//Velocity Label
-	//putVelLabelString(x,y,"KM/H");
+	lcd_putVelLabelString(62, 182, "KM/H");
 }
 
 void constant_throttle_plus_on() {
@@ -224,14 +224,12 @@ void constant_stops_on() {
 	lcd_drawRect(7, 25, 115, 41, CYAN);
 	lcd_rectangle_thickness(8, 26, 114, 40, 2, CUSTOM_2);
 	lcd_fillRect(10, 28, 112, 38, CYAN);
-	//putString(x,y,"current stop location");
 	
 	//Next Stop Rectangle
 	lcd_rectangle_thickness(124, 23, 236, 43, 2, CUSTOM_2);
 	lcd_drawRect(126, 25, 234, 41, CYAN);
 	lcd_rectangle_thickness(127, 26, 233, 40, 2, CUSTOM_2);
 	lcd_fillRect(129, 28, 231, 38, CYAN);
-	//putString(x,y,"next stop location");
 }
 
 void constant_brake_on() {
@@ -241,8 +239,8 @@ void constant_brake_on() {
 	lcd_circle_thickness(200, 280, 32, 2, CUSTOM_2);
 	lcd_fillcircle(200, 280, 30, RED);
 
-	// Brake Label
-	//putBrakeLabelString(x,y,"BRAKE");
+	//Brake Label
+	lcd_putBrakeLabelString(175, 274, "BRAKE");
 }
 
 void constant_dms_on() {
@@ -297,7 +295,7 @@ void constant_velocity_off() {
 	lcd_fillcircle(98, 144, 87, LIGHT_GRAY);
 
 	//Velocity Label
-	//putVelLabelString(x,y,"KM/H");
+	lcd_putVelLabelString(62, 182, "KM/H");
 }
 
 void constant_throttle_plus_off() {
@@ -329,14 +327,12 @@ void constant_stops_off() {
 	lcd_drawRect(7, 25, 115, 41, LIGHT_GRAY);
 	lcd_rectangle_thickness(8, 26, 114, 40, 2, CUSTOM_2);
 	lcd_fillRect(10, 28, 112, 38, LIGHT_GRAY);
-	//putString(x,y,"empty string");
 	
 	//Next Stop Rectangle
 	lcd_rectangle_thickness(124, 23, 236, 43, 2, CUSTOM_2);
 	lcd_drawRect(126, 25, 234, 41, LIGHT_GRAY);
 	lcd_rectangle_thickness(127, 26, 233, 40, 2, CUSTOM_2);
 	lcd_fillRect(129, 28, 231, 38, LIGHT_GRAY);
-	//putString(x,y,"empty string");
 }
 
 void constant_brake_off() {
@@ -346,8 +342,8 @@ void constant_brake_off() {
 	lcd_circle_thickness(200, 280, 32, 2, CUSTOM_2);
 	lcd_fillcircle(200, 280, 30, LIGHT_GRAY);
 
-	// Brake Label
-	//putBrakeLabelString(x,y,"BRAKE");
+	//Brake Label
+	lcd_putBrakeLabelString(175, 274, "BRAKE");
 }
 
 void constant_dms_off() {
