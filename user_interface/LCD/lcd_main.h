@@ -19,6 +19,9 @@
 #define MAX_VEL 50
 #define MAX_STOPS 8
 #define MAX_STOP_STRING_SIZE 12
+#define FALSE 0
+#define TRUE 1
+
 
 void init_lcd(void);
 void lcd_run(void);

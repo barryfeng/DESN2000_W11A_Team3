@@ -418,15 +418,16 @@ void lcd_circle_thickness(unsigned short x0, unsigned short y0, unsigned short r
 void reverse_string(char string[], int length) {
 	int start = 0, end = length - 1;
 	while (start < end) {
-		swap(*(string + start), *(string + end));
+		char temp = *(string + start); *(string + end));
+		*(string + start) = *(string + end);
+		*(string + end) = temp;
 		start++;
 		end--;
 	}
 }
 
 char* integer_to_string(int integer, char* string, int radix) {
-	int i = 0; 
-	bool neg_check = false;
+	int i = 0, neg_check = FALSE;
 
 	if (integer == 0) {
 		string[i + 1] = '0';
@@ -436,7 +437,7 @@ char* integer_to_string(int integer, char* string, int radix) {
 
 	if (integer < 0 && radix == 10) {
 		integer = -integer;
-		neg_check = true;
+		neg_check = TRUE;
 	}
 
 	while (integer != 0) {
@@ -445,7 +446,7 @@ char* integer_to_string(int integer, char* string, int radix) {
 		integer = integer / radix;
 	}
 
-	if (neg_check == true) {
+	if (neg_check == TRUE) {
 		string[i + 1] = '-';
 	}
 
