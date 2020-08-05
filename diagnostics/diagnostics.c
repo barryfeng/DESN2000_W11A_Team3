@@ -18,7 +18,7 @@ extern LightRail light_rail;
 extern uint8_t MMCRDData[MMC_DATA_SIZE];
 
 /**
- * This function loads the diagnostic code using from the array MMCRDData.
+ * This function loads the diagnostic code from the array MMCRDData.
  * The MMCRDData array is filled using stardard APIs defined by NXP in the
  * SPI_MMC file. When started, the SPI_MMC APIs are called and data is read
  * in continuous 512B blocks and stored in MMCRData arrays. These arrays

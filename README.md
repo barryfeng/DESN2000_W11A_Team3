@@ -36,10 +36,7 @@ DESN2000_W11A_Team3 Light Rail Controller
 ## System Architecture
 ### Motion Controller
 #### Determining current speed using ADC
-* The analog feedback voltage from the DC motor is obtained using the LPC2478 ADC. The digital voltage signal is manipulated to obtain the speed of the light-rail in meters per second. 
-..* This uses a scaling factor of: 𝑣_(𝑚𝑠^(−1) )=𝑉_𝐴𝐷𝐶 (100/(2.5⋅3.6))≪16.
-..* The term (100/(2.5⋅3.6 )) scales the feedback voltage to the ((100𝑘𝑚ℎ^(−1))/3.6)𝑚𝑠^(−1) maximum speed when 2.5𝑉 is read.
-..* The term (≪16) converts the velocity to a Q22 format to avoid floating point arithmetic.
+* The feedback voltage from the DC motor is obtained using the LPC2478 ADC. This voltage is then manipulated using a scaling factor of: 𝑣_𝑚𝑠 = 𝑉_𝐴𝐷𝐶 (100/(2.5⋅3.6)) ≪ 16 to obtain velocity (m/s) in Q22 notation.
 * The current light-rail speed is then fed into fixed-point proportional integral controller which updates the PWM duty cycle to compensate for error. The velocity in the light rail's central struct is also updated.
 
 #### Setpoint Verification
@@ -56,6 +53,18 @@ applied via SPI.
 * All arithmetic inside the PI controller is done using fixed point arithmetic to
 reduce overhead for the ARM CPU.
 * The controller output is then checked for saturation and overflow. If saturation or overflow (for uint_16t) occurs, the output is capped at the 16-bit out_max value specified in controller initialisation.
+
+### Diagnostic Code Loading/Execution (./diagnostics)
+* The diagnostic code is loaded by copying data from an inserted SD card into
+the SDRAM.
+* Interfacing with the SD card is performed over the SPI and MMC interfaces.
+* The code loading process uses a set of stardard APIs defined by NXP in the
+SPI_MMC file. 
+* When started, the SPI_MMC APIs are called and data is read in continuous 512B blocks and stored in MMCRData arrays. These arrays are copied to the diagnostic_code array before being cleared by the subsequent write cycle.
+* This loaded diagnostic code is then run using a function pointer using
+run_diag_code() in diagnostics.c.
+* A series of checks are also performed to ensure that the diagnostic process
+cannot be entered when the light rail is in operation (velocity > 0, brakes disengaged).
 
 # Version History
 ## v1.0.0a1
