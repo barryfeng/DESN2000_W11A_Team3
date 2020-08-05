@@ -87,6 +87,16 @@ static uint32_t get_ultrasonic_data(void) {
 }
 
 /**
+ * This function obtains the current location of the tram as an integer from
+ * 0 - 7. This number determines the maximum permitted velocity associated
+ * with the location specified. A real-world implementation may used GPS. For
+ * this implementation, a random number between 0 and 7 is returned.
+ */
+static uint8_t get_location_id(void) {
+    return (rand() % 8);
+}
+
+/**
  * This function sets a new PWM duty cycle. The PWM0 match register is 
  * set to the argument duty_cycle and PWM0 is latched to the new duty cycle.
  */
@@ -103,6 +113,9 @@ static void set_pwm(int duty_cycle) {
  * The function will also ensure that the controller is initialised once by
  * checked the initialised member of the pi_controller structure.
  * 
+ * The velocity setpoint is also verified such that the setpoint does not
+ * exceed the speed limit at the light rail's current location.
+ * 
  * The DMS and brake states are then checked and updated accordingly. Next, 
  * the the PI controller is stepped and the controller output is passed to
  * the set_pwm function as feedback.
@@ -114,6 +127,7 @@ void run_controller(void) {
     static Controller pi_controller;
     static uint32_t compensation = 0;
     static uint8_t dms_state = 0, mem_dms_state = 0;
+    uint8_t location_id = get_location_id();
 
     if (!pi_controller.initialised) {
         pi_controller = init_controller(kP, kI);
@@ -121,6 +135,10 @@ void run_controller(void) {
 
     if (get_ultrasonic_data() <= MIN_OBSTACLE_DIST) {
         set_brake();
+    }
+
+    if (light_rail.vel_setpoint > get_vel_limit_data(location_id)) {
+        light_rail.vel_setpoint = get_vel_limit_data(location_id);
     }
 
     update_dms_state(dms_state, mem_dms_state);

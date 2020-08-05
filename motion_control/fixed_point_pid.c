@@ -14,6 +14,18 @@
 
 #include "fixed_point_pid.h"
 
+/**
+ * This function initialises the PI controller and takes in two floating
+ * point parameters kP and kI. These controller parameters are shifted to
+ * 14-bit integers in Q14 notation. If the parameters exceed INT14_MAX,
+ * their values are set to INT14_MAX. The same applies if the parameters
+ * underflow INT14_MIN.
+ * 
+ * The controller output limits are also set to 16 bits. The controller 
+ * integral sum is started at 0 and the initialised bit in controller
+ * is set to 1 after this process is complete. The controller structure
+ * is finally returned.
+ */
 Controller init_controller(float kP, float kI) {
     Controller pi_controller; 
     int16_t int14_max = ((1 << 14) - 1);
@@ -49,6 +61,17 @@ Controller init_controller(float kP, float kI) {
     return pi_controller;
 }
 
+/**
+ * This function follows a standard integration of a proportional integral
+ * controller. The error is obtained by taking the difference between
+ * the velocity and velocity setpoint of the light rail. The proportional
+ * and integral terms are evaluated and summed to form the controller
+ * output. 
+ * 
+ * The controller output is then checked for saturation and 
+ * overflow. If saturation or overflow occur, the output is capped at
+ * the 16-bit out_max value specified in controller initialisation.
+ */
 int16_t step_controller(int16_t sp, int16_t fb, Controller pi_controller) {
     // int16 + int16 = int17
     int32_t err = sp - fb;

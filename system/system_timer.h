@@ -7,6 +7,10 @@
 #include "user_interface/touchscreen/touch_screen_read.h"
 #include "logging/access_data.h"
 
+/**
+ * The following define the timer modifiers which can be used to set the
+ * timer prescalers.
+ */
 typedef char modifier_t;
 #define MODIFIER_SEC 1
 #define MODIFIER_MILLI 1000

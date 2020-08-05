@@ -7,7 +7,7 @@
 
   <Targets>
     <Target>
-      <TargetName>Target 1</TargetName>
+      <TargetName>light_rail</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
       <TargetOption>
@@ -436,31 +436,6 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>logging</GroupName>
-          <Files>
-            <File>
-              <FileName>access_data.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\logging\access_data.c</FilePath>
-            </File>
-            <File>
-              <FileName>data_management.s</FileName>
-              <FileType>2</FileType>
-              <FilePath>..\logging\data_management.s</FilePath>
-            </File>
-            <File>
-              <FileName>exception_vector_table.s</FileName>
-              <FileType>2</FileType>
-              <FilePath>..\logging\exception_vector_table.s</FilePath>
-            </File>
-            <File>
-              <FileName>swi_handler.s</FileName>
-              <FileType>2</FileType>
-              <FilePath>..\logging\swi_handler.s</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
           <GroupName>diagnostics</GroupName>
           <Files>
             <File>
@@ -537,6 +512,31 @@
               <FileName>sdram.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\user_interface\LCD\sdram.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>logging</GroupName>
+          <Files>
+            <File>
+              <FileName>access_data.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\logging\access_data.c</FilePath>
+            </File>
+            <File>
+              <FileName>data_management.s</FileName>
+              <FileType>2</FileType>
+              <FilePath>..\logging\data_management.s</FilePath>
+            </File>
+            <File>
+              <FileName>swi_handler.s</FileName>
+              <FileType>2</FileType>
+              <FilePath>..\logging\swi_handler.s</FilePath>
+            </File>
+            <File>
+              <FileName>exception_vector_table.s</FileName>
+              <FileType>2</FileType>
+              <FilePath>..\logging\exception_vector_table.s</FilePath>
             </File>
           </Files>
         </Group>

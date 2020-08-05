@@ -16,6 +16,10 @@
 
 extern LightRail light_rail;
 
+/** 
+ * This function returns the appropriate prescaler value to target the
+ * time magnitude given as the parameter target_modifier.
+ */
 int get_prescaler(modifier_t target_modifier) {
     int prescale = 0;
     
@@ -32,6 +36,11 @@ int get_prescaler(modifier_t target_modifier) {
     return prescale - 1;
 }
 
+/**
+ * This function is the IRQ handler for the system. All functions within
+ * this handler are run every at the CLOCK_CYCLE defined in 
+ * master_controller.h.
+ */
 __irq void master_isr_handler(void) {
     long int ir = T0IR;
 
@@ -40,71 +49,126 @@ __irq void master_isr_handler(void) {
     lcd_run();
     store_data();
 
-    T0IR = ir;       // Write back to IR to clear Interrupt Flag
-    VICVectAddr = 0x0;    // End of interrupt execution
+    // Write back to IR to clear Interrupt Flag
+    T0IR = ir;
+
+    // End of interrupt execution
+    VICVectAddr = 0x0;
 }
 
-
-    /**
- * ARGS:
- * */
-
+/**
+ * This function starts the system ISR. It defines the interrupt handler and
+ * uses timer0 for the interrupt cycle. When run, the master_tmr_state value
+ * in the light rail central structure is also set to 1.
+ */
 void start_master_isr(unsigned int target, modifier_t unit) {
-    T0CTCR = 0x00;                                  // Set timer 0 to timer mode
-    T0PR = get_prescaler(unit);                     // Set prescaler (default seconds)
-    T0TCR = 0x02;                                   // Reset timer0
+    // Set timer 0 to timer mode
+    T0CTCR = 0x00;
 
-    T0MR0 = target - 1;                             // Zero indexed match
-    T0MCR = (1 << 1) | (1 << 0);                    // Interrupt and reset on match
+    // Set prescaler (default seconds)
+    T0PR = get_prescaler(unit);
 
-    VICIntSelect &= ~(0x1 << 4);                        // Timer 0 selected as IRQ
-    VICIntEnable |= (0x1 << 4);                           // Timer 0 interrupt enabled
-    VICVectPriority0 = 1;                           // Timer 0 interrupt priority set to maximum.
-    VICVectAddr0 = (unsigned)master_isr_handler;    // Timer 0 interrupt address
+    // Reset timer0
+    T0TCR = 0x02;
 
-    T0TCR = 0x01;                                   // Start timer
+    // Zero indexed match
+    T0MR0 = target - 1;
 
-    while (T0TC != T0MR0);                          // Wait for timer to match
+    // Interrupt and reset on match
+    T0MCR = (1 << 1) | (1 << 0);
 
-    T0TCR = 0x02;                                   // Reset timer counter
+    // Timer 0 selected as IRQ
+    VICIntSelect &= ~(0x1 << 4);
+
+    // Timer 0 interrupt enabled
+    VICIntEnable |= (0x1 << 4);
+
+    // Timer 0 interrupt priority set to maximum.
+    VICVectPriority0 = 1;
+
+    // Timer 0 interrupt address
+    VICVectAddr0 = (unsigned)master_isr_handler;
+
+    // Start timer
+    T0TCR = 0x01;
+
+    // Wait for timer to match
+    while (T0TC != T0MR0);
+
+    // Reset timer counter
+    T0TCR = 0x02;
 
     light_rail.master_tmr_state = 1;
 }
 
+/** 
+ * This function stops the system ISR by reseting, disabling the timer0
+ * counter and setting master_tmr_state to 0.
+ */
 void stop_master_isr(void) {
-    T0TCR = 0x2;                                    // Reset and disable timer counter
-    
+    T0TCR = 0x2;
     light_rail.master_tmr_state = 0;
 }
 
+
 /**
- * ARGS:
- * */
-
+ * This function initialises timer2 to a time magnitude given by the 
+ * parameter unit. Accepted values include ('s' for seconds, 'm' for
+ * milliseconds and 'u' for microseconds).
+ */
 void init_timer2(modifier_t unit) {
-    T2CTCR = 0x0;               // Set timer 0 to timer mode
-    T2PR = get_prescaler(unit);  // Set prescaler (default seconds)
-    T2TCR = 0x2;                // Reset timer0
+    // Set timer 2 to timer mode
+    T2CTCR = 0x0;
+
+    // Set timer prescaler (default seconds)
+    T2PR = get_prescaler(unit);
+
+    // Reset timer2
+    T2TCR = 0x2;
 }
 
+/**
+ * This function causes a system delay of time (parameter: target) using 
+ * timer2.
+ */
 void delay_timer2(unsigned int target) {
-    T2MR0 = target - 1;  // Zero indexed match
-    T2MCR = (1 << 1);    // Reset on match
+    // Set match register to target - 1 as T2MR0 is zero-indexed.
+    T2MR0 = target - 1;
 
-    T2TCR = 0x1;  // Start timer
-    while (T2TC != T2MR0);  // Wait for timer to match
+    // Reset timer2 on match
+    T2MCR = (1 << 1);
 
-    T2TCR = 0x2;  // Reset and disable timer counter
+    // Start timer2
+    T2TCR = 0x1;
+
+    // Wait for timer2 to match
+    while (T2TC != T2MR0);
+
+    // Reset and disable timer2 counter on completion
+    T2TCR = 0x2;
 }
 
+/**
+ * This function starts timer2 in a "stop-watch mode". This is used to
+ * measure a specified time after the start_timer2_stopwatch has been
+ * called.
+ */
 void start_timer2_stopwatch(void) {
     T2TCR = 0x1;
 }
 
+/**
+ * This function splits the timer2_stopwatch time by returning the current
+ * elapsed stopwatch time but does not stop the stopwatch.
+ */
 uint32_t split_timer2_stopwatch(void) {
     return (uint32_t) T2TC;
 }
 
+/**
+ * This function resets the timer2_stopwatch time and returns the current
+ * elapsed stopwatch time.
+ */
 uint32_t reset_timer2_stopwatch(void) {
     uint32_t count = T2TC;
     T2TCR = 0x2;  // Reset and disable timer counter
@@ -113,21 +177,38 @@ uint32_t reset_timer2_stopwatch(void) {
 }
 
 /**
- * ARGS:
- * */
-
+ * This function initialises timer3 to a time magnitude given by the 
+ * parameter unit. Accepted values include ('s' for seconds, 'm' for
+ * milliseconds and 'u' for microseconds).
+ */
 void init_timer3(modifier_t unit) {
-    T3CTCR = 0x00;                  // Set timer 0 to timer mode
-    T3PR = get_prescaler(unit);     // Set prescaler (default seconds)
-    T3TCR = 0x02;                   // Reset timer0
+    // Set timer3 to timer mode
+    T3CTCR = 0x00;
+
+    // Set timer3 prescaler (default seconds)
+    T3PR = get_prescaler(unit);
+
+    // Reset timer3
+    T3TCR = 0x02;
 }
 
+/**
+ * This function causes a system delay of time (parameter: target) using 
+ * timer3.
+ */
 void delay_timer3(unsigned int target) {
-    T3MR0 = target - 1;         // Zero indexed match
-    T3MCR = (1 << 1);           // Reset on match
+    // Set match register to target - 1 as T2MR0 is zero-indexed.
+    T3MR0 = target - 1;
 
-    T3TCR = 0x01;               // Start timer
-    while (T3TC != T3MR0);      // Wait for timer to match
+    // Reset timer3 on match
+    T3MCR = (1 << 1);
 
-    T3TCR = 0x02;               // Reset timer counter
+    // Start timer3
+    T3TCR = 0x01;
+
+    // Wait for timer3 to match
+    while (T3TC != T3MR0);
+
+    // Reset timer3 counter
+    T3TCR = 0x02;
 }

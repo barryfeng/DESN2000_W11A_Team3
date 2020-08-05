@@ -5,6 +5,7 @@ master_controller.o: C:\Keil\ARM\RV31\Inc\string.h
 master_controller.o: ..\motion_control\motion_controller.h
 master_controller.o: ..\..\DESN2000_W11A_Team3\LPC24XX.h
 master_controller.o: C:\Keil\ARM\RV31\Inc\stdlib.h
+master_controller.o: C:\Keil\ARM\RV31\Inc\math.h
 master_controller.o: ..\..\DESN2000_W11A_Team3\master_controller.h
 master_controller.o: ..\motion_control\../system/system_timer.h
 master_controller.o: ..\motion_control\../system/system_init.h
@@ -21,6 +22,7 @@ master_controller.o: ..\..\DESN2000_W11A_Team3\user_interface/touchscreen/touch.
 master_controller.o: C:\Keil\ARM\RV31\Inc\stdio.h
 master_controller.o: ..\..\DESN2000_W11A_Team3\logging/access_data.h
 master_controller.o: ..\motion_control\fixed_point_pid.h
+master_controller.o: ..\motion_control\speed_limit.h
 master_controller.o: ..\..\DESN2000_W11A_Team3\diagnostics/diagnostics.h
 master_controller.o: ..\diagnostics\SPI_MMC.h
 master_controller.o: ..\diagnostics\diagnostics.h

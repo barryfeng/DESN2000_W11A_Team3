@@ -32,7 +32,10 @@ void init_pll(void) {
     PLLFEED = 0xAA;  
     PLLFEED = 0x55;
 
-    // Wait for the PLL to achieve lock by monitoring the PLOCK bit in the PLLSTAT register.
+    /** 
+     * Wait for the PLL to achieve lock by monitoring the PLOCK bit in 
+     * the PLLSTAT register.
+     */
     while (!(PLLSTAT & PLOCK));  
 
     PLLCON = 0x03;
@@ -44,42 +47,72 @@ void init_pll(void) {
 
 // Set ADC out to P0.23
 void init_adc(void) {
-    PCONP |= (1 << 12);  // Power on ADC Module
-    AD0CR |= (1 << 21);  // Enable ADC
-    PCLKSEL0 |= (0x01 << 24);   // Set ADC peripheral clock to CCLK (60MHz)
+    // Power on ADC Module
+    PCONP |= (1 << 12);
 
+    // Enable ADC
+    AD0CR |= (1 << 21);
+
+    // Set ADC peripheral clock to CCLK (60MHz)
+    PCLKSEL0 |= (0x01 << 24);
+
+    // Select P0.23 to AD0[0]
     PINSEL1 |= ~(0x03 << 14);
-    PINSEL1 |= (0x01 << 14);  // Select P0.23 to AD0[0]
+    PINSEL1 |= (0x01 << 14);
 }
 
 // Set PWM out to GPIO P1.3
 void init_pwm(void) {
-    PCONP |= (1 << 5);    // Power on PWM0 power/clock control
-    PWM0PCR |= (1 << 9);  // Set PWM to PWM0[1]
+    // Power on PWM0 power/clock control
+    PCONP |= (1 << 5);
 
-    PCLKSEL0 |= (0x01 << 10);  // Set ADC peripheral clock to CCLK (60MHz)
+    // Set PWM to PWM0[1]
+    PWM0PCR |= (1 << 9);
 
-    PINSEL2 &= ~(0x03 << 6);  // Clear P1.3
-    PINSEL2 |= (0x03 << 6);  // Set P1.3 for PWM Output.
+    // Set ADC peripheral clock to CCLK (60MHz)
+    PCLKSEL0 |= (0x01 << 10);
 
-    PWM0PR = 59;                    // Set prescale register to (60 - 1) (microsec resolution).
-    PWM0MCR = (1 << 1);  // Set PWM Match Control Register to reset PWMTC on match with PWMMR0.
-    PWM0LER |= (1 << 0) | (1 << 1); 
+    // Clear P1.3
+    PINSEL2 &= ~(0x03 << 6);
 
-    PWM0MR0 = 32768;                // Set PWM period to 32.768 ms (2^15).
-    PWM0MR1 = 0;                    // Set PWM pulse width to default duty cycle (0).
-    PWM0TCR = (1 << 1);             // Reset PWM TC.
+    // Set P1.3 for PWM Output
+    PINSEL2 |= (0x03 << 6); 
 
-    PWM0LER = (1 << 0) | (1 << 1);  // Update PWM0 Latch for MR0, MR1
-    PWM0TCR = (1 << 0) | (1 << 3);  // Enable PWM0 and Reset PWM0 TC
+    // Set prescale register to (60 - 1) (microsec resolution)
+    PWM0PR = 59;
+
+    // Set PWM Match Control Register to reset PWMTC on match with PWMMR0
+    PWM0MCR = (1 << 1);
+    PWM0LER |= (1 << 0) | (1 << 1);
+
+    // Set PWM period to 32.768 ms (2^15)
+    PWM0MR0 = 32768;
+
+    // Set PWM pulse width to default duty cycle (0)
+    PWM0MR1 = 0;
+
+    // Reset PWM TC
+    PWM0TCR = (1 << 1);
+
+    // Update PWM0 Latch for MR0, MR1
+    PWM0LER = (1 << 0) | (1 << 1);
+
+    // Enable PWM0 and Reset PWM0 TC
+    PWM0TCR = (1 << 0) | (1 << 3);
 }
 
 void init_spi(void) {
-    PINSEL0 |= (0x3 << 29);         // SCLK
-    PINSEL1 |= (0x3 << 2);          // MISO
-    PINSEL1 |= (0x3 << 4);          // MOSI
+    // SCLK
+    PINSEL0 |= (0x3 << 29);
 
-    PINSEL1 &= ~(0x3 << 8);         // CP
+    // MISO
+    PINSEL1 |= (0x3 << 2);
+
+    // MOSI
+    PINSEL1 |= (0x3 << 4);
+
+    // CP
+    PINSEL1 &= ~(0x3 << 8);    
     FIO0DIR |= (1 << 20);
 
     S0SPCR = 0x093C;            
@@ -87,8 +120,16 @@ void init_spi(void) {
 }
 
 void init_ultrasonic(void) {
+    /**
+     * Timer2 is initialised in microseconds to assist with HC-SR4 sampling 
+     * routine.
+     */
     init_timer2('u');
 
+    /**
+     * The following pin selects set the appropriate pins for the HC-SR04
+     * sensors to GPIO mode. The FIO3DIR sets these pins to outputs.
+     */
     PINSEL6 &= ~(0x3 << 0);
     PINSEL6 &= ~(0x3 << 2);
     PINSEL6 &= ~(0x3 << 4);
@@ -100,22 +141,31 @@ void init_ultrasonic(void) {
 void spi_write(unsigned char data) {
     char result;
 
-    FIO0PIN &= ~(1 << 20);          // Set CS_TP low to begin SPI transmission
-    S0SPDR = data;                  //Transmit data on MOSI
+    // Set CS_TP low to begin SPI transmission
+    FIO0PIN &= ~(1 << 20);
 
-    while ((S0SPSR >> 7) == 0);     // Transmit 0x00 on MOSI and wait to read from MISO
+    //Transmit data on MOSI
+    S0SPDR = data;
+
+    // Transmit 0x00 on MOSI and wait to read from MISO
+    while ((S0SPSR >> 7) == 0);     
     result = S0SPSR;
-		(void)result;               // Silence unused variable warning
-	
-    FIO0PIN |= (1 << 20);           // Set CS_TP high after SPI transmission complete
+	(void)result;
+
+    // Set CS_TP high after SPI transmission complete
+    FIO0PIN |= (1 << 20);          
 }
 
 uint8_t spi_read(void) {
-    FIO0PIN &= ~(1 << 20);          // Set CS_TP low to begin SPI transmission
+    // Set CS_TP low to begin SPI transmission
+    FIO0PIN &= ~(1 << 20);
 
-    while ((S0SPSR >> 7) == 0);     // Transmit 0x00 on MOSI and wait to read from MISO
+    // Transmit 0x00 on MOSI and wait to read from MISO
+    while ((S0SPSR >> 7) == 0);
 
-    FIO0PIN |= (1 << 20);           // Set CS_TP high after SPI transmission complete
-    
-    return S0SPSR;                  // Return read result
+    // Set CS_TP high after SPI transmission complete
+    FIO0PIN |= (1 << 20);
+
+    // Return read result
+    return S0SPSR;                  
 }

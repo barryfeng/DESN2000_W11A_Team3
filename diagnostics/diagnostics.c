@@ -17,6 +17,14 @@
 extern LightRail light_rail;
 extern uint8_t MMCRDData[MMC_DATA_SIZE];
 
+/**
+ * This function loads the diagnostic code using from the array MMCRDData.
+ * The MMCRDData array is filled using stardard APIs defined by NXP in the
+ * SPI_MMC file. When started, the SPI_MMC APIs are called and data is read
+ * in continuous 512B blocks and stored in MMCRData arrays. These arrays
+ * are copied to the diagnostic_code array before being cleared by the
+ * subsequent write cycle.
+ */
 void load_diag_code(uint16_t diagnostic_code[MAX_DIAGNOSTIC_CODE_SIZE]) {
     uint32_t clr_buf_count, block_num = 0;
 
@@ -67,24 +75,29 @@ int check_diag_conditions(void) {
 }
 
 /**
- * SPI receives a block of data based on the length.
+ * SPI receives a block of data based on the length given by the argument
+ * blk_len.
  */
 void spi_read_block(uint8_t *buf, uint32_t blk_len) {
-		uint32_t i = 0;
+	uint32_t i = 0;
 	
     while (i < blk_len) {
         *buf = spi_read();
         buf++;
-				i++;
+		i++;
     }
 }
 
+/**
+ * SPI writes a block of data based on the length given by the argument
+ * blk_len.
+ */
 void spi_write_block(uint8_t *buf, uint32_t blk_len) {
-		uint32_t i = 0;
+	uint32_t i = 0;
 	
     while (i < blk_len) {
         spi_write(*buf);
         buf++;
-				i++;
+	    i++;
     }
 }

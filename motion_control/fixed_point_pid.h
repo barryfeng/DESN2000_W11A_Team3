@@ -12,6 +12,10 @@
 #include <stdint.h>
 #include <string.h>
 
+/**
+ * Light Rail PI Controller strucure. This contains all parameters and
+ * calculated values for the PI controller.
+ */
 typedef struct controller {
     int32_t kP;
     int32_t kI;
