@@ -390,7 +390,8 @@ void constant_sd_off() {
 ///*    LCD SHAPE THICKNESS    *///
 ///////////////////////////////////
 
-void lcd_rectangle_thickness(unsigned short x0, unsigned short y0, unsigned short x1, unsigned short y1, int thickness, lcd_color_t color) {
+void lcd_rectangle_thickness(unsigned short x0, unsigned short y0, unsigned short x1,
+							 unsigned short y1, int thickness, lcd_color_t color) {
 	int i = 0;
 	while (i < thickness) {
 		lcd_drawRect(x0 + i, y0 + i, x1 - i, y1 - i, color);
@@ -399,7 +400,8 @@ void lcd_rectangle_thickness(unsigned short x0, unsigned short y0, unsigned shor
 
 }
 
-void lcd_circle_thickness(unsigned short x0, unsigned short y0, unsigned short r, int thickness, lcd_color_t color) {
+void lcd_circle_thickness(unsigned short x0, unsigned short y0, unsigned short r, 
+						  int thickness, lcd_color_t color) {
 	int i = 0;
 	while (i < thickness) {
 		lcd_circle(x0 , y0, r - i, color);
