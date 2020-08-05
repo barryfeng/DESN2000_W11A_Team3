@@ -48,8 +48,8 @@ ARM Macro Assembler    Page 1
                        view_dms
                                SWI              SWI_dms
    27 00000024         
-   28 00000024 E1A0F00E 
-                       finish  MOV              PC, LR
+   28 00000024 E12FFF1E 
+                       finish  BX               LR
    29 00000028         
    30 00000028                 END
 Command Line: --debug --xref --apcs=interwork --depend=.\data_management.d -o.\

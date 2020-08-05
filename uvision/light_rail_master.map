@@ -255,10 +255,10 @@ Removing Unused input sections from the image.
     Removing button_press.o(.data), (20 bytes).
     Removing touch_screen_read.o(.data), (20 bytes).
     Removing access_data.o(.data), (20 bytes).
-    Removing swi_handler.o(IRQ), (140 bytes).
+    Removing swi_handler.o(IRQ), (144 bytes).
     Removing exception_vector_table.o(DATA), (88 bytes).
 
-9 unused section(s) (total 368 bytes) removed from the image.
+9 unused section(s) (total 372 bytes) removed from the image.
 
 ==============================================================================
 
