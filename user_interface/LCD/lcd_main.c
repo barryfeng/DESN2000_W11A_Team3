@@ -418,7 +418,7 @@ void lcd_circle_thickness(unsigned short x0, unsigned short y0, unsigned short r
 void reverse_string(char string[], int length) {
 	int start = 0, end = length - 1;
 	while (start < end) {
-		char temp = *(string + start); *(string + end));
+		char temp = *(string + start);
 		*(string + start) = *(string + end);
 		*(string + end) = temp;
 		start++;
