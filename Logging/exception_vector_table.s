@@ -1,7 +1,8 @@
+; Reference: UNSW DESN2000 Lecture Slides
+
 ; Exception Vector Table:
 ; These instructions are mapped to address 0x0000 0000. 
 ; Unimplemented handlers are currently infinite loops.
-; This has been moved into it's own file for readability.
 
                 PRESERVE8						; Preserve 8-bit Alignment
                 AREA    DATA, CODE, READONLY
