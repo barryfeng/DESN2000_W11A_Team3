@@ -163,7 +163,7 @@ In the access_data file, one of four functions is called in order to return a sp
 * LPC24XX pin references added.
 
 ## v2.0.0a1
-* Fixed point PI controller fully implemented.
+* Control and braking systems fully implemented.
 * SD card loading and diagnostic code execution implemented.
 * Data logging and retrieval API implemented.
 * LCD and touchscreen operation implemented.
