@@ -31,7 +31,34 @@ DESN2000_W11A_Team3 Light Rail Controller
 * speed_limit.h
 
 ### User Interface
-* placeholder
+* delay.c
+* delay.h
+#### LCD
+* lcd_main.c
+* lcd_main.h
+* lcd_hw.c
+* lcd_hw.h
+* lcd_grph.c
+* lcd_grph.h
+* lcd_cfg.h
+* sdram.c
+* sdram.h
+* font5x7.c
+* font5x7.h
+* fontVel.c
+* fontVel.h
+* fontVelLabel.c
+* fontVelLabel.h
+* fontBrakeLabel.c
+* fontBrakeLabel.h
+* font_macro.h
+#### Touchscreen
+* touch.c
+* touch.h
+* touch_screen_read.c
+* touch_screen_read.h
+* button_press.c
+* button_press.h
 
 ## System Architecture
 ### Motion Controller
@@ -65,6 +92,24 @@ SPI_MMC file.
 run_diag_code() in diagnostics.c.
 * A series of checks are also performed to ensure that the diagnostic process
 cannot be entered when the light rail is in operation (velocity > 0, brakes disengaged).
+
+### User Interface
+
+#### LCD
+##### LCD Startup
+* External SDRAM is setup for frame buffer.
+* LCD controller is setup for specific LCD configuration in lcd_config.h and then LCD is turned on.
+* LCD is filled with a 16-bit depth RGB colour (CUSTOM_1). Borders are placed around all LCD features. Labels are placed above most LCD features (excluding velocity and brake).  
+##### LCD Run
+* LCD mode is checked; standby mode if velocity = 0 AND brake is applied, else, active mode. In standby mode, only throttle (+) and SD controls remain with colour backlighting. Once the operator interacts with throttle (+), increasing the velocity setpoint to above 0 and thus releasing the brake, the LCD will enter active mode. In active mode, most features (excluding dead man's switch (DMS) and max velocity (MAX V)) will have colour backlighting.
+* Velocity is extracted from the light-rail struct in Q22 notation. It is right shifted 16 bits to obtain its value in m/s and is multiplied by 3.6 to convert this value to km/h. This integer casted value is then converted into a string and printed on the LCD.
+* Dead man's switch (DMS) state is checked, if it is ON, the DMS indicator on the LCD will enter an ON state (YELLOW), otherwise, it will remain in an OFF state (LIGHT_GREY). Maximum velocity (MAX V) state is checked, if the current state velocity = 50 km/h, the MAX V indicator on the LCD will enter an ON state (YELLOW), otherwise, will remain in an OFF state (LIGHT_GREY).
+* The current and next stop location is displayed on the LCD. The list of stops iterates once the brake is applied and reverses when the end of the list is reached.
+* System interupt handler will loop through the above process every 20 ms.  
+
+#### Touchscreen    
+* 
+
 
 # Version History
 ## v1.0.0a1
