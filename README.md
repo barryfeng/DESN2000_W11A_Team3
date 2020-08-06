@@ -1,5 +1,6 @@
-# DESN2000_W11A_Team3
+# DESN2000_W11A_Team3 Whizz
 DESN2000_W11A_Team3 Light Rail Controller
+* Uvision project files are under /uvision.
 
 ## File Association
 ### System Initialisation (./system)
@@ -33,6 +34,7 @@ DESN2000_W11A_Team3 Light Rail Controller
 ### User Interface
 * delay.c
 * delay.h
+
 #### LCD
 * lcd_main.c
 * lcd_main.h
@@ -52,6 +54,7 @@ DESN2000_W11A_Team3 Light Rail Controller
 * fontBrakeLabel.c
 * fontBrakeLabel.h
 * font_macro.h
+
 #### Touchscreen
 * touch.c
 * touch.h
@@ -61,10 +64,20 @@ DESN2000_W11A_Team3 Light Rail Controller
 * button_press.h
 
 ## System Architecture
+### System Overview
+* The light rail embedded system is comprised of five interconnected subsystems (Motion controller, data logging, LCD console, touchscreen manager and diagnostics). 
+* The driver or operator can interface with the embedded system either through the touchscreen/LCD driver console (drive mode), or through an SD card (diagnostics mode).
+* In drive mode, the driver sets a target velocity (setpoint), which is passed through a control system whose output drives the duty cycle of the embedded system PWM output. This PWM output drives the light rail motor.
+* The control system also interfaces with the brakes via SPI, DMS via GPIO and HC-SR04 ultrasonic sensors (for obstacle avoidance) via GPIO.
+* All data output from the control system (live velocity, velocity setpoint and brake/DMS states) are logged to SDRAM and stores in a central structure.
+* In diagnostics mode, code is copied from an SD card to SDRAM, then executed from SDRAM.
+* All timing (driver LCD refresh, PI controller, logging) in the embedded system is performed using an interrupt routine which executes every 20ms (50Hz).
+* The embedded system toggles between four states, initialisation (hardware configuration), operation (active interrupt routine), standby (zero velocity, brakes enabled, active interrupt routine) and shutdown (no interrupt routine, zero velocity, brakes enabled).
+
 ### Motion Controller
 #### Determining current speed using ADC
 * The feedback voltage from the DC motor is obtained using the LPC2478 ADC. This voltage is then manipulated using a scaling factor of: 𝑣_𝑚𝑠 = 𝑉_𝐴𝐷𝐶 (100/(2.5⋅3.6)) ≪ 16 to obtain velocity (m/s) in Q22 notation.
-* The current light-rail speed is then fed into fixed-point proportional integral controller which updates the PWM duty cycle to compensate for error. The velocity in the light rail's central struct is also updated.
+* The current light-rail speed is then fed into fixed-point proportional integral controller (reduces overhead by avoiding floating point arithmetic) which updates the PWM duty cycle to compensate for error. The velocity in the light rail's central struct is also updated.
 
 #### Setpoint Verification
 * The velocity setpoint entered by the driver is compared to the maximum permitted velocity at the current location (get_vel_limit_data()). If the setpoint exceed this speed limit, the setpoint is set to the speed limit.
@@ -81,7 +94,7 @@ applied via SPI.
 reduce overhead for the ARM CPU.
 * The controller output is then checked for saturation and overflow. If saturation or overflow (for uint_16t) occurs, the output is capped at the 16-bit out_max value specified in controller initialisation.
 
-### Diagnostic Code Loading/Execution (./diagnostics)
+### Diagnostic Code Loading/Execution
 * The diagnostic code is loaded by copying data from an inserted SD card into
 the SDRAM.
 * Interfacing with the SD card is performed over the SPI and MMC interfaces.
@@ -150,10 +163,7 @@ In the access_data file, one of four functions is called in order to return a sp
 * LPC24XX pin references added.
 
 ## v2.0.0a1
-* Fixed point PI controller fully implemented.
+* Control and braking systems fully implemented.
 * SD card loading and diagnostic code execution implemented.
 * Data logging and retrieval API implemented.
 * LCD and touchscreen operation implemented.
-
-
-
