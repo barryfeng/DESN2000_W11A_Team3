@@ -131,6 +131,17 @@ cannot be entered when the light rail is in operation (velocity > 0, brakes dise
 ##### Pressure Calculator
 * Takes the given positioning variables from the touchscreen peripheral and a pointer to pressure to update with a value determined by a given algorithm from the touchscreen's data sheet.
 
+#### Data Logging
+
+#### Summary of operations:
+Four key pieces of data are logged: velocity; velocity target (set point); DMS state (dead man switch); and brake state. Velocity and velocity target are both 32 bit values while DMS state and brake state are both 8 bit values. The data is acquired from a Lightrail struct that has a size of 80 bits. The data will be logged to static memory bank 2 (16 MB) and can be logged to static memory bank 3 or dynamic memory banks 1/2/3 when more space is needed. This implementation only logs data to static memory bank 2. Storing and accessing data is done via the API file, access_data. This file has functions to store the data and to retrieve the most recently stored data from memory. A software interrupt is generated every time data is stored or accessed.
+
+#### Store data:
+The API file, access_data, contains a store function. This function acquires all of the necessary data from the Lightrail struct. This data is then passed as arguments to another function, store, in an assembly file that is responsible for data management. This assembly file is called data_management. This function will then initiate a software interrupt with a flag that indicates storage of data. The software interrupt handler is then loaded into the program counter - this is done in the exception_vector_table assembly file. We then proceed to the SWI handler file. The SWI flag is used in combination with a jump table to navigate to the correct function: in this case, it is the SWI_store function/label. The data will then be loaded into static memory bank 2.
+
+#### View data:
+In the access_data file, one of four functions is called in order to return a specific piece of data. Each function calls a corresponding function in the data management assembly file. The functions in the data management file initiate a software interrupt with a flag that indicates what piece of data needs to be returned. Again, the SWI handler is loaded into the PC and we proceed to the SWI handler assembly file. The same jump table is used to navigate to the correct view data function based on what the SWI flag is. Each function retrieves a different word/byte of data located in static memory bank 2 depending on what piece of data is required. The data is returned and the processor returns to user mode.
+
 # Version History
 ## v1.0.0a1
 * PID Controller code partially (mostly) implemented.
