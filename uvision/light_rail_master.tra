@@ -34,7 +34,7 @@
 ### ADS-LD Output File: 'light_rail_master.axf'
 ### ADS-LD Command File: 'light_rail_master.lnp'
 ### Checking for dirty Components...
-### Creating CmdFile 'light_rail_master.lnp', Handle=0x00000A3C
+### Creating CmdFile 'light_rail_master.lnp', Handle=0x00000970
 ### Writing '.lnp' file
 ### ADS-LD Command file 'light_rail_master.lnp' is ready.
 ### ADS-LD: About to start ADS-LD Thread.

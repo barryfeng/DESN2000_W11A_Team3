@@ -1,0 +1,1210 @@
+{
+    "extension": "linecounter",
+    "version": "0.2.7",
+    "workspace": "c:\\Users\\BarryPC\\OneDrive - UNSW\\22 Year 2\\YR2T2\\DESN2000\\02 PROJECT\\DESN2000_W11A_Team3",
+    "linecount": [
+        {
+            "version": "0.2.7",
+            "counttime": "2020-08-06 23:21:28",
+            "filesum": 171,
+            "codesum": 294822,
+            "commentsum": 2837,
+            "blanksum": 2401,
+            "statistics": {
+                ".c": {
+                    "code": 3974,
+                    "comment": 1210,
+                    "blank": 701
+                },
+                ".md": {
+                    "code": 78,
+                    "comment": 0,
+                    "blank": 10
+                },
+                ".h": {
+                    "code": 3049,
+                    "comment": 213,
+                    "blank": 290
+                },
+                ".txt": {
+                    "code": 265795,
+                    "comment": 0,
+                    "blank": 58
+                },
+                ".s": {
+                    "code": 1524,
+                    "comment": 694,
+                    "blank": 263
+                },
+                ".pdf": {
+                    "code": 3688,
+                    "comment": 0,
+                    "blank": 4
+                },
+                ".py": {
+                    "code": 7,
+                    "comment": 0,
+                    "blank": 2
+                },
+                ".d": {
+                    "code": 348,
+                    "comment": 0,
+                    "blank": 0
+                },
+                ".lst": {
+                    "code": 4450,
+                    "comment": 720,
+                    "blank": 709
+                },
+                ".__i": {
+                    "code": 1,
+                    "comment": 0,
+                    "blank": 0
+                },
+                ".htm": {
+                    "code": 1374,
+                    "comment": 0,
+                    "blank": 243
+                },
+                ".plg": {
+                    "code": 251,
+                    "comment": 0,
+                    "blank": 1
+                },
+                ".map": {
+                    "code": 1072,
+                    "comment": 0,
+                    "blank": 57
+                },
+                ".tra": {
+                    "code": 43,
+                    "comment": 0,
+                    "blank": 0
+                },
+                ".lnp": {
+                    "code": 4,
+                    "comment": 0,
+                    "blank": 0
+                },
+                ".Barry Feng": {
+                    "code": 2501,
+                    "comment": 0,
+                    "blank": 10
+                },
+                ".sct": {
+                    "code": 13,
+                    "comment": 0,
+                    "blank": 2
+                },
+                ".uvproj": {
+                    "code": 548,
+                    "comment": 0,
+                    "blank": 4
+                },
+                ".dep": {
+                    "code": 643,
+                    "comment": 0,
+                    "blank": 0
+                },
+                ".uvopt": {
+                    "code": 571,
+                    "comment": 0,
+                    "blank": 12
+                },
+                ".bak": {
+                    "code": 3615,
+                    "comment": 0,
+                    "blank": 26
+                },
+                ".antho": {
+                    "code": 1273,
+                    "comment": 0,
+                    "blank": 9
+                }
+            },
+            "filelist": [
+                {
+                    "blank": 13,
+                    "code": 47,
+                    "comment": 43,
+                    "filename": "diagnostics\\diagnostics.c"
+                },
+                {
+                    "blank": 6,
+                    "code": 14,
+                    "comment": 0,
+                    "filename": "diagnostics\\diagnostics.h"
+                },
+                {
+                    "blank": 13,
+                    "code": 112,
+                    "comment": 54,
+                    "filename": "diagnostics\\SPI_MMC.c"
+                },
+                {
+                    "blank": 6,
+                    "code": 26,
+                    "comment": 9,
+                    "filename": "diagnostics\\SPI_MMC.h"
+                },
+                {
+                    "blank": 14,
+                    "code": 30,
+                    "comment": 50,
+                    "filename": "logging\\access_data.c"
+                },
+                {
+                    "blank": 4,
+                    "code": 9,
+                    "comment": 6,
+                    "filename": "logging\\access_data.h"
+                },
+                {
+                    "blank": 8,
+                    "code": 28,
+                    "comment": 0,
+                    "filename": "logging\\data_management.s"
+                },
+                {
+                    "blank": 9,
+                    "code": 31,
+                    "comment": 0,
+                    "filename": "logging\\exception_vector_table.s"
+                },
+                {
+                    "blank": 22,
+                    "code": 52,
+                    "comment": 0,
+                    "filename": "logging\\swi_handler.s"
+                },
+                {
+                    "blank": 5,
+                    "code": 15,
+                    "comment": 0,
+                    "filename": "Logging_superseeded\\logfile.txt"
+                },
+                {
+                    "blank": 10,
+                    "code": 16,
+                    "comment": 3,
+                    "filename": "Logging_superseeded\\logging.c"
+                },
+                {
+                    "blank": 12,
+                    "code": 27,
+                    "comment": 19,
+                    "filename": "Logging_superseeded\\OLD_access_data.c"
+                },
+                {
+                    "blank": 13,
+                    "code": 34,
+                    "comment": 0,
+                    "filename": "Logging_superseeded\\OLD_data_management.s"
+                },
+                {
+                    "blank": 16,
+                    "code": 44,
+                    "comment": 2,
+                    "filename": "Logging_superseeded\\UART0.s"
+                },
+                {
+                    "blank": 7,
+                    "code": 13,
+                    "comment": 16,
+                    "filename": "Logging_superseeded\\use_UART0.c"
+                },
+                {
+                    "blank": 122,
+                    "code": 960,
+                    "comment": 76,
+                    "filename": "LPC24XX.h"
+                },
+                {
+                    "blank": 8,
+                    "code": 39,
+                    "comment": 37,
+                    "filename": "master_controller.c"
+                },
+                {
+                    "blank": 11,
+                    "code": 29,
+                    "comment": 8,
+                    "filename": "master_controller.h"
+                },
+                {
+                    "blank": 25,
+                    "code": 61,
+                    "comment": 52,
+                    "filename": "motion_control\\fixed_point_pid.c"
+                },
+                {
+                    "blank": 6,
+                    "code": 22,
+                    "comment": 4,
+                    "filename": "motion_control\\fixed_point_pid.h"
+                },
+                {
+                    "blank": 31,
+                    "code": 108,
+                    "comment": 105,
+                    "filename": "motion_control\\motion_controller.c"
+                },
+                {
+                    "blank": 16,
+                    "code": 42,
+                    "comment": 21,
+                    "filename": "motion_control\\motion_controller.h"
+                },
+                {
+                    "blank": 4,
+                    "code": 15,
+                    "comment": 26,
+                    "filename": "motion_control\\speed_limit.c"
+                },
+                {
+                    "blank": 4,
+                    "code": 10,
+                    "comment": 0,
+                    "filename": "motion_control\\speed_limit.h"
+                },
+                {
+                    "blank": 10,
+                    "code": 78,
+                    "comment": 0,
+                    "filename": "README.md"
+                },
+                {
+                    "blank": 28,
+                    "code": 115,
+                    "comment": 0,
+                    "filename": "README.txt"
+                },
+                {
+                    "filename": "resources\\DESN2000-2020T2-ProjectBrief-ELEC.pdf",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 4,
+                    "code": 3688,
+                    "comment": 0,
+                    "filename": "resources\\UM10237 LPC24XX PWM.pdf"
+                },
+                {
+                    "blank": 41,
+                    "code": 66,
+                    "comment": 64,
+                    "filename": "system\\system_init.c"
+                },
+                {
+                    "blank": 6,
+                    "code": 16,
+                    "comment": 0,
+                    "filename": "system\\system_init.h"
+                },
+                {
+                    "blank": 44,
+                    "code": 78,
+                    "comment": 93,
+                    "filename": "system\\system_timer.c"
+                },
+                {
+                    "blank": 8,
+                    "code": 22,
+                    "comment": 4,
+                    "filename": "system\\system_timer.h"
+                },
+                {
+                    "blank": 20,
+                    "code": 55,
+                    "comment": 5,
+                    "filename": "tests\\fixp_test1.c"
+                },
+                {
+                    "filename": "tests\\fixp_test1.exe",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 7,
+                    "code": 17,
+                    "comment": 0,
+                    "filename": "tests\\fixp_test2.c"
+                },
+                {
+                    "filename": "tests\\fixp_test2.exe",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "tests\\image.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 2,
+                    "code": 7,
+                    "comment": 0,
+                    "filename": "tests\\imagetest.py"
+                },
+                {
+                    "blank": 0,
+                    "code": 2048,
+                    "comment": 0,
+                    "filename": "tests\\macro_gen\\brake_label.txt"
+                },
+                {
+                    "blank": 3,
+                    "code": 76,
+                    "comment": 0,
+                    "filename": "tests\\macro_gen\\brakefont.txt"
+                },
+                {
+                    "blank": 5,
+                    "code": 21,
+                    "comment": 0,
+                    "filename": "tests\\macro_gen\\macro_gen.c"
+                },
+                {
+                    "filename": "tests\\macro_gen\\macro_gen.exe",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 9,
+                    "code": 29,
+                    "comment": 1,
+                    "filename": "tests\\macro_gen\\macro_read.c"
+                },
+                {
+                    "filename": "tests\\macro_gen\\macro_read.exe",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 3,
+                    "code": 76,
+                    "comment": 0,
+                    "filename": "tests\\macro_gen\\newbrake.txt"
+                },
+                {
+                    "blank": 9,
+                    "code": 661,
+                    "comment": 0,
+                    "filename": "tests\\macro_gen\\newvel.txt"
+                },
+                {
+                    "blank": 1,
+                    "code": 262144,
+                    "comment": 0,
+                    "filename": "tests\\macro_gen\\vel_label.txt"
+                },
+                {
+                    "blank": 9,
+                    "code": 660,
+                    "comment": 0,
+                    "filename": "tests\\macro_gen\\velfont.txt"
+                },
+                {
+                    "filename": "tests\\tempCodeRunnerFile.exe",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 3,
+                    "code": 7,
+                    "comment": 5,
+                    "filename": "user_interface\\delay.c"
+                },
+                {
+                    "blank": 2,
+                    "code": 4,
+                    "comment": 9,
+                    "filename": "user_interface\\delay.h"
+                },
+                {
+                    "blank": 103,
+                    "code": 868,
+                    "comment": 104,
+                    "filename": "user_interface\\LCD\\font5x7.c"
+                },
+                {
+                    "blank": 2,
+                    "code": 4,
+                    "comment": 0,
+                    "filename": "user_interface\\LCD\\font5x7.h"
+                },
+                {
+                    "blank": 5,
+                    "code": 1638,
+                    "comment": 0,
+                    "filename": "user_interface\\LCD\\font_macro.h"
+                },
+                {
+                    "blank": 8,
+                    "code": 69,
+                    "comment": 10,
+                    "filename": "user_interface\\LCD\\fontBrakeLabel.c"
+                },
+                {
+                    "blank": 3,
+                    "code": 7,
+                    "comment": 0,
+                    "filename": "user_interface\\LCD\\fontBrakeLabel.h"
+                },
+                {
+                    "blank": 13,
+                    "code": 674,
+                    "comment": 15,
+                    "filename": "user_interface\\LCD\\fontVel.c"
+                },
+                {
+                    "blank": 3,
+                    "code": 7,
+                    "comment": 0,
+                    "filename": "user_interface\\LCD\\fontVel.h"
+                },
+                {
+                    "blank": 7,
+                    "code": 84,
+                    "comment": 9,
+                    "filename": "user_interface\\LCD\\fontVelLabel.c"
+                },
+                {
+                    "blank": 3,
+                    "code": 7,
+                    "comment": 0,
+                    "filename": "user_interface\\LCD\\fontVelLabel.h"
+                },
+                {
+                    "blank": 0,
+                    "code": 19,
+                    "comment": 1,
+                    "filename": "user_interface\\LCD\\lcd_cfg.h"
+                },
+                {
+                    "blank": 112,
+                    "code": 813,
+                    "comment": 240,
+                    "filename": "user_interface\\LCD\\lcd_grph.c"
+                },
+                {
+                    "blank": 35,
+                    "code": 49,
+                    "comment": 16,
+                    "filename": "user_interface\\LCD\\lcd_grph.h"
+                },
+                {
+                    "blank": 79,
+                    "code": 276,
+                    "comment": 86,
+                    "filename": "user_interface\\LCD\\lcd_hw.c"
+                },
+                {
+                    "blank": 22,
+                    "code": 76,
+                    "comment": 40,
+                    "filename": "user_interface\\LCD\\lcd_hw.h"
+                },
+                {
+                    "blank": 51,
+                    "code": 270,
+                    "comment": 95,
+                    "filename": "user_interface\\LCD\\lcd_main.c"
+                },
+                {
+                    "blank": 12,
+                    "code": 46,
+                    "comment": 8,
+                    "filename": "user_interface\\LCD\\lcd_main.h"
+                },
+                {
+                    "blank": 30,
+                    "code": 85,
+                    "comment": 39,
+                    "filename": "user_interface\\LCD\\sdram.c"
+                },
+                {
+                    "blank": 3,
+                    "code": 5,
+                    "comment": 10,
+                    "filename": "user_interface\\LCD\\sdram.h"
+                },
+                {
+                    "blank": 14,
+                    "code": 51,
+                    "comment": 17,
+                    "filename": "user_interface\\touchscreen\\button_press.c"
+                },
+                {
+                    "blank": 5,
+                    "code": 24,
+                    "comment": 1,
+                    "filename": "user_interface\\touchscreen\\button_press.h"
+                },
+                {
+                    "blank": 14,
+                    "code": 31,
+                    "comment": 19,
+                    "filename": "user_interface\\touchscreen\\touch.c"
+                },
+                {
+                    "blank": 2,
+                    "code": 4,
+                    "comment": 0,
+                    "filename": "user_interface\\touchscreen\\touch.h"
+                },
+                {
+                    "blank": 4,
+                    "code": 12,
+                    "comment": 3,
+                    "filename": "user_interface\\touchscreen\\touch_screen_read.c"
+                },
+                {
+                    "blank": 4,
+                    "code": 9,
+                    "comment": 0,
+                    "filename": "user_interface\\touchscreen\\touch_screen_read.h"
+                },
+                {
+                    "filename": "uvision\\access_data.crf",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 0,
+                    "code": 29,
+                    "comment": 0,
+                    "filename": "uvision\\access_data.d"
+                },
+                {
+                    "filename": "uvision\\access_data.o",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "uvision\\button_press.crf",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 0,
+                    "code": 29,
+                    "comment": 0,
+                    "filename": "uvision\\button_press.d"
+                },
+                {
+                    "filename": "uvision\\button_press.o",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "uvision\\data_management.d"
+                },
+                {
+                    "blank": 30,
+                    "code": 148,
+                    "comment": 0,
+                    "filename": "uvision\\data_management.lst"
+                },
+                {
+                    "filename": "uvision\\data_management.o",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "uvision\\delay.crf",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "uvision\\delay.d"
+                },
+                {
+                    "filename": "uvision\\delay.o",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "uvision\\diagnostics.crf",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 0,
+                    "code": 28,
+                    "comment": 0,
+                    "filename": "uvision\\diagnostics.d"
+                },
+                {
+                    "filename": "uvision\\diagnostics.o",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "uvision\\exception_vector_table.d"
+                },
+                {
+                    "blank": 6,
+                    "code": 5,
+                    "comment": 0,
+                    "filename": "uvision\\exception_vector_table.lst"
+                },
+                {
+                    "filename": "uvision\\exception_vector_table.o",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "uvision\\fixed_point_pid.crf",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 0,
+                    "code": 4,
+                    "comment": 0,
+                    "filename": "uvision\\fixed_point_pid.d"
+                },
+                {
+                    "filename": "uvision\\fixed_point_pid.o",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "uvision\\font5x7.crf",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 0,
+                    "code": 3,
+                    "comment": 0,
+                    "filename": "uvision\\font5x7.d"
+                },
+                {
+                    "filename": "uvision\\font5x7.o",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "uvision\\font_40x70.__i"
+                },
+                {
+                    "filename": "uvision\\font_40x70.crf",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 0,
+                    "code": 3,
+                    "comment": 0,
+                    "filename": "uvision\\font_40x70.d"
+                },
+                {
+                    "filename": "uvision\\fontbrakelabel.crf",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 0,
+                    "code": 5,
+                    "comment": 0,
+                    "filename": "uvision\\fontbrakelabel.d"
+                },
+                {
+                    "filename": "uvision\\fontbrakelabel.o",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "uvision\\fontvel.crf",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 0,
+                    "code": 5,
+                    "comment": 0,
+                    "filename": "uvision\\fontvel.d"
+                },
+                {
+                    "filename": "uvision\\fontvel.o",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "uvision\\fontvellabel.crf",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 0,
+                    "code": 5,
+                    "comment": 0,
+                    "filename": "uvision\\fontvellabel.d"
+                },
+                {
+                    "filename": "uvision\\fontvellabel.o",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "uvision\\lcd_grph.crf",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 0,
+                    "code": 11,
+                    "comment": 0,
+                    "filename": "uvision\\lcd_grph.d"
+                },
+                {
+                    "filename": "uvision\\lcd_grph.o",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "uvision\\lcd_hw.crf",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 0,
+                    "code": 4,
+                    "comment": 0,
+                    "filename": "uvision\\lcd_hw.d"
+                },
+                {
+                    "filename": "uvision\\lcd_hw.o",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "uvision\\lcd_main.crf",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 0,
+                    "code": 29,
+                    "comment": 0,
+                    "filename": "uvision\\lcd_main.d"
+                },
+                {
+                    "filename": "uvision\\lcd_main.o",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "uvision\\light_rail_master.axf",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 243,
+                    "code": 1374,
+                    "comment": 0,
+                    "filename": "uvision\\light_rail_master.htm"
+                },
+                {
+                    "blank": 0,
+                    "code": 4,
+                    "comment": 0,
+                    "filename": "uvision\\light_rail_master.lnp"
+                },
+                {
+                    "blank": 57,
+                    "code": 1072,
+                    "comment": 0,
+                    "filename": "uvision\\light_rail_master.map"
+                },
+                {
+                    "blank": 1,
+                    "code": 251,
+                    "comment": 0,
+                    "filename": "uvision\\light_rail_master.plg"
+                },
+                {
+                    "blank": 2,
+                    "code": 13,
+                    "comment": 0,
+                    "filename": "uvision\\light_rail_master.sct"
+                },
+                {
+                    "blank": 0,
+                    "code": 43,
+                    "comment": 0,
+                    "filename": "uvision\\light_rail_master.tra"
+                },
+                {
+                    "blank": 9,
+                    "code": 1273,
+                    "comment": 0,
+                    "filename": "uvision\\light_rail_master.uvgui.antho"
+                },
+                {
+                    "blank": 10,
+                    "code": 2501,
+                    "comment": 0,
+                    "filename": "uvision\\light_rail_master.uvgui.Barry Feng"
+                },
+                {
+                    "blank": 10,
+                    "code": 2501,
+                    "comment": 0,
+                    "filename": "uvision\\light_rail_master.uvgui_Barry Feng.bak"
+                },
+                {
+                    "blank": 12,
+                    "code": 571,
+                    "comment": 0,
+                    "filename": "uvision\\light_rail_master.uvopt"
+                },
+                {
+                    "blank": 4,
+                    "code": 548,
+                    "comment": 0,
+                    "filename": "uvision\\light_rail_master.uvproj"
+                },
+                {
+                    "blank": 0,
+                    "code": 334,
+                    "comment": 0,
+                    "filename": "uvision\\light_rail_master_light_rail.dep"
+                },
+                {
+                    "blank": 0,
+                    "code": 309,
+                    "comment": 0,
+                    "filename": "uvision\\light_rail_master_Target 1.dep"
+                },
+                {
+                    "blank": 12,
+                    "code": 571,
+                    "comment": 0,
+                    "filename": "uvision\\light_rail_master_uvopt.bak"
+                },
+                {
+                    "blank": 4,
+                    "code": 543,
+                    "comment": 0,
+                    "filename": "uvision\\light_rail_master_uvproj.bak"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "uvision\\LPC2400.d"
+                },
+                {
+                    "blank": 627,
+                    "code": 4047,
+                    "comment": 720,
+                    "filename": "uvision\\LPC2400.lst"
+                },
+                {
+                    "filename": "uvision\\LPC2400.o",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 195,
+                    "code": 1335,
+                    "comment": 692,
+                    "filename": "uvision\\LPC2400.s"
+                },
+                {
+                    "filename": "uvision\\master_controller.crf",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 0,
+                    "code": 28,
+                    "comment": 0,
+                    "filename": "uvision\\master_controller.d"
+                },
+                {
+                    "filename": "uvision\\master_controller.o",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "uvision\\motion_controller.crf",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 0,
+                    "code": 28,
+                    "comment": 0,
+                    "filename": "uvision\\motion_controller.d"
+                },
+                {
+                    "filename": "uvision\\motion_controller.o",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "uvision\\sdram.crf",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 0,
+                    "code": 4,
+                    "comment": 0,
+                    "filename": "uvision\\sdram.d"
+                },
+                {
+                    "filename": "uvision\\sdram.o",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "uvision\\speed_limit.crf",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 0,
+                    "code": 5,
+                    "comment": 0,
+                    "filename": "uvision\\speed_limit.d"
+                },
+                {
+                    "filename": "uvision\\speed_limit.o",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "uvision\\spi_mmc.crf",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 0,
+                    "code": 30,
+                    "comment": 0,
+                    "filename": "uvision\\spi_mmc.d"
+                },
+                {
+                    "filename": "uvision\\spi_mmc.o",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "uvision\\swi_handler.d"
+                },
+                {
+                    "blank": 46,
+                    "code": 250,
+                    "comment": 0,
+                    "filename": "uvision\\swi_handler.lst"
+                },
+                {
+                    "filename": "uvision\\swi_handler.o",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "uvision\\system_init.crf",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 0,
+                    "code": 30,
+                    "comment": 0,
+                    "filename": "uvision\\system_init.d"
+                },
+                {
+                    "filename": "uvision\\system_init.o",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "uvision\\system_timer.crf",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 0,
+                    "code": 30,
+                    "comment": 0,
+                    "filename": "uvision\\system_timer.d"
+                },
+                {
+                    "filename": "uvision\\system_timer.o",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "uvision\\task_handler.d"
+                },
+                {
+                    "filename": "uvision\\touch.crf",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 0,
+                    "code": 3,
+                    "comment": 0,
+                    "filename": "uvision\\touch.d"
+                },
+                {
+                    "filename": "uvision\\touch.o",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "uvision\\touch_screen_read.crf",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 0,
+                    "code": 29,
+                    "comment": 0,
+                    "filename": "uvision\\touch_screen_read.d"
+                },
+                {
+                    "filename": "uvision\\touch_screen_read.o",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                }
+            ]
+        }
+    ]
+}

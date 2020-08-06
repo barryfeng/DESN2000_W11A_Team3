@@ -87,7 +87,7 @@ Section Cross References
     sdram.o(.text) refers to delay.o(.text) for mdelay
     access_data.o(.text) refers to data_management.o(store_data) for store
     access_data.o(.text) refers to master_controller.o(.bss) for light_rail
-    exception_vector_table.o(DATA) refers to swi_handler.o(IRQ) for SWI_Handler
+    exception_vector_table.o(DATA) refers to swi_handler.o(HANDLER) for SWI_Handler
     rand.o(.emb_text) refers (Special) to libinit2.o(.ARM.Collect$$libinit$$00000009) for __rt_lib_init_rand_2
     rand.o(.emb_text) refers to rand.o(.text) for _rand_init
     rand.o(.emb_text) refers to rand.o(.bss) for _random_number_data
@@ -268,7 +268,7 @@ Removing Unused input sections from the image.
     Removing button_press.o(.data), (20 bytes).
     Removing touch_screen_read.o(.data), (20 bytes).
     Removing access_data.o(.data), (20 bytes).
-    Removing swi_handler.o(IRQ), (144 bytes).
+    Removing swi_handler.o(HANDLER), (144 bytes).
     Removing exception_vector_table.o(DATA), (88 bytes).
 
 9 unused section(s) (total 372 bytes) removed from the image.

@@ -1,0 +1,209 @@
+===============================================================================
+EXTENSION NAME : linecounter
+EXTENSION VERSION : 0.2.7
+-------------------------------------------------------------------------------
+count time : 2020-08-06 23:21:28
+count workspace : c:\Users\BarryPC\OneDrive - UNSW\22 Year 2\YR2T2\DESN2000\02 PROJECT\DESN2000_W11A_Team3
+total files : 171
+total code lines : 294822
+total comment lines : 2837
+total blank lines : 2401
+
+    statistics
+   |      extension|     total code|  total comment|    total blank|percent|
+   -------------------------------------------------------------------------
+   |             .c|           3974|           1210|            701|    1.3|
+   |            .md|             78|              0|             10|  0.026|
+   |             .h|           3049|            213|            290|    1.0|
+   |           .txt|         265795|              0|             58|     90|
+   |             .s|           1524|            694|            263|   0.52|
+   |           .pdf|           3688|              0|              4|    1.3|
+   |            .py|              7|              0|              2| 0.0024|
+   |             .d|            348|              0|              0|   0.12|
+   |           .lst|           4450|            720|            709|    1.5|
+   |           .__i|              1|              0|              0|0.00034|
+   |           .htm|           1374|              0|            243|   0.47|
+   |           .plg|            251|              0|              1|  0.085|
+   |           .map|           1072|              0|             57|   0.36|
+   |           .tra|             43|              0|              0|  0.015|
+   |           .lnp|              4|              0|              0| 0.0014|
+   |    .Barry Feng|           2501|              0|             10|   0.85|
+   |           .sct|             13|              0|              2| 0.0044|
+   |        .uvproj|            548|              0|              4|   0.19|
+   |           .dep|            643|              0|              0|   0.22|
+   |         .uvopt|            571|              0|             12|   0.19|
+   |           .bak|           3615|              0|             26|    1.2|
+   |         .antho|           1273|              0|              9|   0.43|
+   -------------------------------------------------------------------------
+diagnostics\diagnostics.c, code is 47, comment is 43, blank is 13.
+diagnostics\diagnostics.h, code is 14, comment is 0, blank is 6.
+diagnostics\SPI_MMC.c, code is 112, comment is 54, blank is 13.
+diagnostics\SPI_MMC.h, code is 26, comment is 9, blank is 6.
+logging\access_data.c, code is 30, comment is 50, blank is 14.
+logging\access_data.h, code is 9, comment is 6, blank is 4.
+logging\data_management.s, code is 28, comment is 0, blank is 8.
+logging\exception_vector_table.s, code is 31, comment is 0, blank is 9.
+logging\swi_handler.s, code is 52, comment is 0, blank is 22.
+Logging_superseeded\logfile.txt, code is 15, comment is 0, blank is 5.
+Logging_superseeded\logging.c, code is 16, comment is 3, blank is 10.
+Logging_superseeded\OLD_access_data.c, code is 27, comment is 19, blank is 12.
+Logging_superseeded\OLD_data_management.s, code is 34, comment is 0, blank is 13.
+Logging_superseeded\UART0.s, code is 44, comment is 2, blank is 16.
+Logging_superseeded\use_UART0.c, code is 13, comment is 16, blank is 7.
+LPC24XX.h, code is 960, comment is 76, blank is 122.
+master_controller.c, code is 39, comment is 37, blank is 8.
+master_controller.h, code is 29, comment is 8, blank is 11.
+motion_control\fixed_point_pid.c, code is 61, comment is 52, blank is 25.
+motion_control\fixed_point_pid.h, code is 22, comment is 4, blank is 6.
+motion_control\motion_controller.c, code is 108, comment is 105, blank is 31.
+motion_control\motion_controller.h, code is 42, comment is 21, blank is 16.
+motion_control\speed_limit.c, code is 15, comment is 26, blank is 4.
+motion_control\speed_limit.h, code is 10, comment is 0, blank is 4.
+README.md, code is 78, comment is 0, blank is 10.
+README.txt, code is 115, comment is 0, blank is 28.
+resources\DESN2000-2020T2-ProjectBrief-ELEC.pdf, it is a binary file.
+resources\UM10237 LPC24XX PWM.pdf, code is 3688, comment is 0, blank is 4.
+system\system_init.c, code is 66, comment is 64, blank is 41.
+system\system_init.h, code is 16, comment is 0, blank is 6.
+system\system_timer.c, code is 78, comment is 93, blank is 44.
+system\system_timer.h, code is 22, comment is 4, blank is 8.
+tests\fixp_test1.c, code is 55, comment is 5, blank is 20.
+tests\fixp_test1.exe, it is a binary file.
+tests\fixp_test2.c, code is 17, comment is 0, blank is 7.
+tests\fixp_test2.exe, it is a binary file.
+tests\image.png, it is a binary file.
+tests\imagetest.py, code is 7, comment is 0, blank is 2.
+tests\macro_gen\brake_label.txt, code is 2048, comment is 0, blank is 0.
+tests\macro_gen\brakefont.txt, code is 76, comment is 0, blank is 3.
+tests\macro_gen\macro_gen.c, code is 21, comment is 0, blank is 5.
+tests\macro_gen\macro_gen.exe, it is a binary file.
+tests\macro_gen\macro_read.c, code is 29, comment is 1, blank is 9.
+tests\macro_gen\macro_read.exe, it is a binary file.
+tests\macro_gen\newbrake.txt, code is 76, comment is 0, blank is 3.
+tests\macro_gen\newvel.txt, code is 661, comment is 0, blank is 9.
+tests\macro_gen\vel_label.txt, code is 262144, comment is 0, blank is 1.
+tests\macro_gen\velfont.txt, code is 660, comment is 0, blank is 9.
+tests\tempCodeRunnerFile.exe, it is a binary file.
+user_interface\delay.c, code is 7, comment is 5, blank is 3.
+user_interface\delay.h, code is 4, comment is 9, blank is 2.
+user_interface\LCD\font5x7.c, code is 868, comment is 104, blank is 103.
+user_interface\LCD\font5x7.h, code is 4, comment is 0, blank is 2.
+user_interface\LCD\font_macro.h, code is 1638, comment is 0, blank is 5.
+user_interface\LCD\fontBrakeLabel.c, code is 69, comment is 10, blank is 8.
+user_interface\LCD\fontBrakeLabel.h, code is 7, comment is 0, blank is 3.
+user_interface\LCD\fontVel.c, code is 674, comment is 15, blank is 13.
+user_interface\LCD\fontVel.h, code is 7, comment is 0, blank is 3.
+user_interface\LCD\fontVelLabel.c, code is 84, comment is 9, blank is 7.
+user_interface\LCD\fontVelLabel.h, code is 7, comment is 0, blank is 3.
+user_interface\LCD\lcd_cfg.h, code is 19, comment is 1, blank is 0.
+user_interface\LCD\lcd_grph.c, code is 813, comment is 240, blank is 112.
+user_interface\LCD\lcd_grph.h, code is 49, comment is 16, blank is 35.
+user_interface\LCD\lcd_hw.c, code is 276, comment is 86, blank is 79.
+user_interface\LCD\lcd_hw.h, code is 76, comment is 40, blank is 22.
+user_interface\LCD\lcd_main.c, code is 270, comment is 95, blank is 51.
+user_interface\LCD\lcd_main.h, code is 46, comment is 8, blank is 12.
+user_interface\LCD\sdram.c, code is 85, comment is 39, blank is 30.
+user_interface\LCD\sdram.h, code is 5, comment is 10, blank is 3.
+user_interface\touchscreen\button_press.c, code is 51, comment is 17, blank is 14.
+user_interface\touchscreen\button_press.h, code is 24, comment is 1, blank is 5.
+user_interface\touchscreen\touch.c, code is 31, comment is 19, blank is 14.
+user_interface\touchscreen\touch.h, code is 4, comment is 0, blank is 2.
+user_interface\touchscreen\touch_screen_read.c, code is 12, comment is 3, blank is 4.
+user_interface\touchscreen\touch_screen_read.h, code is 9, comment is 0, blank is 4.
+uvision\access_data.crf, it is a binary file.
+uvision\access_data.d, code is 29, comment is 0, blank is 0.
+uvision\access_data.o, it is a binary file.
+uvision\button_press.crf, it is a binary file.
+uvision\button_press.d, code is 29, comment is 0, blank is 0.
+uvision\button_press.o, it is a binary file.
+uvision\data_management.d, code is 1, comment is 0, blank is 0.
+uvision\data_management.lst, code is 148, comment is 0, blank is 30.
+uvision\data_management.o, it is a binary file.
+uvision\delay.crf, it is a binary file.
+uvision\delay.d, code is 1, comment is 0, blank is 0.
+uvision\delay.o, it is a binary file.
+uvision\diagnostics.crf, it is a binary file.
+uvision\diagnostics.d, code is 28, comment is 0, blank is 0.
+uvision\diagnostics.o, it is a binary file.
+uvision\exception_vector_table.d, code is 1, comment is 0, blank is 0.
+uvision\exception_vector_table.lst, code is 5, comment is 0, blank is 6.
+uvision\exception_vector_table.o, it is a binary file.
+uvision\fixed_point_pid.crf, it is a binary file.
+uvision\fixed_point_pid.d, code is 4, comment is 0, blank is 0.
+uvision\fixed_point_pid.o, it is a binary file.
+uvision\font5x7.crf, it is a binary file.
+uvision\font5x7.d, code is 3, comment is 0, blank is 0.
+uvision\font5x7.o, it is a binary file.
+uvision\font_40x70.__i, code is 1, comment is 0, blank is 0.
+uvision\font_40x70.crf, it is a binary file.
+uvision\font_40x70.d, code is 3, comment is 0, blank is 0.
+uvision\fontbrakelabel.crf, it is a binary file.
+uvision\fontbrakelabel.d, code is 5, comment is 0, blank is 0.
+uvision\fontbrakelabel.o, it is a binary file.
+uvision\fontvel.crf, it is a binary file.
+uvision\fontvel.d, code is 5, comment is 0, blank is 0.
+uvision\fontvel.o, it is a binary file.
+uvision\fontvellabel.crf, it is a binary file.
+uvision\fontvellabel.d, code is 5, comment is 0, blank is 0.
+uvision\fontvellabel.o, it is a binary file.
+uvision\lcd_grph.crf, it is a binary file.
+uvision\lcd_grph.d, code is 11, comment is 0, blank is 0.
+uvision\lcd_grph.o, it is a binary file.
+uvision\lcd_hw.crf, it is a binary file.
+uvision\lcd_hw.d, code is 4, comment is 0, blank is 0.
+uvision\lcd_hw.o, it is a binary file.
+uvision\lcd_main.crf, it is a binary file.
+uvision\lcd_main.d, code is 29, comment is 0, blank is 0.
+uvision\lcd_main.o, it is a binary file.
+uvision\light_rail_master.axf, it is a binary file.
+uvision\light_rail_master.htm, code is 1374, comment is 0, blank is 243.
+uvision\light_rail_master.lnp, code is 4, comment is 0, blank is 0.
+uvision\light_rail_master.map, code is 1072, comment is 0, blank is 57.
+uvision\light_rail_master.plg, code is 251, comment is 0, blank is 1.
+uvision\light_rail_master.sct, code is 13, comment is 0, blank is 2.
+uvision\light_rail_master.tra, code is 43, comment is 0, blank is 0.
+uvision\light_rail_master.uvgui.antho, code is 1273, comment is 0, blank is 9.
+uvision\light_rail_master.uvgui.Barry Feng, code is 2501, comment is 0, blank is 10.
+uvision\light_rail_master.uvgui_Barry Feng.bak, code is 2501, comment is 0, blank is 10.
+uvision\light_rail_master.uvopt, code is 571, comment is 0, blank is 12.
+uvision\light_rail_master.uvproj, code is 548, comment is 0, blank is 4.
+uvision\light_rail_master_light_rail.dep, code is 334, comment is 0, blank is 0.
+uvision\light_rail_master_Target 1.dep, code is 309, comment is 0, blank is 0.
+uvision\light_rail_master_uvopt.bak, code is 571, comment is 0, blank is 12.
+uvision\light_rail_master_uvproj.bak, code is 543, comment is 0, blank is 4.
+uvision\LPC2400.d, code is 1, comment is 0, blank is 0.
+uvision\LPC2400.lst, code is 4047, comment is 720, blank is 627.
+uvision\LPC2400.o, it is a binary file.
+uvision\LPC2400.s, code is 1335, comment is 692, blank is 195.
+uvision\master_controller.crf, it is a binary file.
+uvision\master_controller.d, code is 28, comment is 0, blank is 0.
+uvision\master_controller.o, it is a binary file.
+uvision\motion_controller.crf, it is a binary file.
+uvision\motion_controller.d, code is 28, comment is 0, blank is 0.
+uvision\motion_controller.o, it is a binary file.
+uvision\sdram.crf, it is a binary file.
+uvision\sdram.d, code is 4, comment is 0, blank is 0.
+uvision\sdram.o, it is a binary file.
+uvision\speed_limit.crf, it is a binary file.
+uvision\speed_limit.d, code is 5, comment is 0, blank is 0.
+uvision\speed_limit.o, it is a binary file.
+uvision\spi_mmc.crf, it is a binary file.
+uvision\spi_mmc.d, code is 30, comment is 0, blank is 0.
+uvision\spi_mmc.o, it is a binary file.
+uvision\swi_handler.d, code is 1, comment is 0, blank is 0.
+uvision\swi_handler.lst, code is 250, comment is 0, blank is 46.
+uvision\swi_handler.o, it is a binary file.
+uvision\system_init.crf, it is a binary file.
+uvision\system_init.d, code is 30, comment is 0, blank is 0.
+uvision\system_init.o, it is a binary file.
+uvision\system_timer.crf, it is a binary file.
+uvision\system_timer.d, code is 30, comment is 0, blank is 0.
+uvision\system_timer.o, it is a binary file.
+uvision\task_handler.d, code is 1, comment is 0, blank is 0.
+uvision\touch.crf, it is a binary file.
+uvision\touch.d, code is 3, comment is 0, blank is 0.
+uvision\touch.o, it is a binary file.
+uvision\touch_screen_read.crf, it is a binary file.
+uvision\touch_screen_read.d, code is 29, comment is 0, blank is 0.
+uvision\touch_screen_read.o, it is a binary file.
+===============================================================================
