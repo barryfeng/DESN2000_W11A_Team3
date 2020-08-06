@@ -22,8 +22,6 @@
 #define BRAKE_R 35
 
 void press_button(char x, char y);
-// void blow_bubbles(void);
-// void newbubble(void);
 int inside_brake(int point_x, int point_y);
 int inside_throttle_plus(int point_x, int point_y);
 int inside_throttle_minus(int point_x, int point_y);

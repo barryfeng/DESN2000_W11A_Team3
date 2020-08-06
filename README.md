@@ -108,8 +108,28 @@ cannot be entered when the light rail is in operation (velocity > 0, brakes dise
 * System interupt handler will loop through the above process every 20 ms.  
 
 #### Touchscreen    
-* 
-
+##### Press Button
+* Takes in x and y value coordinates from LCD screen and scales them to the correct screen size based on the given LCD parameters.
+* Runs through a list of if statements to determine which button has been pressed.
+##### 'inside_x' Functions
+* Takes in scaled coordinates and determines whether they align to the button listed in their name.
+* i.e. inside_brake calculates whether the coordinates are within a radius of the circular brake button.
+##### Touchscreen Starup (touch_init)
+* GPIO and SPI hardware interfaces set up for touchscreen reading operations.
+##### Touchscreen Variable Read (touch_read_xy)
+* Takes in pointers for variables X, Y, Z1 and Z2 relating to position and pressure calculation variables, and sets them based on touch_read(0xXX) output, where:
+    * X coordinate = 0xD8
+    * Y coordinate = 0x98
+    * Z1 coordinate = 0xB8
+    * Z2 coordinate = 0xC8
+##### Touchscreen Controller Read (touch_read)
+* Takes in a command (i.e. hex number) and returns the value based on the return of the S0SPDR value due to the command.
+##### Touchscreen Read Checking (touch_screen_press)
+* Initialises variables X, Y, Z1, Z2, Pressure, Threshold, with zeroes, except for Threshold = 100 for the minimum press pressure for a touch to be executed.
+* Calls touch_read_xy to populate the positioning variables and pressure_calc to populate the pressure variable.
+* Executes a button press if the calculated pressure is above the minimum press threshold (100).
+##### Pressure Calculator
+* Takes the given positioning variables from the touchscreen peripheral and a pointer to pressure to update with a value determined by a given algorithm from the touchscreen's data sheet.
 
 # Version History
 ## v1.0.0a1
