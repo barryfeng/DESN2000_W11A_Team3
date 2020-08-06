@@ -1,5 +1,4 @@
-# DESN2000_W11A_Team3 Whizz
-DESN2000_W11A_Team3 Light Rail Controller
+# DESN2000_W11A_Team3 Embedded System
 * Uvision project files are under /uvision.
 
 ## File Association
