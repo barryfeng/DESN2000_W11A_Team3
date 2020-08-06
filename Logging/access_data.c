@@ -31,7 +31,7 @@ extern uint8_t view_brake(void);
 extern uint8_t view_dms(void);
 
 /*
-    store_data is called to store the 4 pieces of data into memory.
+    This store_data function is called to store the 4 pieces of data into memory.
     The data is acquired from the light_rail struct. The store function
     is called from the data_management assembly file. The data is passed
     to this function as arguments.

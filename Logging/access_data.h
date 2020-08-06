@@ -5,7 +5,7 @@
 
 /*
     The following functions are used to store data and to access
-    individual data items from memory. The data is velocity;
+    individual data items from memory. The logged data is velocity;
     target velocity (set point); brake state; and DMS state
     (dead man switch).
 */
