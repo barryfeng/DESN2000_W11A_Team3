@@ -164,9 +164,11 @@ In the access_data file, one of four functions is called in order to return a sp
 * PLL clock code implemented.
 * Custom coded logging program.
 * LPC24XX pin references added.
+* UART0 implemented for data logging
 
 ## v2.0.0a1
 * Control and braking systems fully implemented.
 * SD card loading and diagnostic code execution implemented.
 * Data logging and retrieval API implemented.
 * LCD and touchscreen operation implemented.
+* Data logging (using sofwtare interrupts) completed 
