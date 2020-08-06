@@ -19,7 +19,10 @@
 #include "font5x7.h"
 #include <string.h>
 
-//EXTRA #includes
+/******************************************************************************
+ * Extra Includes
+ *****************************************************************************/
+
 #include "fontVel.h"
 #include "fontVelLabel.h"
 #include "fontBrakeLabel.h"

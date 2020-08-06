@@ -22,37 +22,44 @@
 #define FALSE 0
 #define TRUE 1
 
-
+// LCD Startup
 void init_lcd(void);
+
+// LCD Run
 void lcd_run(void);
 
-void constant_borders(void);
-void constant_labels(void);
+// LCD Startup Statics
+void lcd_borders(void);
+void lcd_labels(void);
 
-void lcd_backlight_on(void);
-void lcd_backlight_off(void);
+// LCD Mode
+void lcd_active_backlight_on(void);
+void lcd_standby_backlight_off(void);
 
-void constant_velocity_on(void);
-void constant_throttle_plus_on(void);
-void constant_throttle_minus_on(void);
-void constant_stops_on(void);
-void constant_brake_on(void);
-void constant_dms_on(void);
-void constant_max_vel_on(void);
-void constant_sd_on(void);
+// LCD Run Statics (ON)
+void lcd_velocity_on(void);
+void lcd_throttle_plus_on(void);
+void lcd_throttle_minus_on(void);
+void lcd_stops_on(void);
+void lcd_brake_on(void);
+void lcd_dms_on(void);
+void lcd_max_vel_on(void);
+void lcd_sd_on(void);
 
-void constant_velocity_off(void);
-void constant_throttle_plus_off(void);
-void constant_throttle_minus_off(void);
-void constant_stops_off(void);
-void constant_brake_off(void);
-void constant_dms_off(void);
-void constant_max_vel_off(void);
-void constant_sd_off(void);
+// LCD Run Statics (OFF)
+void lcd_velocity_off(void);
+void lcd_throttle_plus_off(void);
+void lcd_throttle_minus_off(void);
+void lcd_stops_off(void);
+void lcd_brake_off(void);
+void lcd_dms_off(void);
+void lcd_max_vel_off(void);
 
+// LCD Shape Thickness
 void lcd_rectangle_thickness(unsigned short x0, unsigned short y0, unsigned short x1, unsigned short y1, int thickness, lcd_color_t color);
 void lcd_circle_thickness(unsigned short x0, unsigned short y0, unsigned short r, int thickness, lcd_color_t color);
 
+// Integer To String Converter
 void reverse_string(unsigned char string[], int length);
 unsigned char* integer_to_string(int integer, unsigned char* string, int radix);
 
