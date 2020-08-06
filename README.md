@@ -145,6 +145,9 @@ cannot be entered when the light rail is in operation (velocity > 0, brakes dise
 
 ### Data Logging
 
+#### NOTE:
+The 'Logging_superseeded' folder is not used in the program. This folder contained the intitial implementation for data logging but has now been replaced entirely by the contents in the 'Logging' folder.
+
 #### Summary of operations:
 Four key pieces of data are logged: velocity; velocity target (set point); DMS state (dead man switch); and brake state. Velocity and velocity target are both 32 bit values while DMS state and brake state are both 8 bit values. The data is acquired from a Lightrail struct that has a size of 80 bits. The data will be logged to static memory bank 2 (16 MB) and can be logged to static memory bank 3 or dynamic memory banks 1/2/3 when more space is needed. This implementation only logs data to static memory bank 2. Storing and accessing data is done via the API file, access_data. This file has functions to store the data and to retrieve the most recently stored data from memory. A software interrupt is generated every time data is stored or accessed.
 
