@@ -66,6 +66,7 @@ void hw_init(void) {
     init_lcd();
     init_ultrasonic();
     init_vel_limit_data();
+    touch_init();
 }
 
 /**
